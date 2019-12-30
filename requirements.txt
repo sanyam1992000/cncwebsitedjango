@@ -1,3 +1,5 @@
+xhtml2pdf
+pdfkit
 asgiref==3.2.3
 Django==3.0.1
 pytz==2019.3

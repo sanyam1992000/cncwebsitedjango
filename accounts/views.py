@@ -6,7 +6,6 @@ from django.contrib import messages
 from .forms import UserRegistrationForm, UserLogin
 from .models import UserProfile
 from django.contrib.auth.models import User
-from . import forms
 # Create your views here.
 
 
@@ -58,3 +57,14 @@ def register(request):
         form = UserRegistrationForm()
     return render(request, 'accounts/register.html', {'form': form})
 
+
+@login_required
+def ProfileDashboard(request, username):
+    user = request.user.id
+    user_instance = User.objects.filter(username=username)
+    if user == user_instance:
+        #private view
+        pass
+    else:
+        #public view
+        pass
