@@ -6,7 +6,9 @@ app_name = 'events'
 
 
 urlpatterns = [
-    path('', views.events, name='Events'),
-    path('certi', views.getpdf, name='certi'),
-    path('<userid>/<eventid>/', views.getpdf, name='certi'),
+    path('', views.EventsList, name='events_list'),
+    path('<int:eventid>/', views.EventDetail, name='events_detail'),
+    path('certi', views.Getpdf, name='certi'),
+    path('<username>/<eventid>/', views.Getpdf, name='certificate'),
+
 ]

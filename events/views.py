@@ -1,27 +1,44 @@
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
-from django.shortcuts import render
-
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import Event, Registration
 from .certificates import render_to_pdf
 # Create your views here.
 
 
-def events(request):
-    return HttpResponse('iucfhroiuhf')
+def EventsList(request):
+    events = Event.objects.all()
+    context = {
+        'events' : events
+    }
+    return render(request, 'events/eventlist.html', context)
+
+
+def EventDetail(request, eventid):
+    event = get_object_or_404(Event, id=eventid)
+    context = {
+        'event': event
+    }
+    return render(request, 'events/eventdetail.html', context)
 
 
 @login_required
-def getpdf(request, userid, eventid, *args, **kwargs):
+def Getpdf(request, username, eventid, *args, **kwargs):
     user = request.user
-    if userid == user.username:
+    if username == user.username:
         data = {
-            'user': user }
-        #      'user': datetime.date.today(),
-        #      'amount': 39.99,
-        #     'customer_name': 'Cooper Mann',
-        #     'order_id': 1233434,
-        # }
-        pdf = render_to_pdf('events/certi.html', data)
+            'user': user
+        }
+        pdf = render_to_pdf('events/certi1.html', data)
         return HttpResponse(pdf, content_type='application/pdf')
     else:
         return render(request, '404.html')
+
+
+@login_required
+def RegisterForEvent(request, eventid):
+    user = request.user
+    event = Event.objects.filter(id=eventid)
+    registration = Registration(user=user, event=event)
+    registration.save()
+    return redirect('events:EventsDetail')

@@ -23,8 +23,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
 
-    path('about', views.home, name='about'),
-    path('contact', views.home, name='contact'),
+    path('about', views.about, name='about'),
+    path('contact', views.contact_us, name='contact'),
 
     path('events/', include('events.urls', namespace='events')),
     path('blog/', include('blog.urls', namespace='blog')),

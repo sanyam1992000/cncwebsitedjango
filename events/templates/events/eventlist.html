@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+    <br><br>
+    <h1>Events List</h1><br><br><br>
+    {% for event in events %}
+    {% if event.status == 'False' %}
+        <h2>{{ event.event_name }}</h2>
+        {{ event.date }}
+        <h3>{{ event.description }}</h3>
+        {{ event.content }}
+    {% endif %}
+        <br><br>
+{% endfor %}
+
+{% endblock %}

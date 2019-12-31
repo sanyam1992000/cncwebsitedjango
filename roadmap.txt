@@ -1,0 +1,13 @@
+Roadmap
+    Home
+	About
+	Blog (Blog List)
+	   Blog Detail Look
+	Events
+	   Event Detail Look
+	   Suggest a Event
+	Contact Us
+
+	Profile
+	Log in
+	Sign Up 
