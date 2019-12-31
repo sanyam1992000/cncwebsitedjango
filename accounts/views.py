@@ -1,5 +1,3 @@
-import os
-from cncweb.settings import BASE_DIR
 from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail, EmailMessage
 from django.http import HttpResponse
@@ -23,12 +21,12 @@ def login_user(request):
         if user is not None:
             login(request, user)
             redirect_url = request.GET.get('next', 'home')
-            return redirect(redirect_url)
+            return redirect('home')
         else:
             messages.error(request, 'Username or password is incorrect')
     else:
         form = UserLogin()
-    return render(request, 'accounts/login.html', {'form': form})
+    return render(request, 'accounts/login2.html', {'form': form})
 
 
 @login_required
@@ -65,7 +63,7 @@ def register(request):
             from_email = settings.DEFAULT_FROM_EMAIL
             to_email = [email]
             email = EmailMessage(subject=subject, from_email=from_email, to=to_email, body=message)
-            path = os.path.join(BASE_DIR, 'static/brochure.pdf')
+            path = 'accounts/brochure.pdf'
             try:
                 email.attach_file(path=path)
                 email.send(fail_silently=True)
@@ -77,7 +75,7 @@ def register(request):
             return redirect('home')
     else:
         form = UserRegistrationForm()
-    return render(request, 'accounts/register.html', {'form': form})
+    return render(request, 'accounts/register1.html', {'form': form})
 
 
 @login_required

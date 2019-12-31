@@ -12,11 +12,13 @@
     <link rel="stylesheet" href="{% static 'css/Navigation-Dark-Clean.css'%}">
     <link rel="stylesheet" href="{% static 'css/Navigation-Menu.css'%}">
     <link rel="stylesheet" href="{% static 'css/styles.css'%}">
+    {% block static %}
+    {% endblock %}
 </head>
 
 <body>
     <nav class="navbar navbar-dark navbar-expand-md bg-dark navigation-clean">
-        <div class="container"><a class="navbar-brand" href="#">Career and Counseling Cell</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class="container"><a class="navbar-brand" href="{% url 'home' %}">Career and Counseling Cell</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse"
                 id="navcol-1">
                 <ul class="nav navbar-nav ml-auto">
@@ -25,8 +27,8 @@
                     <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'events:events_list' %}">Events</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'blog:blog' %}">Blog</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'contact' %}">Contact</a></li>
-                    {% if not request.user.is_authenticated %}
 
+                    {% if not request.user.is_authenticated %}
                 <button class="btn btn-light" type="button" > <a href="{% url 'accounts:login' %}" class="button"> Login </a></button>
                 <button class="btn btn-outline-light" type="button"> <a href="{% url 'accounts:register' %}" class="button">Signup</a></button>
 
@@ -34,6 +36,7 @@
                 <button class="btn btn-light" type="button" ><a href="{% url 'accounts:logout' %}" class="button">Logout</a></button>
                 <button class="btn btn-light" type="button" ><a href="{% url 'accounts:dashboard' request.user.username %}" class="button">Profile</a></button>
                 {% endif %}
+
             </div>
         </div>
     </nav>
@@ -54,6 +57,8 @@
             <p class="copyright">Career and Couseling Cell © 2020</p>
         </footer>
     </div>
+    {% block scripts %}
+    {% endblock %}
     <script src="{% static 'js/jquery.min.js'%}"></script>
     <script src="{% static 'bootstrap/js/bootstrap.min.js'%}"></script>
 </body>

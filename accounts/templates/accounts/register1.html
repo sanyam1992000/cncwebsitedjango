@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block static %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>CNC | Register</title>
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/Elegant-Registration-Form.css' %}">
+    <link rel="stylesheet" href="{% static 'css/Login-Form-Dark.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="banner6 py-5">
+  <!-- Row  -->
+  <div class="row">
+    <div class="container">
+      <div class="col-lg-6 align-justify-center pr-4 pl-0 contact-form">
+        <div class="form">
+          <h2 class="mb-3 font-weight-light">Get Register</h2>
+          <form class="mt-3" method="POST">
+          {% csrf_token %}
+            <!--{{form.as_p}}-->
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="form-group">
+                  <input class="form-control" name="username" required id="id_username" type="Username" maxlength="50" placeholder="Username">
+                </div>
+              </div>
+
+              <div class="col-lg-12">
+                <div class="form-group">
+                  <input class="form-control" name="first_name" required id="id_first_name" maxlength="50" type="text" placeholder="First Name">
+                </div>
+              </div>
+
+              <div class="col-lg-12">
+                <div class="form-group">
+                  <input class="form-control" name="last_name" required id="id_last_name" maxlength="50" type="text" placeholder="Last Name">
+                </div>
+              </div>
+
+              <div class="col-lg-12">
+                <div class="form-group">
+                  <input class="form-control" name="roll_no" required id="id_roll_no" type="Number" placeholder="Roll Number" max="100000000000" min="10000000000">
+                </div>
+              </div>
+
+              <div class="col-lg-12">
+                <div class="form-group">
+                  <input class="form-control" name="email" required id="id_email" type="email" placeholder="email address">
+                </div>
+              </div>
+              
+              <div class="col-lg-12">
+                <div class="form-group">
+                  <input class="form-control" name="phoneno" required id="id_phoneno" type="Number" placeholder="Roll Number" max="9999999999" min="6000000000">
+                </div>
+              </div>
+
+              <div class="col-lg-4">
+                <div class="form-group">
+                  <label for="id_course">Course:</label>
+                  <select class="form-control" name="course" id="id_course">
+                    <option value="BTECH">Btech</option>
+                    <option value="MTECH">Mtech</option>
+                    <option value="BCA">BCA</option>
+                    <option value="MCA">MCA</option>
+                    <option value="BSC">Bsc</option>
+                    <option value="MSC">Msc</option>
+                    <option value="MBA">MBA</option>
+                </select>
+                </div>
+              </div>
+
+
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label for="id_branch">Branch:</label>
+                  <select class="form-control" name="branch" id="id_branch">
+                  <option value="CE">CE</option>
+                  <option value="IT">IT</option>
+                  <option value="ECE">ECE</option>
+                  <option value="ECS">ECS</option>
+                  <option value="EIC">EIC</option>
+                  <option value="EL">EL</option>
+                  <option value="MECH">MECH</option>
+                  <option value="CIVIL">CIVIL</option>
+                </select>
+                </div>
+              </div>
+
+
+              <div class="col-lg-12">
+                <div class="form-group">
+                  <input class="form-control" name="password1" minlength="6" required id="id_password1" type="password" placeholder="password">
+                </div>
+              </div>
+
+              <div class="col-lg-12">
+                <div class="form-group">
+                  <input class="form-control" name="password2" minlength="6" required id="id_password2" type="password" placeholder="confirm password">
+                </div>
+              </div>
+
+              <div class="col-lg-12">
+                <button type="submit" value="submit" class="btn btn-md btn-block btn-danger-gradiant text-white border-0"><span> Create Account</span></button>
+                <!--  -->
+              </div>
+            </div>
+            </fieldset>
+          </form>
+            <div class="col-lg-12 text-center mt-4">
+              Already have an account? <a href="{% url 'accounts:login' %}" class="text-danger">Sign In</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6 right-image pl-3" style="background-image:url(https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/form/3.jpg);">
+    </div>
+  </div>
+</div>
+{% endblock %}
+    {% block scripts %}
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+    {% endblock %}
