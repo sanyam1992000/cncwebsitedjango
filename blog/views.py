@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator
 from django.shortcuts import render, get_object_or_404
 from . import models
 # Create your views here.python
@@ -5,12 +6,16 @@ from .models import Post, Comment
 
 
 def blog(request):
-    Posts = Post.objects.all()
+    post_all = Post.objects.all()
+    paginator_post = Paginator(post_all, 1)
+    page = request.GET.get('page')
+    posts = paginator_post.get_page(page)
     context = {
-        'Posts': Posts,
+        'allposts': paginator_post,
+        'posts': posts,
         'Comment': Comment
     }
-    return render(request, 'blog/blog.html', context=context)
+    return render(request, 'blog/blogs1.html', context=context)
 
 
 def detail(request, postid):

@@ -29,12 +29,12 @@
                     <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'contact' %}">Contact</a></li>
 
                     {% if not request.user.is_authenticated %}
-                <button class="btn btn-light" type="button" > <a href="{% url 'accounts:login' %}" class="button"> Login </a></button>
+                <button class="btn Blog---Recent-Posts" type="button" > <a href="{% url 'accounts:login' %}" class="button"> Login </a></button>
                 <button class="btn btn-outline-light" type="button"> <a href="{% url 'accounts:register' %}" class="button">Signup</a></button>
 
                 {% else %}
-                <button class="btn btn-light" type="button" ><a href="{% url 'accounts:logout' %}" class="button">Logout</a></button>
-                <button class="btn btn-light" type="button" ><a href="{% url 'accounts:dashboard' request.user.username %}" class="button">Profile</a></button>
+                <button class="btn Blog---Recent-Posts" type="button" ><a href="{% url 'accounts:logout' %}" class="button">Logout</a></button>
+                <button class="btn btn-outline-light" type="button" ><a href="{% url 'accounts:dashboard' request.user.username %}" class="button">Profile</a></button>
                 {% endif %}
 
             </div>
@@ -46,7 +46,7 @@
     <div class="footer-basic">
         <footer>
             <div class="social"><a href="https://www.instagram.com/career_counselling_cell_ymca/?hl=en"><i class="icon ion-social-instagram"></i>
-            </a><a href=""><i class="icon ion-social-facebook"></i></a></div>
+            </a><a href="https://www.facebook.com/cccymcaust/"><i class="icon ion-social-facebook"></i></a></div>
             <ul class="list-inline">
                 <li class="list-inline-item"><a href="{% url 'home' %}">Home</a></li>
                 <li class="list-inline-item"><a href="{% url 'about' %}">About</a></li>

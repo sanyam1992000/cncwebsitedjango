@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
 
-    {% for post in Posts %}
+    {% for post in posts %}
         <h1>{{ post.title }}</h1>
         {{ post.description }}<br>
         {{ post.date }}
         {{ post.comment.comment_content }}
         <br>
-        <img class="img-fluid rounded" src="{{post.pic1.url }}" alt="" height="100" width="100">
+        <img class="img-fluid rounded" src="{{ post.pic1.url }}" alt="" height="100" width="100">
     {% endfor %}
 
 {% endblock %}

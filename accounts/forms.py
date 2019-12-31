@@ -39,8 +39,7 @@ class UserRegistrationForm(forms.Form):
     course = forms.ChoiceField(label='Course', choices=course)
     branch = forms.ChoiceField(label='Branch', choices=branch)
     phoneno = forms.IntegerField(label='Phone No.', min_value=6000000000, max_value=9999999999)
-
-    # icard = forms.ImageField(label='I-card Front', allow_empty_file=True)
+    icard = forms.ImageField(label='I-card Front', allow_empty_file=True, required=False)
 
     def clean(self):
         cleaned_data = super().clean()
@@ -50,18 +49,12 @@ class UserRegistrationForm(forms.Form):
             if p1 != p2:
                 raise ValidationError('Passwords Do Not Match')
 
-    # def clean_email(self):
-    #     email = self.cleaned_data['email']
-    #     qs = User.objects.filter(email=email)
-    #     if qs.exists():
-    #         raise ValidationError('Email is already registered.')
-    #     return email
-    #
-    # def clean_username(self):
-    #     username1 = self.cleaned_data.get('username')
-    #     us1 = User.objects.filter(username=username1)
-    #     if us1.exists():
-    #         raise ValidationError("Username already exists")
+    def clean_email(self):
+        email = self.cleaned_data['email']
+        qs = User.objects.filter(email=email)
+        if qs.exists():
+            raise ValidationError('Email is already registered.')
+        return email
 
 
 class UserLogin(forms.Form):

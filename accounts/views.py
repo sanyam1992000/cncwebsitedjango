@@ -26,7 +26,7 @@ def login_user(request):
             messages.error(request, 'Username or password is incorrect')
     else:
         form = UserLogin()
-    return render(request, 'accounts/login2.html', {'form': form})
+    return render(request, 'accounts/login1.html', {'form': form})
 
 
 @login_required
@@ -38,7 +38,7 @@ def logout_user(request):
 def register(request):
     logout(request)
     if request.method == 'POST':
-        form = UserRegistrationForm(request.POST)
+        form = UserRegistrationForm(request.POST, request.FILES)
         if form.is_valid():
             username = form.cleaned_data['username']
             password = form.cleaned_data['password1']
@@ -49,11 +49,12 @@ def register(request):
             course = form.cleaned_data['course']
             branch = form.cleaned_data['branch']
             phoneno = form.cleaned_data['phoneno']
+            icard = form.cleaned_data['icard']
             user = User.objects.create_user(username=username, email=email, password=password, first_name=firstname,
                                             last_name=lastname)
             # user.is_active = False
             user.save()
-            profile = UserProfile(user=user, course=course, roll_no=roll_no, branch=branch, phoneno=phoneno)
+            profile = UserProfile(user=user, course=course, roll_no=roll_no, branch=branch, phoneno=phoneno, icard=icard)
             profile.save()
 
             ## for Sending email ##
@@ -91,4 +92,3 @@ def ProfileDashboard(request, username):
         'profile': user_instance_profile,
     }
     return render(request, 'accounts/profile.html', context)
-
