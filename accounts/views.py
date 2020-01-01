@@ -12,6 +12,7 @@ from events.views import Registration
 
 
 def login_user(request):
+    logout(request)
     if request.method == 'POST':
         form = UserLogin(request.POST)
         username = request.POST['username']
