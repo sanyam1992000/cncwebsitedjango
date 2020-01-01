@@ -1,6 +1,8 @@
 from django import forms
 from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
+from django.contrib import messages
+
 from .models import UserProfile
 
 course = (
@@ -47,7 +49,7 @@ class UserRegistrationForm(forms.Form):
         p2 = cleaned_data.get('password2')
         if p1 and p2:
             if p1 != p2:
-                raise ValidationError('Passwords Do Not Match')
+                raise ValidationError('Passwords Do Not Match', code='Unmatched Password')
 
     def clean_email(self):
         email = self.cleaned_data['email']
@@ -55,6 +57,14 @@ class UserRegistrationForm(forms.Form):
         if qs.exists():
             raise ValidationError('Email is already registered.')
         return email
+
+    def clean_username(self):
+        username = self.cleaned_data['username']
+        qs = User.objects.filter(username=username)
+        if qs.exists():
+            #messages.error(request, 'email is already registered')
+            raise ValidationError('Username is already registered.')
+        return username
 
 
 class UserLogin(forms.Form):

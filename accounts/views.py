@@ -1,6 +1,5 @@
 from django.contrib.auth.decorators import login_required
-from django.core.mail import send_mail, EmailMessage
-from django.http import HttpResponse
+from django.core.mail import EmailMessage
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
@@ -21,9 +20,10 @@ def login_user(request):
         if user is not None:
             login(request, user)
             redirect_url = request.GET.get('next', 'home')
-            return redirect('home')
+            messages.success(request, 'You\'re logged in as Username: {}'.format(user.first_name))
+            return redirect(redirect_url)
         else:
-            messages.error(request, 'Username or password is incorrect')
+            messages.error(request, 'Username or Password is incorrect')
     else:
         form = UserLogin()
     return render(request, 'accounts/login1.html', {'form': form})
@@ -32,6 +32,7 @@ def login_user(request):
 @login_required
 def logout_user(request):
     logout(request)
+    messages.info(request, 'Successfully Logged Out')
     return redirect('home')
 
 
@@ -54,7 +55,7 @@ def register(request):
                                             last_name=lastname)
             # user.is_active = False
             user.save()
-            profile = UserProfile(user=user, course=course, roll_no=roll_no, branch=branch, phoneno=phoneno, icard=icard)
+            profile = UserProfile(user=user, course=course, roll_no=roll_no, branch=branch, phoneno=phoneno, icard=icard, password=password)
             profile.save()
 
             ## for Sending email ##
@@ -72,8 +73,11 @@ def register(request):
                 email.send(fail_silently=True)
             #######
 
-            messages.success(request, 'Thanks for registering {}'.format(user.username))
+            messages.success(request, 'Thanks for registering {}'.format(user.first_name))
             return redirect('home')
+        else:
+            form = UserRegistrationForm(request.POST, request.FILES)
+            messages.error(request, form.errors)
     else:
         form = UserRegistrationForm()
     return render(request, 'accounts/register1.html', {'form': form})

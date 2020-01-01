@@ -26,11 +26,12 @@ branch = (
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    roll_no = models.BigIntegerField(unique=True, max_length=99999999999)
+    roll_no = models.BigIntegerField(unique=True)
     course = models.CharField(choices=courses, max_length=10, default='CE')
     branch = models.CharField(choices=branch, max_length=10)
     icard = models.ImageField(upload_to='icard', blank=True, null=True)
     phoneno = models.BigIntegerField(default=None)
+    #password = models.CharField(default=None, max_length=100, blank=True, null=True)
 
     def __str__(self):
-        return str(self.roll_no) + ' , ' + str(self.user)
+        return str(self.user)

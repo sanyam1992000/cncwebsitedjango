@@ -7,7 +7,7 @@ class Post(models.Model):
     title = models.CharField(max_length=100)
     description = models.CharField(max_length=500)
     content = models.TextField()
-    date = models.DateTimeField(auto_now_add=True)
+    date = models.DateTimeField(auto_now_add=False, editable=True)
     pic1 = models.ImageField(default=None, upload_to='blog pics', blank=True, null=True)
     pic2 = models.ImageField(default=None, upload_to='blog pics', blank=True, null=True)
     pic3 = models.ImageField(default=None, upload_to='blog pics', blank=True, null=True)
