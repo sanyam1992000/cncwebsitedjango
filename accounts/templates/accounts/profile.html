@@ -13,9 +13,8 @@
     {% for registration in certificates %}
     {% if registration.attended == 'A'%}
         <h3>Attended {{ registration.event.event_name }} - {{ registration.event.date }}</h3>
-    {% else %}
-        <h3>No Certificates</h3>
     {% endif %}
+    {% empty %}<h3>No Certificates</h3>
 {% endfor %}
 {% endif %}
 {% endblock %}
