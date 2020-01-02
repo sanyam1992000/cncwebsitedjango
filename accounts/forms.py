@@ -5,6 +5,7 @@ from django.contrib import messages
 
 from .models import UserProfile
 
+
 course = (
     ('BTECH', 'Btech'),
     ('MTECH', 'Mtech'),
@@ -62,9 +63,15 @@ class UserRegistrationForm(forms.Form):
         username = self.cleaned_data['username']
         qs = User.objects.filter(username=username)
         if qs.exists():
-            #messages.error(request, 'email is already registered')
             raise ValidationError('Username is already registered.')
         return username
+
+    def clean_roll_no(self):
+        roll_no = self.cleaned_data['roll_no']
+        qs = UserProfile.objects.filter(roll_no=roll_no)
+        if qs.exists():
+            raise ValidationError('Roll Number is already registered.')
+        return roll_no
 
 
 class UserLogin(forms.Form):

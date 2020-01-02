@@ -56,12 +56,12 @@ def register(request):
                                             last_name=lastname)
             # user.is_active = False
             user.save()
-            profile = UserProfile(user=user, course=course, roll_no=roll_no, branch=branch, phoneno=phoneno, icard=icard, password=password)
+            profile = UserProfile(user=user, course=course, roll_no=roll_no, branch=branch, phoneno=phoneno, icard=icard)
             profile.save()
 
             ## for Sending email ##
             subject = 'Welcome to Career and Counseling Cell'
-            message = user.username + ', thanks for registering on Career and Counseling Cell of ' \
+            message = user.first_name + ', thanks for registering on Career and Counseling Cell of ' \
                                       'JC BOSE UNIVERSITY OF SCIENCE AND TECHNOLOGY'
             from_email = settings.DEFAULT_FROM_EMAIL
             to_email = [email]
@@ -84,7 +84,7 @@ def register(request):
     return render(request, 'accounts/register1.html', {'form': form})
 
 
-@login_required
+#@login_required
 def ProfileDashboard(request, username):
     user = request.user
     user_instance = get_object_or_404(User, username=username)

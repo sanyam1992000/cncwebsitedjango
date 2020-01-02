@@ -15,9 +15,18 @@
             <h5 class="mt-0">{{comment.comment_author}}</h5>
             {{comment.comment_date}} <br>
             {{comment.comment_content}}
+
+                </div>
           </div>
         </div>
       {% endfor %}
+        <div class="form">
+                    <form method="POST">
+                        {% csrf_token%}
+                        <fieldset class="form-group">
+                            {{ form.as_ul }}
+                            <input type="submit" value="submit" ></fieldset>
+                    </form>
 {% endif %}
 
 {% endblock %}

@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Event, Registration
 from .certificates import render_to_pdf
+from django.contrib.auth.models import User
 # Create your views here.
 
 
@@ -22,14 +23,15 @@ def EventDetail(request, eventid):
     return render(request, 'events/eventdetail.html', context)
 
 
-@login_required
+#@login_required
 def Getpdf(request, username, eventid, *args, **kwargs):
-    user = request.user
+    user = User.objects.get(username=username)
+    event = Event.objects.get(id=eventid)
     if username == user.username:
         data = {
             'user': user
         }
-        pdf = render_to_pdf('events/certi1.html', data)
+        pdf = render_to_pdf('events/certi1.html', )
         return HttpResponse(pdf, content_type='application/pdf')
     else:
         return render(request, '404.html')

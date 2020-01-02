@@ -1,6 +1,7 @@
 from django.core.paginator import Paginator
 from django.shortcuts import render, get_object_or_404
 from . import models
+from .forms import CommentForm
 # Create your views here.python
 from .models import Post, Comment
 
@@ -21,4 +22,13 @@ def blog(request):
 def detail(request, postid):
     article = get_object_or_404(Post, id=int(postid))
     comments = article.comments.all()
-    return render(request, "blog/detail.html", {"post": article, "comments": comments})
+    user = request.user
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.cleaned_data['comment_content']
+            comment = Comment(comment_content=comment, comment_user=user, article=article)
+    else:
+        form = CommentForm()
+
+    return render(request, "blog/detail.html", {"post": article, "comments": comments, 'form':form})
