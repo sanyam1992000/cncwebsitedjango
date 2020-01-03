@@ -4,21 +4,34 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Event, Registration
 from .certificates import render_to_pdf
 from django.contrib.auth.models import User
+import datetime
+from django.contrib import messages
+
 # Create your views here.
 
 
 def EventsList(request):
     events = Event.objects.all()
+    user = request.user
+    if user:
+        registrations = Registration.objects.filter(user=user)
+    else:
+        registrations = {}
+
     context = {
-        'events' : events
+        'events' : events,
+        'registrations': registrations
     }
     return render(request, 'events/eventlist.html', context)
 
 
 def EventDetail(request, eventid):
     event = get_object_or_404(Event, id=eventid)
+    user = request.user
+    registration = Registration.objects.filter(user=user, event=event)
     context = {
-        'event': event
+        'event': event,
+        'registration': registration
     }
     return render(request, 'events/eventdetail.html', context)
 
@@ -40,7 +53,9 @@ def Getpdf(request, username, eventid, *args, **kwargs):
 @login_required
 def RegisterForEvent(request, eventid):
     user = request.user
-    event = Event.objects.filter(id=eventid)
-    registration = Registration(user=user, event=event)
+    event = Event.objects.get(id=eventid)
+    date = datetime.datetime.now()
+    registration = Registration(user=user, event=event, date=date)
     registration.save()
-    return redirect('events:EventsDetail')
+    messages.success(request, 'Thanks for registering for Event - {}'.format(event.event_name))
+    return redirect('events:events_detail', eventid=event.id)

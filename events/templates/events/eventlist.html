@@ -1,6 +1,29 @@
 {% extends 'base.html' %}
 {% block content %}
     <br><br>
+
+    <h1> Upcoming Events</h1><br><br><br>
+    {% for event in events %}
+    {% if event.status == 'True' %}
+        <h2>{{ event.event_name }}</h2>
+        {{ event.date }}
+        <h3>{{ event.description }}</h3>
+        {{ event.content }}
+        <br>
+        <br>
+{#        {{ registrations.event_set }}#}
+{#        {% if registrations.event %}#}
+{#        <a href="{% url 'events:events_detail' event.id %}"><strong>Already Registered</strong></a>#}
+{#        {% else %}#}
+{#            <a href="{% url 'events:events_detail' event.id %}"><strong>Register >></strong></a>#}
+{#        {% endif %}#}
+
+
+    {% endif %}
+    {% endfor %}
+
+    <br>
+    <br>
     <h1>Events List</h1><br><br><br>
     {% for event in events %}
     {% if event.status == 'False' %}
@@ -8,6 +31,8 @@
         {{ event.date }}
         <h3>{{ event.description }}</h3>
         {{ event.content }}
+
+        <a href="{% url 'events:events_detail' event.id %}"><strong>Read More >></strong></a>
     {% endif %}
         <br><br>
 {% endfor %}

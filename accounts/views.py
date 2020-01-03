@@ -20,7 +20,7 @@ def login_user(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            redirect_url = request.GET.get('next', 'home')
+            redirect_url = request.GET.get('next', 'core:home')
             messages.success(request, 'You\'re logged in as Username: {}'.format(user.first_name))
             return redirect(redirect_url)
         else:
@@ -34,7 +34,7 @@ def login_user(request):
 def logout_user(request):
     logout(request)
     messages.info(request, 'Successfully Logged Out')
-    return redirect('home')
+    return redirect('core:home')
 
 
 def register(request):
@@ -75,7 +75,7 @@ def register(request):
             #######
 
             messages.success(request, 'Thanks for registering {}'.format(user.first_name))
-            return redirect('home')
+            return redirect('core:home')
         else:
             form = UserRegistrationForm(request.POST, request.FILES)
             messages.error(request, form.errors)

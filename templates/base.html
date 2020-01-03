@@ -20,15 +20,15 @@
 
 <body>
     <nav class="navbar navbar-dark navbar-expand-md bg-dark navigation-clean">
-        <div class="container"><a class="navbar-brand" href="{% url 'home' %}">Career and Counseling Cell</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class="container"><a class="navbar-brand" href="{% url 'core:home' %}">Career and Counseling Cell</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse"
                 id="navcol-1">
                 <ul class="nav navbar-nav ml-auto">
-                    <li class="nav-item" role="presentation"><a class="nav-link " href="{% url 'home' %}">Home</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'about' %}">About</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link " href="{% url 'core:home' %}">Home</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'core:about' %}">About</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'events:events_list' %}">Events</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'blog:blog' %}">Blog</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'contact' %}">Contact</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'core:contact' %}">Contact</a></li>
                 </ul>
 
                     {% if not request.user.is_authenticated %}
@@ -72,11 +72,11 @@
             <div class="social"><a href="https://www.instagram.com/career_counselling_cell_ymca/?hl=en"><i class="icon ion-social-instagram"></i>
             </a><a href="https://www.facebook.com/cccymcaust/"><i class="icon ion-social-facebook"></i></a></div>
             <ul class="list-inline">
-                <li class="list-inline-item"><a href="{% url 'home' %}">Home</a></li>
-                <li class="list-inline-item"><a href="{% url 'about' %}">About</a></li>
+                <li class="list-inline-item"><a href="{% url 'core:home' %}">Home</a></li>
+                <li class="list-inline-item"><a href="{% url 'core:about' %}">About</a></li>
                 <li class="list-inline-item"><a href="{% url 'events:events_list' %}">Events</a></li>
                 <li class="list-inline-item"><a href="{% url 'blog:blog' %}">Blog</a></li>
-                <li class="list-inline-item"><a href="{% url 'contact' %}">Contact</a></li>
+                <li class="list-inline-item"><a href="{% url 'core:contact' %}">Contact</a></li>
             </ul>
             <p class="copyright">Career and Couseling Cell © 2020</p>
         </footer>

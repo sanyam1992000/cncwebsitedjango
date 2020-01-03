@@ -1,4 +1,3 @@
-import os
 from django.core.mail import send_mail, EmailMessage
 from django.shortcuts import render
 

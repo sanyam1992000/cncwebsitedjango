@@ -1,5 +1,6 @@
 from django.core.paginator import Paginator
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
+import datetime
 from . import models
 from .forms import CommentForm
 # Create your views here.python
@@ -27,8 +28,18 @@ def detail(request, postid):
         form = CommentForm(request.POST)
         if form.is_valid():
             comment = form.cleaned_data['comment_content']
-            comment = Comment(comment_content=comment, comment_user=user, article=article)
+            date = datetime.datetime.now()
+            comment = Comment(comment_content=comment, comment_user=user, article=article, comment_date=date)
+            comment.save()
+            form = CommentForm()
     else:
         form = CommentForm()
 
-    return render(request, "blog/detail.html", {"post": article, "comments": comments, 'form':form})
+    return render(request, "blog/detail.html", {"post": article, "comments": comments, 'form': form})
+
+
+def CommentDelete(request, postid, commentid):
+    comment = models.Comment.objects.get(id=commentid)
+    comment.delete()
+
+    return redirect('blog:detail', postid)
