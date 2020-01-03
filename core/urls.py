@@ -1,17 +1,24 @@
 from django.conf import settings
 from django.conf.urls.static import static
-from django.contrib import admin
 from django.urls import path, include
-from . import views
-
+from .views import home, about, contact_us, UserViewSet, UserProfileViewSet, BlogViewSet, EventViewSet
+from rest_framework.routers import DefaultRouter
 app_name = 'core'
+
+router = DefaultRouter()
+router.register('users', UserViewSet, basename='user')
+router.register('userprofiles', UserProfileViewSet, basename='userprofile')
+router.register('blogs', BlogViewSet, basename='blog')
+router.register('events', EventViewSet, basename='event')
+
+
 urlpatterns = [
-    path('', views.home, name='home'),
+    path('', home, name='home'),
 
-    path('about/', views.about, name='about'),
-    path('contact/', views.contact_us, name='contact'),
+    path('about/', about, name='about'),
+    path('contact/', contact_us, name='contact'),
 
-    #path('about/', views.home, name='home'),
+    path('api/', include(router.urls)),
 
 ]
 
