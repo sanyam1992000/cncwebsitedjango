@@ -14,10 +14,12 @@ from django.contrib import messages
 def EventsList(request):
     events = Event.objects.all()
     user = request.user
-    registrations = Registration.objects.filter(user=user)
+    if user.is_authenticated:
+        registrations = Registration.objects.filter(user=user)
+    else:
+        registrations = []
     context = {
         'events': events,
-        'user': user,
         'registrations': registrations,
     }
     return render(request, 'events/eventlist.html', context)
@@ -68,7 +70,7 @@ def UnregisterForEvent(request, eventid):
     event = Event.objects.get(id=eventid)
     registration = Registration.objects.get(user=user, event=event)
     registration.delete()
-    messages.success(request, 'You\'ve Unregistered for Event - {}'.format(event.event_name))
+    messages.error(request, 'You\'ve Unregistered for Event - {}'.format(event.event_name))
     if event.status == 'True':
         return redirect('events:events_list')
     else:
