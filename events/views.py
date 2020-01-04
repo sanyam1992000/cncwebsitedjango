@@ -56,4 +56,20 @@ def RegisterForEvent(request, eventid):
     registration = Registration(user=user, event=event, date=date)
     registration.save()
     messages.success(request, 'Thanks for registering for Event - {}'.format(event.event_name))
-    return redirect('events:events_detail', eventid=event.id)
+    if event.status == 'True':
+        return redirect('events:events_list')
+    else:
+        return redirect('events:events_detail', eventid=event.id)
+
+
+@login_required
+def UnregisterForEvent(request, eventid):
+    user = request.user
+    event = Event.objects.get(id=eventid)
+    registration = Registration.objects.get(user=user, event=event)
+    registration.delete()
+    messages.success(request, 'You\'ve Unregistered for Event - {}'.format(event.event_name))
+    if event.status == 'True':
+        return redirect('events:events_list')
+    else:
+        return redirect('events:events_detail', eventid=event.id)
