@@ -1,5 +1,8 @@
 from django.contrib.auth.models import User
 from django.db import models
+from django.urls import reverse
+
+
 # Create your models here.
 
 
@@ -12,10 +15,13 @@ class Post(models.Model):
     pic2 = models.ImageField(default=None, upload_to='blog pics', blank=True, null=True)
     pic3 = models.ImageField(default=None, upload_to='blog pics', blank=True, null=True)
     pic4 = models.ImageField(default=None, upload_to='blog pics', blank=True, null=True)
-    pic5 = models.ImageField(default=None, upload_to='blog pics', blank=True, null=True)
+    pic5 = models.ImageField(default=None, upload_to='blog pics', blank=True, null=True)  # Use for SlideShowOnly
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('blog:detail', self.id)
 
     class Meta:
         ordering = ['-date']

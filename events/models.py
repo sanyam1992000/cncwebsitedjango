@@ -1,12 +1,12 @@
 from django.contrib.auth.models import User
 from django.db import models
-# Create your models here.
+from django.urls import reverse
 
 
 class Event(models.Model):
     event_name = models.CharField(max_length=100)
     description = models.CharField(max_length=500)
-    content = models.TextField(max_length=100)
+    content = models.TextField(max_length=100, blank=True, null=True)
     date = models.DateField()
     pic1 = models.ImageField(default=None, upload_to='event pics', blank=True, null=True)
     pic2 = models.ImageField(default=None, upload_to='event pics', blank=True, null=True)
@@ -24,6 +24,9 @@ class Event(models.Model):
     def __str__(self):
         return self.event_name
 
+    def get_absolute_url(self):
+        return reverse('blog:detail', self.id)
+
     class Meta:
         ordering = ['-date']
 
@@ -36,6 +39,12 @@ class Registration(models.Model):
 
     def __str__(self):
         return self.event.event_name + self.user.username
+
+    def is_user_registered_for_event(self,user,event):
+        if self.objects.get(user=user,event=event):
+            return True
+        else:
+            return False
 
     class Meta:
         ordering = ['-date']

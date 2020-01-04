@@ -11,12 +11,15 @@
         {{ event.content }}
         <br>
         <br>
-{#        {{ registrations.event_set }}#}
-{#        {% if registrations.event %}#}
+{#        {% for registration in registrations %}#}
+{#        {% if registration.event == event %}#}
+{#            {% if registration %}#}
 {#        <a href="{% url 'events:events_detail' event.id %}"><strong>Already Registered</strong></a>#}
-{#        {% else %}#}
+{#             {% else %}#}
 {#            <a href="{% url 'events:events_detail' event.id %}"><strong>Register >></strong></a>#}
 {#        {% endif %}#}
+{#         {% endif %}#}
+{#        {% endfor %}#}
 
 
     {% endif %}

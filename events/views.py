@@ -7,20 +7,18 @@ from django.contrib.auth.models import User
 import datetime
 from django.contrib import messages
 
+
 # Create your views here.
 
 
 def EventsList(request):
     events = Event.objects.all()
     user = request.user
-    if user:
-        registrations = Registration.objects.filter(user=user)
-    else:
-        registrations = {}
-
+    registrations = Registration.objects.filter(user=user)
     context = {
-        'events' : events,
-        'registrations': registrations
+        'events': events,
+        'user': user,
+        'registrations': registrations,
     }
     return render(request, 'events/eventlist.html', context)
 
@@ -36,7 +34,7 @@ def EventDetail(request, eventid):
     return render(request, 'events/eventdetail.html', context)
 
 
-#@login_required
+# @login_required
 def Getpdf(request, username, eventid, *args, **kwargs):
     user = User.objects.get(username=username)
     event = Event.objects.get(id=eventid)
