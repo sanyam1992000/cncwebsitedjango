@@ -26,7 +26,7 @@ branch = (
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    pic = models.ImageField(default=None, upload_to='student pics', blank=True, null=True)
+    pic = models.ImageField(default='student pics/default_user.png', upload_to='student pics', blank=True, null=True)
     roll_no = models.BigIntegerField(unique=True)
     course = models.CharField(choices=courses, max_length=10, default='CE')
     branch = models.CharField(choices=branch, max_length=10)
