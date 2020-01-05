@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import SlideShowPic, ContactUs
+from .models import SlideShowPic, ContactUs, Member
 
 
 class ContactUsAdmin(admin.ModelAdmin):
@@ -14,5 +14,6 @@ class ContactUsAdmin(admin.ModelAdmin):
     )
 
 
+admin.site.register(Member)
 admin.site.register(SlideShowPic)
 admin.site.register(ContactUs, ContactUsAdmin)

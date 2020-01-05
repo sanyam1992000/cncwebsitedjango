@@ -1,5 +1,5 @@
 from django.core.mail import send_mail, EmailMessage
-from django.shortcuts import render,redirect
+from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
@@ -7,9 +7,11 @@ from .serializers import UserSerializer, UserProfileSerializer, BlogSerializer, 
 from accounts.models import UserProfile
 from blog.models import Post
 from events.models import Event
-from .models import SlideShowPic, ContactUs
+from .models import SlideShowPic, ContactUs, Member
 from .forms import ContactUsForm
 from django.contrib import messages
+from django.conf import settings
+
 
 
 def home(request):
@@ -32,7 +34,13 @@ def home(request):
 
 
 def about(request):
-    return render(request, 'about.html')
+    members = Member.objects.all()
+
+    context = {
+        'members': members
+
+    }
+    return render(request, 'core/about.html', context)
 
 
 def contact_us(request):
@@ -45,6 +53,14 @@ def contact_us(request):
             query = request.POST['query']
             contact_us = ContactUs(name=name, email=email, phoneno=phoneno, query=query)
             contact_us.save()
+
+            subject = 'New Query on Website from {}'.format(name)
+            message = '\n \n Career and Counselling Cell Website received a new query from {} \n \nMessage,\n' \
+                      '     {} \n \nFrom: \n{} \nPhone no. - {}'.format(name, query, email, phoneno)
+            from_email = settings.DEFAULT_FROM_EMAIL
+            to_email = ['careerandcounsellingcell.ymca@gmail.com', ]
+            send_mail(subject=subject, message=message, from_email=from_email, recipient_list=to_email, fail_silently=True)
+
             messages.success(request, 'We will Contact you soon!')
             return redirect('core:home')
         else:
