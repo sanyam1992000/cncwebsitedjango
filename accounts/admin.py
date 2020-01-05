@@ -9,7 +9,7 @@ class UserProfileAdmin(admin.ModelAdmin):
     list_display_links = ('user', 'roll_no')
     list_filter = ('user', 'course', 'branch')
     search_fields = ('user', 'roll_no', 'course', 'branch')
-    list_max_show_all = 10
+    list_max_show_all = 100
 
     fieldsets = (
         (None, {'fields': ('user', 'roll_no', 'course', 'branch', 'icard', 'phoneno')}),

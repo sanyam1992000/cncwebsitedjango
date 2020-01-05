@@ -1,7 +1,145 @@
 {% extends 'base.html'%}
 {% block content %}
-    <br>
-    <h1 align="center">JC BOSE UST YMCA FARIDABAD</h1>
-    <h2 align="center">CAREER AND COUNSELING CELL</h2>
-    <h3 align="center"> Home Page</h3>
+
+     <div class="carousel slide" data-ride="carousel" id="carousel-1">
+        <div class="carousel-inner" role="listbox">
+
+            {% for slide in slideshows %}
+            <div class="carousel-item">
+                <div class="jumbotron hero-nature carousel-hero" style = "background-image:url('{{ slide.image.url }}')">
+                    <h1 class="hero-title">{{slide.title }}</h1>
+                    <p class="hero-subtitle">{{ slide.description}}</p>
+                    <p><a class="btn btn-primary btn-lg hero-button" role="button" href="{{ slide.url }}">Learn more</a></p>
+                </div>
+            </div>
+
+            {% endfor %}
+
+        <div class="carousel-item">
+                <div class="jumbotron hero-photography carousel-hero">
+                    <h1 class="hero-title">Hero Photography</h1>
+                    <p class="hero-subtitle">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
+                    <p><a class="btn btn-primary btn-lg hero-button" role="button" href="#">Learn more</a></p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="jumbotron hero-technology carousel-hero">
+                    <h1 class="hero-title">Hero Technology</h1>
+                    <p class="hero-subtitle">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
+                    <p><a class="btn btn-primary btn-lg hero-button" role="button" href="#">Learn more</a></p>
+                </div>
+            </div>
+
+        </div>
+        <div><a class="carousel-control-prev" href="#carousel-1" role="button" data-slide="prev"><i class="fa fa-chevron-left"></i><span class="sr-only">Previous</span></a><a class="carousel-control-next" href="#carousel-1" role="button" data-slide="next"><i class="fa fa-chevron-right"></i><span class="sr-only">Next</span></a></div>
+        <ol
+            class="carousel-indicators">
+            <li data-target="#carousel-1" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-1" data-slide-to="1"></li>
+            <li data-target="#carousel-1" data-slide-to="2"></li>
+            </ol>
+    </div>
+    <!-- End: Carousel Hero -->
+    <!-- Start: Article List -->
+
+    <div class="article-list">
+        <div class="container">
+            <!-- Start: Intro -->
+            <div class="intro">
+                <h2 class="text-center">EVENTS</h2>
+            </div>
+            <!-- End: Intro -->
+            <!-- Start: Articles -->
+            <div class="row articles">
+
+                {% for event in upcomingevents %}
+                <div class="col-sm-6 col-md-4 item"><a href="#"><img class="img-fluid" src="{{ event.pic1.url }}"></a>
+                    <h3 class="name">{{ event.event_name }}</h3>
+                    <h4 class="name">Date - {{ event.date|date }}</h4>
+                    <p class="description">{{ event.description }}</p><a class="action" href="{% url 'events:events_detail' event.id%}"><i class="fa fa-arrow-circle-right"></i></a></div>
+
+                {% endfor %}
+
+{#                <div class="col-sm-6 col-md-4 item"><a href="#"><img class="img-fluid" src="static/img/building.jpg?h=ddb9900bcad75768263cb8190039eaeb"></a>#}
+{#                    <h3 class="name">Event 2</h3>#}
+{#                    <p class="description">Event Description</p><a class="action" href="#"><i class="fa fa-arrow-circle-right"></i></a></div>#}
+{#                #}
+{#                #}
+{#                <div class="col-sm-6 col-md-4 item"><a href="#"><img class="img-fluid" src="static/img/loft.jpg?h=1783f71187bd146848c58b87bc0ac04b"></a>#}
+{#                    <h3 class="name">Event 3</h3>#}
+{#                    <p class="description">Event Description</p><a class="action" href="#"><i class="fa fa-arrow-circle-right"></i></a></div>#}
+{#            </div>#}
+            <!-- End: Articles -->
+        </div>
+    </div>
+    <!-- End: Article List -->
+    <!-- Start: ♣ Footer with only BS4 classes ♣ -->
+    <footer class="bg-dark text-white border-top border-info">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-9 offset-xl-4" style="margin-top: 50px;"><label class="col-form-label" style="font-size: 40px;font-family: ABeeZee, sans-serif;">Officers' Message</label></div>
+            </div>
+        </div>
+        <!-- Start: Footer 1 -->
+        <div class="container text-center text-sm-left position-relative py-5">
+            <!-- Start: dh-card-image-left-dark -->
+            <section>
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <!-- Start: dh-card-image-left-dark -->
+                            <section>
+                                <div class="container">
+                                    <!-- Start: dh-card-image-left-dark -->
+                                    <section>
+                                        <div class="container">
+                                            <div class="photo-card" style="background-color: #ffffff;">
+                                                <div class="photo-background" style="background-image:url(&quot;static/img/product-aeon-feature.jpg?h=b01ac4a1207b7f8c4a99b2c50c8f6717&quot;);"></div>
+                                                <div class="photo-details" style="color: #2d3638;">
+                                                    <h1 style="color: #2d3638;">Dr. Dinesh Kumar</h1>
+                                                    <p style="color: #2d3638;">His Message</p>
+                                                    <div class="photo-tags">
+                                                        <ul></ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                    <!-- End: dh-card-image-left-dark -->
+                                </div>
+                            </section>
+                            <!-- End: dh-card-image-left-dark -->
+                        </div>
+                        <div class="col">
+                            <!-- Start: dh-card-image-left-dark -->
+                            <section>
+                                <div class="container">
+                                    <!-- Start: dh-card-image-left-dark -->
+                                    <section>
+                                        <div class="container">
+                                            <div class="photo-card" style="background-color: #ffffff;">
+                                                <div class="photo-background" style="background-image:url(&quot;static/img/product-aeon-feature.jpg?h=b01ac4a1207b7f8c4a99b2c50c8f6717&quot;);"></div>
+                                                <div class="photo-details">
+                                                    <h1 style="color: #2d3638;">Dr. Arvind Gupta</h1>
+                                                    <p style="color: #2d3638;">His Message</p>
+                                                    <div class="photo-tags">
+                                                        <ul></ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                    <!-- End: dh-card-image-left-dark -->
+                                </div>
+                            </section>
+                            <!-- End: dh-card-image-left-dark -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- End: dh-card-image-left-dark -->
+            <style>
+                .masthead,.photo-background,div.jumbotron.carousel-hero{background-position:center;background-size:cover}.article-list{color:#313437;background-color:#fff}.article-list p{color:#7d8285}.article-list h2{font-weight:700;margin-bottom:40px;padding-top:40px;color:inherit}@media (max-width:767px){.article-list h2{margin-bottom:25px;padding-top:25px;font-size:24px}}.article-list .intro{font-size:16px;max-width:500px;margin:0 auto}.article-list .intro p{margin-bottom:0}.article-list .articles{padding-bottom:40px}.article-list .item{padding-top:50px;min-height:425px;text-align:center}.article-list .item .name{font-weight:700;font-size:16px;margin-top:20px;color:inherit}.article-list .item .description{font-size:14px;margin-top:15px;margin-bottom:0}.article-list .item .action{font-size:24px;width:24px;margin:22px auto 0;line-height:1;display:block;color:#4f86c3;opacity:.85;transition:opacity .2s;text-decoration:none}.article-list .item .action:hover{opacity:1}.plat{border-radius:0}.btn-primary.focus,.btn-primary:focus{box-shadow:0 0 0 0 #048f83!important}.btn-primary:hover{color:#fff;background-color:#016090;border-color:#016090}.btn.btn-primary{background-color:#048f83!important;border-color:#048f83!important}span{font-style:inherit;font-weight:inherit}.masthead{height:100vh;min-height:500px;background-image:url(https://source.unsplash.com/BtbjCFUvBXs/1920x1080);background-repeat:no-repeat}div.jumbotron.carousel-hero{color:#fff;text-align:center;padding-top:100px;padding-bottom:100px;margin-bottom:0}div.jumbotron.hero-nature{background-image:url('static/img/hero-background-nature.jpg')}div.jumbotron.hero-photography{background-image:url('static/img/hero-background-photography.jpg')}div.jumbotron.hero-technology{background-image:url('static/img/hero-background-technology.jpg')}h1.hero-title,h2.hero-title,h3.hero-title{text-shadow:0 3px 3px rgba(0,0,0,.4);color:#fff}p.hero-subtitle{max-width:600px;margin:25px auto;padding:10px 15px;color:#fff}.photo-card{background-color:#2d3638;border-radius:10px;box-shadow:0 10px 20px rgba(0,0,0,.19),0 6px 6px rgba(0,0,0,.23);display:flex;flex-direction:column;width:100%;max-width:700px;margin-left:auto;margin-right:auto}.photo-background{border-top-left-radius:10px;border-top-right-radius:10px;min-height:250px}.photo-details{padding:2.1875em 5%}@media screen and (min-width:700px){.photo-card{flex-direction:row}.photo-background{border-top-left-radius:10px;border-top-right-radius:0;border-bottom-left-radius:10px;min-height:none;width:50%}.photo-details{width:50%}}.photo-details h1,.photo-details h4{color:#fff;font-weight:500;margin:0}.photo-details h1{font-size:125%;line-height:1;margin-bottom:.35em}.photo-tags ul{list-style-type:none;margin:.35em 0 0;padding:0;display:flex;flex-wrap:wrap;font-size:87.5%;text-transform:lowercase}.photo-tags li{margin:0 .35em .35em 0}.photo-tags a{background-color:#191e20;border-radius:50px;color:#fff;display:block;padding:.3125em 1.25em;text-decoration:none;transition:color .3s ease}.photo-tags a:focus,.photo-tags a:hover{color:#e37544}.photo-details p,.snip1527{color:#fff}.snip1527{box-shadow:0 0 5px rgba(0,0,0,.15);float:left;font-family:Lato,Arial,sans-serif;font-size:16px;margin:10px 1%;max-width:310px;min-width:250px;overflow:hidden;position:relative;text-align:left;width:100%}.snip1527 *{-webkit-box-sizing:border-box;box-sizing:border-box;-webkit-transition:all .25s ease;transition:all .25s ease}.snip1527 img{max-width:100%;vertical-align:top;position:relative}.snip1527 figcaption{padding:25px 20px;position:absolute;bottom:0;z-index:1}.snip1527 figcaption:before{position:absolute;top:0;bottom:0;left:0;right:0;content:'';background:-moz-linear-gradient(90deg,#700877 0,#ff2759 100%,#ff2759 100%);background:-webkit-linear-gradient(90deg,#700877 0,#ff2759 100%,#ff2759 100%);background:linear-gradient(90deg,#700877 0,#ff2759 100%,#ff2759 100%);opacity:.8;z-index:-1}.snip1527 .date{background-color:#fff;border-radius:50%;color:#700877;font-size:18px;font-weight:700;min-height:48px;min-width:48px;padding:10px 0;position:absolute;right:15px;text-align:center;text-transform:uppercase;top:-25px}.snip1527 .date span{display:block;line-height:14px}.snip1527 .date .month{font-size:11px}.snip1527 h3,.snip1527 p{margin:0;padding:0}.snip1527 h3{display:inline-block;font-weight:700;letter-spacing:-.4px;margin-bottom:5px}.snip1527 p{font-size:.8em;line-height:1.6em;margin-bottom:0}.snip1527 a{left:0;right:0;top:0;bottom:0;position:absolute;z-index:1}.snip1527.hover img,.snip1527:hover img{-webkit-transform:scale(1.1);transform:scale(1.1)}img{border-radius:5px}
+            </style>
+
 {% endblock %}

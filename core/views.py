@@ -1,5 +1,5 @@
 from django.core.mail import send_mail, EmailMessage
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.contrib.auth.models import User
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
@@ -7,6 +7,9 @@ from .serializers import UserSerializer, UserProfileSerializer, BlogSerializer, 
 from accounts.models import UserProfile
 from blog.models import Post
 from events.models import Event
+from .models import SlideShowPic, ContactUs
+from .forms import ContactUsForm
+from django.contrib import messages
 
 
 def home(request):
@@ -19,7 +22,13 @@ def home(request):
     # email.send(fail_silently=True)
     # send_mail(subject=subject, message=message, from_email=from_email, recipient_list=to_email, fail_silently=True)
 
-    return render(request, 'home.html')
+    SlideShowPics = SlideShowPic.objects.all()
+    events = Event.objects.filter(status='True')
+    context = {
+        'slideshows': SlideShowPics,
+        'upcomingevents': events,
+    }
+    return render(request, 'home.html', context=context)
 
 
 def about(request):
@@ -27,11 +36,25 @@ def about(request):
 
 
 def contact_us(request):
-    return render(request, 'contact us.html')
+    if request.method == 'POST':
+        form = ContactUsForm(request.POST)
+        if form.is_valid():
+            name = request.POST['name']
+            email = request.POST['email']
+            phoneno = request.POST['phoneno']
+            query = request.POST['query']
+            contact_us = ContactUs(name=name, email=email, phoneno=phoneno, query=query)
+            contact_us.save()
+            messages.success(request, 'We will Contact you soon!')
+            return redirect('core:home')
+        else:
+            messages.error(request, 'invalid input')
+    else:
+        form = ContactUsForm()
+    return render(request, 'contact us.html', {'form': form})
 
 
 ##### API VIEWS
-
 
 class UserViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializer
