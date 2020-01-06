@@ -6,13 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     {% block title %}
     {% endblock %}
-
+{% load static %}
+{% block static %}
+{% endblock %}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=ABeeZee">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Aguafina+Script">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Akronim">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700">
+    <link rel="stylesheet" href="{% static 'fonts/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'fonts/ionicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/Footer-Basic.css' %}">
+    <link rel="stylesheet" href="{% static 'css/Social-Menu-Sticky.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
+
+
+
+
 
 <body> <!-- style="background-image: url(&quot;none&quot;);" -->
 
@@ -25,32 +38,6 @@
     <!-- End Page Loading -->
 
 
-    <!-- Start: Bold BS4 Full Page Image Header -->
-    <div>
-        <nav class="navbar navbar-dark navbar-expand-lg" style="background-color: #000000!important;">
-            <div class="container"><a class="navbar-brand" href="#" style="background-image: url(&quot;none&quot;);font-family: Akronim, cursive;font-size: 40px;color: #ffffff;">C &amp; C Cell</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"
-                    type="button"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon text-white"></span></button>
-                <div class="collapse navbar-collapse" id="navcol-1">
-                    <ul class="nav navbar-nav ml-auto" style="color: #191e20;">
-                        <li class="nav-item" role="presentation"><a class="nav-link active" href="{% url 'core:home' %}">Home</a></li>
-                        <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'core:about' %}" style="color: rgb(255,255,255);">About</a></li>
-                        <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'events:events_list' %}" style="color: #ffffff;">Events</a></li>
-                        <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'blog:blog' %}" style="color: #ffffff;">Blog</a></li>
-                        <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'core:contact' %}" style="color: #ffffff;">Contact</a></li>
-                        {% if not request.user.is_authenticated %}
-                        <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'accounts:login' %}" style="color: #ffffff;">Login</a></li>
-                        <li class="nav-item border-info" role="presentation"><a class="nav-link text-center border rounded border-white" href="{% url 'accounts:register' %}" style="color: #ffffff;">SignUp</a></li>
-                        {% else %}
-                        <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'accounts:dashboard' request.user.username %}" style="color: #ffffff;">Profile</a></li>
-                        <li class="nav-item border-info" role="presentation"><a class="nav-link text-center border rounded border-white" href="{% url 'accounts:logout' %}" style="color: #ffffff;">Logout</a></li>
-                        {% endif %}
-{#
-
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </div>
     <!-- Messages -->
   {% if messages %}
   <div class="">
@@ -68,26 +55,33 @@
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
-                </div>
-            {% endif %}
-        {% endfor %}
-    </div>
-  {% endif %}
-    <!-- EndMessages -->
-    <!-- End: Bold BS4 Full Page Image Header -->
-     {% block content %}
-
-    {% endblock %}
-
-        <!-- Start: Copyright -->
-        <div class="text-center text-lg-left py-2 small bg-dark text-light font-italic">
-            <div class="container">
-                <p class="m-0">© 2019 Career and Counseling Cell ~ All rights reserved</p>
             </div>
-        </div>
-        <!-- End: Copyright -->
-    </footer>
-    <!-- End: ♣ Footer with only BS4 classes ♣ -->
+        {% endif %}
+    {% endfor %}
+  </div>
+    {% endif %}
+    <!-- EndMessages -->
+
+
+
+
+{% include 'navbar.html' %}
+
+
+    <div id="fixed-social">
+        <div><a class="fixed-facebook" href="#" target="_blank"><i class="fa fa-facebook"></i><span>&nbsp;Facebook</span></a></div>
+        <div><a class="fixed-instagram" href="#" target="_blank"><i class="fa fa-instagram"></i><span>&nbsp;Instagram</span></a></div>
+        <div><a class="fixed-youtube" href="#" target="_blank"><i class="fa fa-youtube-play"></i><span>&nbsp;Youtube</span></a></div>
+    </div>
+
+
+
+{% block content %}
+{% endblock %}
+
+
+{% include 'footer.html' %}
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
 

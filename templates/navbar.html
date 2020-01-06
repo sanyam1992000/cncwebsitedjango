@@ -1,0 +1,25 @@
+<div>
+    <nav class="navbar navbar-dark navbar-expand-lg" style="background-color: #000000!important;">
+        <div class="container"><a class="navbar-brand" href="#" style="background-image: url(&quot;none&quot;);font-family: Akronim, cursive;font-size: 40px;color: #ffffff;">C &amp; C Cell</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"
+                type="button"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon text-white"></span></button>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="nav navbar-nav ml-auto" style="color: #191e20;">
+                    <li class="nav-item" role="presentation"><a class="nav-link active" href="{% url 'core:home' %}">Home</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'core:about' %}" style="color: rgb(255,255,255);">About</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'events:events_list' %}" style="color: #ffffff;">Events</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'blog:blog' %}" style="color: #ffffff;">Blog</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'core:contact' %}" style="color: #ffffff;">Contact</a></li>
+
+                    {% if not request.user.is_authenticated %}
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'accounts:login' %}" style="color: #ffffff;">Login</a></li>
+                    <li class="nav-item border-info" role="presentation"><a class="nav-link text-center border rounded border-white" href="{% url 'accounts:register' %}" style="color: #ffffff;">SignUp</a></li>
+                    {% else %}
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'accounts:dashboard' request.user.username %}" style="color: #ffffff;">Profile</a></li>
+                    <li class="nav-item border-info" role="presentation"><a class="nav-link text-center border rounded border-white" href="{% url 'accounts:logout' %}" style="color: #ffffff;">Logout</a></li>
+                    {% endif %}
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>

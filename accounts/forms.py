@@ -1,8 +1,6 @@
 from django import forms
 from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
-from django.contrib import messages
-
 from .models import UserProfile
 
 
@@ -78,3 +76,18 @@ class UserLogin(forms.Form):
     username = forms.CharField(label='Username', max_length=100)
     password = forms.CharField(label='Password', min_length=6,
                                widget=forms.PasswordInput(attrs={'class': 'form-control'}))
+
+
+class EditUser(forms.ModelForm):
+    email = forms.EmailField()
+
+    class Meta:
+        model = User
+        fields = ['email']
+
+
+class EditStudentProfile(forms.ModelForm):
+
+    class Meta:
+        model = UserProfile
+        fields = ['pic', 'phoneno']

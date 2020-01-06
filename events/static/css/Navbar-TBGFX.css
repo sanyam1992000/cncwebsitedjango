@@ -1,0 +1,44 @@
+.main {
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+}
+
+.menu {
+  width: 100px;
+  height: 30px;
+  font-family: 'Stroud';
+  font-size: 20px;
+  color: white;
+  padding: 0px;
+  display: inline-block;
+  text-align: center;
+  line-height: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease-in;
+}
+
+.active {
+  width: 100px;
+  height: 30px;
+  background-color: white;
+  position: absolute;
+  top: 33px;
+  left: 0px;
+  transform: skewX(20deg);
+  z-index: -1;
+  transition: all 0.3s ease-in;
+}
+
+.m1 {
+  color: black;
+}
+
+.logo {
+  position: relative;
+  top: initial;
+  margin: 0px 30px;
+}
+

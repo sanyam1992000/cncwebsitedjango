@@ -2,16 +2,18 @@
 
 
 
-    <div class="col-md-8 col-xl-8">
         <div class="text-center profile-card" style="margin:1px;background-color:#ffffff;">
             <div class="profile-card-img" style="background-image:url(&quot;iceland.jpg&quot;);height:100px;background-size:cover;"></div>
+            <div>
             {% if user_instance.userprofile.pic %}
-            <div><img class="rounded-circle" style="margin-top:-70px;" src="{{user_instance.userprofile.pic.url}}" height="150px" width="150">
-                    <h3><strong>{{user_instance.first_name}} {{ user_instance.last_name }}</strong></h3>
+            <img class="rounded-circle" style="margin-top:-70px;" src="{{user_instance.userprofile.pic.url}}" height="150px" width="150">
+                {% endif %}
+
+                    <h3><strong>{{user_instance.first_name|capfirst}} {{ user_instance.last_name|capfirst }}</strong></h3>
                     <p style="padding:20px;padding-bottom:0;padding-top:5px;"> {{profile.course}} - {{ profile.branch }} </p>
                     <p style="padding:20px;padding-bottom:0;padding-top:5px;"> {{profile.roll_no}} </p>
                 </div>
-        {% endif %}
+
 
 
 
@@ -23,9 +25,9 @@
                     <div class="col">
                         <div class="card border-white border rounded shadow-lg" data-bs-hover-animate="pulse" style="width: 230px;height: 350px;margin: 10px;margin-left: 15px;">
                             <div class="card-body" style="width: 205px;height: 350px;padding: 0px;margin: 10px;">
-                                <h4 class="card-title" style="margin-top: 5px;"><strong>{{ registration.event.event_name }}</strong></h4>
+                                <h4 class="card-title" style="margin-top: 5px;"><strong>{{ registration.event.event_name|capfirst }}</strong></h4>
                                 <h6 class="text-muted card-subtitle mb-2" style="margin-top: 0px;"> Date: {{ registration.event.date }}</h6>
-                                <p class="card-text" style="width: 180px;margin-top: 15px;margin-bottom: 20px;">{{ registration.event.description }}</p>
+                                <p class="card-text" style="width: 180px;margin-top: 15px;margin-bottom: 20px;">{{ registration.event.description|capfirst }}</p>
 
                                 <div class="btn-group" role="group">
                                     <button class="btn btn-primary" type="button" style="background-color: rgb(72,72,72);" ><a href="{% url 'events:certificate' user_instance.username registration.event.id %}">Certificate</a></button>
@@ -40,8 +42,4 @@
                 {% endfor %}
             {% endif %}
 
-
-
-
         </div>
-    </div>

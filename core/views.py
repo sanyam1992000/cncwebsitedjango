@@ -13,7 +13,6 @@ from django.contrib import messages
 from django.conf import settings
 
 
-
 def home(request):
     # subject = 'SAMPLE MAIL'
     # message = 'creating first sample mail with attachment'

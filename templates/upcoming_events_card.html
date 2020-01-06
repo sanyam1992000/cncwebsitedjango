@@ -1,0 +1,33 @@
+
+{% if upcomingevents%}
+<div class="article-list">
+        <div class="container">
+            <!-- Start: Intro -->
+            <div class="intro">
+                <h2 class="text-center">Upcoming Events</h2>
+            </div>
+            <!-- End: Intro -->
+            <!-- Start: Articles -->
+            <div class="row articles">
+
+                {% for event in upcomingevents %}
+                <div class="col-sm-6 col-md-4 item"><a href="{% url 'events:events_detail' event.id%}"><img alt="" class="img-fluid" src="{{ event.pic1.url }}" height="200" width="300"></a>
+                    <h3 class="name">{{ event.event_name }}</h3>
+                    <h5 class="name">Date - {{ event.date|date:"d F Y" }}</h5>
+                    <p class="description">{{ event.description|truncatewords:50 }}</p><a class="action" href="{% url 'events:events_detail' event.id%}"><i class="fa fa-arrow-circle-right"></i></a></div>
+                {% endfor %}
+
+{#                <div class="col-sm-6 col-md-4 item"><a href="#"><img class="img-fluid" src="static/img/building.jpg?h=ddb9900bcad75768263cb8190039eaeb"></a>#}
+{#                    <h3 class="name">Event 2</h3>#}
+{#                    <p class="description">Event Description</p><a class="action" href="#"><i class="fa fa-arrow-circle-right"></i></a></div>#}
+{#                #}
+{#                #}
+{#                <div class="col-sm-6 col-md-4 item"><a href="#"><img class="img-fluid" src="static/img/loft.jpg?h=1783f71187bd146848c58b87bc0ac04b"></a>#}
+{#                    <h3 class="name">Event 3</h3>#}
+{#                    <p class="description">Event Description</p><a class="action" href="#"><i class="fa fa-arrow-circle-right"></i></a></div>#}
+{#            </div>#}
+            <!-- End: Articles -->
+        </div>
+    </div>
+</div>
+{% endif %}

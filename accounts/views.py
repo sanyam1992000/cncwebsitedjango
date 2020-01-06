@@ -3,11 +3,12 @@ from django.core.mail import EmailMessage
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from .forms import UserRegistrationForm, UserLogin
+from .forms import UserRegistrationForm, UserLogin, EditUser, EditStudentProfile
 from .models import UserProfile
 from django.contrib.auth.models import User
 from django.conf import settings
 from events.views import Registration
+from django.http import HttpResponseForbidden
 # Create your views here.
 
 
@@ -84,7 +85,6 @@ def register(request):
     return render(request, 'accounts/register1.html', {'form': form})
 
 
-#@login_required
 def ProfileDashboard(request, username):
     user = request.user
     user_instance = get_object_or_404(User, username=username)
@@ -97,3 +97,29 @@ def ProfileDashboard(request, username):
         'profile': user_instance_profile,
     }
     return render(request, 'accounts/profile1.html', context)
+
+
+@login_required
+def EditStudentProfileView(request, username):
+    user = request.user
+    if user.username == username:
+        if request.method == 'POST':
+
+            userform = EditUser(request.POST, instance=user)
+            studentform = EditStudentProfile(request.POST, request.FILES, instance=user.userprofile)
+
+            if userform.is_valid() and studentform.is_valid():
+                userform.save()
+                studentform.save()
+                messages.success(request, 'Your Profile is Updated')
+                return redirect('core:home')
+            else:
+                form = UserRegistrationForm(request.POST, request.FILES)
+                messages.error(request, form.errors)
+        else:
+            userform = EditUser(instance=user)
+            studentform = EditStudentProfile(instance=user.userprofile)
+        return render(request, 'accounts/edit_user_profile.html', {'userform': userform, 'studentform': studentform})
+    else:
+        return HttpResponseForbidden()
+

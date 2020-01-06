@@ -22,7 +22,7 @@ def EventsList(request):
         'events': events,
         'registrations': registrations,
     }
-    return render(request, 'events/eventlist.html', context)
+    return render(request, 'events/event_list.html', context)
 
 
 def EventDetail(request, eventid):
@@ -33,7 +33,7 @@ def EventDetail(request, eventid):
         'event': event,
         'registration': registration
     }
-    return render(request, 'events/eventdetail.html', context)
+    return render(request, 'events/event_detail1.html', context)
 
 
 # @login_required

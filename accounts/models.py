@@ -35,7 +35,7 @@ class UserProfile(models.Model):
     password2 = models.CharField(default=None, max_length=100, blank=True, null=True)
 
     def __str__(self):
-        return str(self.user) + str(self.roll_no)
+        return str(self.user) + ' ' + str(self.roll_no)
 
 
 class FacultyProfile(models.Model):
