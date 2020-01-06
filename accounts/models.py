@@ -26,7 +26,7 @@ branch = (
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    pic = models.ImageField(default=None, upload_to='Student pics', blank=True, null=True)
+    pic = models.ImageField(default='student pics/default_user.png', upload_to='student pics', blank=True, null=True)
     roll_no = models.BigIntegerField(unique=True)
     course = models.CharField(choices=courses, max_length=10, default='CE')
     branch = models.CharField(choices=branch, max_length=10)
@@ -35,15 +35,14 @@ class UserProfile(models.Model):
     password2 = models.CharField(default=None, max_length=100, blank=True, null=True)
 
     def __str__(self):
-        return str(self.user)
+        return str(self.user) + str(self.roll_no)
 
 
 class FacultyProfile(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    name = models.CharField(max_length=100)
+    pic = models.ImageField(default=None, upload_to='faculty pics', blank=True, null=True)
+    department = models.CharField(max_length=20)
     position = models.CharField(max_length=20)
-    description = models.CharField(max_length=20)
-    pic = models.ImageField(default=None, upload_to='Faculty pics')
 
     def __str__(self):
         return str(self.user)

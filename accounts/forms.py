@@ -50,7 +50,7 @@ class UserRegistrationForm(forms.Form):
         p2 = cleaned_data.get('password2')
         if p1 and p2:
             if p1 != p2:
-                raise ValidationError('Passwords Do Not Match', code='Unmatched Password')
+                raise ValidationError({'password2': 'Password Mismatch'})
 
     def clean_email(self):
         email = self.cleaned_data['email']
