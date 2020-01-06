@@ -1,47 +1,56 @@
 <!DOCTYPE html>
-{% load static %}
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Career And Counselling Cell</title>
-    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css'%}">
-    <link rel="stylesheet" href="{% static 'fonts/ionicons.min.css'%}">
-    <link rel="stylesheet" href="{% static 'css/Blog---Recent-Posts.css'%}">
-    <link rel="stylesheet" href="{% static 'css/Footer-Basic.css'%}">
-    <link rel="stylesheet" href="{% static 'css/Navigation-Dark-Clean.css'%}">
-    <link rel="stylesheet" href="{% static 'css/Navigation-Menu.css'%}">
-    <link rel="stylesheet" href="{% static 'css/styles.css'%}">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
-    {% block static %}
+    {% block title %}
     {% endblock %}
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=ABeeZee">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Aguafina+Script">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Akronim">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
-<body>
-    <nav class="navbar navbar-dark navbar-expand-md bg-dark navigation-clean">
-        <div class="container"><a class="navbar-brand" href="{% url 'core:home' %}">Career and Counseling Cell</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse"
-                id="navcol-1">
-                <ul class="nav navbar-nav ml-auto">
-                    <li class="nav-item" role="presentation"><a class="nav-link " href="{% url 'core:home' %}">Home</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'core:about' %}">About</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'events:events_list' %}">Events</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'blog:blog' %}">Blog</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'core:contact' %}">Contact</a></li>
-                </ul>
+<body> <!-- style="background-image: url(&quot;none&quot;);" -->
 
-                    {% if not request.user.is_authenticated %}
-                <button class="btn Blog---Recent-Posts" type="button" > <a href="{% url 'accounts:login' %}" class="button"> Login </a></button>
-                <button class="btn btn-outline-light" type="button"> <a href="{% url 'accounts:register' %}" class="button">Signup</a></button>
+    <!-- Start Page Loading -->
+    <div id="loader-wrapper">
+      <div id="loader"></div>
+      <div class="loader-section section-left"></div>
+      <div class="loader-section section-right"></div>
+    </div>
+    <!-- End Page Loading -->
 
-                {% else %}
-                <button class="btn Blog---Recent-Posts" type="button" ><a href="{% url 'accounts:logout' %}" class="button">Logout</a></button>
-                <button class="btn btn-outline-light" type="button" ><a href="{% url 'accounts:dashboard' request.user.username %}" class="button">Profile</a></button>
-                {% endif %}
+
+    <!-- Start: Bold BS4 Full Page Image Header -->
+    <div>
+        <nav class="navbar navbar-dark navbar-expand-lg" style="background-color: #000000!important;">
+            <div class="container"><a class="navbar-brand" href="#" style="background-image: url(&quot;none&quot;);font-family: Akronim, cursive;font-size: 40px;color: #ffffff;">C &amp; C Cell</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"
+                    type="button"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon text-white"></span></button>
+                <div class="collapse navbar-collapse" id="navcol-1">
+                    <ul class="nav navbar-nav ml-auto" style="color: #191e20;">
+                        <li class="nav-item" role="presentation"><a class="nav-link active" href="{% url 'core:home' %}">Home</a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'core:about' %}" style="color: rgb(255,255,255);">About</a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'events:events_list' %}" style="color: #ffffff;">Events</a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'blog:blog' %}" style="color: #ffffff;">Blog</a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'core:contact' %}" style="color: #ffffff;">Contact</a></li>
+                        {% if not request.user.is_authenticated %}
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'accounts:login' %}" style="color: #ffffff;">Login</a></li>
+                        <li class="nav-item border-info" role="presentation"><a class="nav-link text-center border rounded border-white" href="{% url 'accounts:register' %}" style="color: #ffffff;">SignUp</a></li>
+                        {% else %}
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'accounts:dashboard' request.user.username %}" style="color: #ffffff;">Profile</a></li>
+                        <li class="nav-item border-info" role="presentation"><a class="nav-link text-center border rounded border-white" href="{% url 'accounts:logout' %}" style="color: #ffffff;">Logout</a></li>
+                        {% endif %}
+{#
+
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
+    </div>
     <!-- Messages -->
   {% if messages %}
   <div class="">
@@ -59,36 +68,31 @@
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
+                </div>
             {% endif %}
         {% endfor %}
     </div>
   {% endif %}
     <!-- EndMessages -->
-    {% block content %}
+    <!-- End: Bold BS4 Full Page Image Header -->
+     {% block content %}
+
     {% endblock %}
 
-    <div class="footer-basic">
-        <footer>
-            <div class="social"><a href="https://www.instagram.com/career_counselling_cell_ymca/?hl=en"><i class="icon ion-social-instagram"></i>
-            </a><a href="https://www.facebook.com/cccymcaust/"><i class="icon ion-social-facebook"></i></a></div>
-            <ul class="list-inline">
-                <li class="list-inline-item"><a href="{% url 'core:home' %}">Home</a></li>
-                <li class="list-inline-item"><a href="{% url 'core:about' %}">About</a></li>
-                <li class="list-inline-item"><a href="{% url 'events:events_list' %}">Events</a></li>
-                <li class="list-inline-item"><a href="{% url 'blog:blog' %}">Blog</a></li>
-                <li class="list-inline-item"><a href="{% url 'core:contact' %}">Contact</a></li>
-            </ul>
-            <p class="copyright">Career and Couseling Cell © 2020</p>
-        </footer>
-    </div>
+        <!-- Start: Copyright -->
+        <div class="text-center text-lg-left py-2 small bg-dark text-light font-italic">
+            <div class="container">
+                <p class="m-0">© 2019 Career and Counseling Cell ~ All rights reserved</p>
+            </div>
+        </div>
+        <!-- End: Copyright -->
+    </footer>
+    <!-- End: ♣ Footer with only BS4 classes ♣ -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+
     {% block scripts %}
     {% endblock %}
-    <script src="{% static 'js/jquery.min.js'%}"></script>
-    <script src="{% static 'bootstrap/js/bootstrap.min.js'%}"></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-
 </body>
 
 </html>

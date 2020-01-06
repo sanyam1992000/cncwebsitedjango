@@ -18,7 +18,7 @@ class Event(models.Model):
     pic8 = models.ImageField(default=None, upload_to='event pics', blank=True, null=True)
     pic9 = models.ImageField(default=None, upload_to='event pics', blank=True, null=True)
     pic10 = models.ImageField(default=None, upload_to='event pics', blank=True, null=True)
-    pic11 = models.ImageField(default=None, upload_to='event pics', blank=True, null=True)
+    pic11 = models.ImageField(default=None, upload_to='event pics', blank=True, null=True) ##for home only
     status = models.CharField(choices=(('True', 'Upcoming'), ('False', 'Happened')), max_length=10)
 
     def __str__(self):

@@ -96,4 +96,4 @@ def ProfileDashboard(request, username):
         'certificates': registration,
         'profile': user_instance_profile,
     }
-    return render(request, 'accounts/profile.html', context)
+    return render(request, 'accounts/profile1.html', context)
