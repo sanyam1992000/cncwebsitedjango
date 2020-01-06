@@ -17,11 +17,18 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
+from django.contrib.auth.views import PasswordResetView, PasswordResetDoneView, PasswordResetCompleteView, PasswordResetConfirmView
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('core.urls', namespace='core')),
+
+    path('password_reset/', PasswordResetView.as_view(domain_override='127.0.0.1:8000'), name='password_reset'),
+    path('password_reset/done/', PasswordResetDoneView.as_view(), name='password_reset_done'),
+    path('reset/<uidb64>/<token>/', PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
+    path('reset/done/', PasswordResetCompleteView.as_view(), name='password_reset_complete'),
+
 
     path('events/', include('events.urls', namespace='events')),
     path('blog/', include('blog.urls', namespace='blog')),
