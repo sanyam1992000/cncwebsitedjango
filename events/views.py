@@ -28,11 +28,11 @@ def EventsList(request):
 def EventDetail(request, eventid):
     event = get_object_or_404(Event, id=eventid)
     user = request.user
-    registration = Registration.objects.filter(user=user, event=event)
-    context = {
-        'event': event,
-        'registration': registration
-    }
+    if Registration.objects.filter(event=event):
+        registration = Registration.objects.filter(user=user, event=event)
+        context = {'event': event, 'registration': registration}
+    else:
+        context = {'event': event}
     return render(request, 'events/event_detail1.html', context)
 
 
@@ -47,7 +47,7 @@ def Getpdf(request, username, eventid, *args, **kwargs):
         pdf = render_to_pdf('events/certi1.html', )
         return HttpResponse(pdf, content_type='application/pdf')
     else:
-        return render(request, '404.html')
+        return HttpResponse('404')
 
 
 @login_required

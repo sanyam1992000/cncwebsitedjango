@@ -5,8 +5,8 @@ from django.urls import reverse
 
 class Event(models.Model):
     event_name = models.CharField(max_length=100)
-    description = models.CharField(max_length=500)
-    content = models.TextField(max_length=100, blank=True, null=True)
+    description = models.CharField(max_length=1000)
+    content = models.TextField(max_length=5000, blank=True, null=True)
     date = models.DateField()
     pic1 = models.ImageField(default=None, upload_to='event pics', blank=True, null=True)
     pic2 = models.ImageField(default=None, upload_to='event pics', blank=True, null=True)
