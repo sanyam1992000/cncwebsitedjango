@@ -4,6 +4,10 @@
     <link rel="stylesheet" href="{% static 'css/best-carousel-slide.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+
+
+
 {% endblock %}
 
 
@@ -15,6 +19,8 @@
 
     {% include 'home_carousel.html' %}
     {% include 'upcoming_events_card.html' %}
+{#    {% include 'core/recent_blogs.html' %}#}
+
 
 {% endblock %}
 
@@ -30,4 +36,6 @@
 {% block scripts %}
     <script src="{% static 'js/jquery.min.js' %}"></script>
     <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+
+
 {% endblock %}

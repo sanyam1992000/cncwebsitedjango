@@ -38,7 +38,11 @@
                             <span class="date">{{ event.date|date:'d F Y'}} </span>
                         </p>
                         <p class="text-dark text-center">{{ event.description|capfirst }}</p>
+
+                        {% if event.pic2 %}
                         <img class="img-fluid" src="{{ event.pic2.url }}" height="300px">
+                        {% endif %}
+
                     </div>
                 </div>
 

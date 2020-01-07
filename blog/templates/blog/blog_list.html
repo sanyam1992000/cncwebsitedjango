@@ -1,0 +1,143 @@
+{% load static %}
+{% block static %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700">
+    <link rel="stylesheet" href="{% static 'css/Latest-Blog.css'%}">
+    <link rel="stylesheet" href="{% static 'css/styles.css'%}">
+{% endblock %}
+
+
+
+<!-- container 1 with heading -->
+<div class="blog-home3 py-3">
+  <div class="container">
+
+    <!-- Row  -->
+    <div class="row justify-content-center">
+      <!-- Column -->
+      <div class="col-md-8 text-center">
+        <h3 class="my-3">Blogs </h3>
+        <h6 class="subtitle font-weight-normal">You can relay on our amazing features list and also our customer services will be great experience for you without doubt</h6>
+      </div>
+      <!-- Column -->
+      <!-- Column -->
+    </div>
+
+
+    {% for post in posts %}
+        {% if forloop.counter <= 5 %}
+
+            <div class="row mt-4">
+            <!-- Column -->
+
+
+                {% if forloop.counter == 1 %}
+
+                    <div class="col-lg-6">
+
+                       <div class="card border-0 mb-4">
+                          <a href="{% url 'blog:detail' post.id %}">
+                            <img class="card-img-top" src="{{ post.pic1.url }}" alt="wrappixel kit">
+                          </a>
+                          <div class="date-pos text-center text-white p-3 bg-success-gradiant">
+                          {{ post.title|title }} &nbsp; &nbsp; {{ post.date|date:'d F Y' }}
+                          </div>
+                          <h5 class="font-weight-medium mt-3">
+                            <a href="{% url 'blog:detail' post.id %}" class="link text-decoration-none">
+                              {{ post.description|title|truncatechars:100 }}
+                            </a>
+                          </h5>
+
+                          <p class="m-t-20">
+                              {{ post.content|title|truncatewords:70 }}
+                          </p>
+                        </div>
+                      </div>
+
+                {% endif %}
+
+
+                {% if forloop.counter > 1 %}
+
+                    <!-- Column -->
+                    <div class="col-lg-6">
+                        <div class="row">
+
+
+                        {% if forloop.counter == 2 %}
+                            <div class="col-md-6">
+                                <div class="card border-0 mb-4">
+                                <a href="{% url 'blog:detail' post.id %}"><img class="card-img-top" src="{{ post.pic1.url }}" alt="wrappixel kit"></a>
+                                <div class="date-pos text-center text-white p-3 bg-success-gradiant">
+                                    {{ post.title|title }} &nbsp; &nbsp; {{ post.date|date:'d F Y' }}
+                                </div>
+                                <h6 class="font-weight-medium mt-3"><a href="{% url 'blog:detail' post.id %}" class="link text-decoration-none">
+                                    {{ post.description|title|truncatechars:100 }}</a></h6>
+                                </div>
+                            </div>
+                        {% endif %}
+
+                        {% if forloop.counter == 3 %}
+                            <div class="col-md-6">
+                                <div class="card border-0 mb-4">
+                                    <a href="#"><img class="card-img-top" src="https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/blog/blog-home/img6.jpg" alt="wrappixel kit"></a>
+                                    <div class="date-pos text-center text-white p-3 bg-success-gradiant">JOHN DOE &nbsp; &nbsp; SEPT 15, 2017
+                                    </div>
+                                    <h6 class="font-weight-medium mt-3"><a href="#" class="link text-decoration-none">New Seminar on Newest Food Recipe</a></h6>
+                                </div>
+                            </div>
+                        {% endif %}
+
+                        {% if forloop.counter == 4 %}
+                            <!-- Column -->
+                            <div class="col-md-6">
+                                <div class="card border-0 mb-4">
+                                    <a href="#"><img class="card-img-top" src="https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/blog/blog-home/img7.jpg" alt="wrappixel kit"></a>
+                                    <div class="date-pos text-center text-white p-3 bg-success-gradiant">JOHN DOE &nbsp; &nbsp; SEPT 15, 2017
+                                    </div>
+                                    <h6 class="font-weight-medium mt-3"><a href="#" class="link text-decoration-none">New Seminar on Newest Food Recipe</a></h6>
+                                </div>
+                            </div>
+
+                        {% endif %}
+
+                        {% if forloop.counter == 5 %}
+                          <div class="col-md-6">
+                              <div class="card border-0 mb-4">
+                                    <a href="#"><img class="card-img-top" src="https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/blog/blog-home/img8.jpg" alt="wrappixel kit"></a>
+                                    <div class="date-pos text-center text-white p-3 bg-success-gradiant">JOHN DOE &nbsp; &nbsp; SEPT 15, 2017
+                                    </div>
+                                    <h6 class="font-weight-medium mt-3"><a href="#" class="link text-decoration-none">New Seminar on Newest Food Recipe</a></h6>
+                              </div>
+                          </div>
+
+                        {% endif %}
+
+                        <!-- Column -->
+                        </div>
+                    </div>
+                {% endif %}
+
+            </div>
+
+        {% endif %}
+    {% endfor %}
+
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+{% block scripts %}
+    <script src="{% static 'js/jquery.min.js'%}"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.min.js'%}"></script>
+{% endblock %}

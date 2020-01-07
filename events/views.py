@@ -12,7 +12,7 @@ from django.contrib import messages
 
 
 def EventsList(request):
-    events = Event.objects.all()
+    events = Event.objects.filter(status='False').order_by('-date')
     user = request.user
     if user.is_authenticated:
         registrations = Registration.objects.filter(user=user)

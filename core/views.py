@@ -14,20 +14,14 @@ from django.conf import settings
 
 
 def home(request):
-    # subject = 'SAMPLE MAIL'
-    # message = 'creating first sample mail with attachment'
-    # from_email = settings.DEFAULT_FROM_EMAIL
-    # to_email = ['sanyam1992000@yopmail.com', ]
-    # email = EmailMessage(subject=subject, from_email=from_email, to=to_email, body=message)
-    # email.attach_file(path=path)
-    # email.send(fail_silently=True)
-    # send_mail(subject=subject, message=message, from_email=from_email, recipient_list=to_email, fail_silently=True)
 
     SlideShowPics = SlideShowPic.objects.all()
-    events = Event.objects.filter(status='True')
+    upcomingevents = Event.objects.filter(status='True')
+    events = Event.objects.filter(status='False')
     context = {
         'slideshows': SlideShowPics,
-        'upcomingevents': events,
+        'upcomingevents': upcomingevents,
+        'events': events,
     }
     return render(request, 'home.html', context=context)
 
