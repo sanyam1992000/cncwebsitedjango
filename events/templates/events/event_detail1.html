@@ -74,15 +74,43 @@
         <div class="container">
             <div class="row fbox3">
                 <div class="col-sm-4 d-flex justify-content-center align-items-center">
-                    <a data-fancybox="gallery" data-caption="Hero Image Nature" href="assets/img/hero-background-nature.jpg">
-                        <img class="img-fluid" src="assets/img/hero-background-nature.jpg" alt="Hero Image Nature" />
+                    <a data-fancybox="gallery" data-caption="Hero Image Nature" href="{% static 'img/hero-background-nature.jpg' %}">
+                        {% if event.pic3 %}
+                        <img class="img-fluid" src="{{event.pic3.url}}" alt="Hero Image Nature" />
+                        {% endif %}
+
+                    {% if event.pic4 %}
+                        <img class="img-fluid" src="{{event.pic4.url}}" alt="Hero Image Nature" />
+                        {% endif %}
+
+                    {% if event.pic5 %}
+                        <img class="img-fluid" src="{{event.pic5.url}}" alt="Hero Image Nature" />
+                        {% endif %}
+
+                    {% if event.pic6 %}
+                        <img class="img-fluid" src="{{event.pic6.url}}" alt="Hero Image Nature" />
+                        {% endif %}
+
+                    {% if event.pic7 %}
+                        <img class="img-fluid" src="{{event.pic7.url}}" alt="Hero Image Nature" />
+                        {% endif %}
+                    {% if event.pic8 %}
+                        <img class="img-fluid" src="{{event.pic8.url}}" alt="Hero Image Nature" />
+                        {% endif %}
+                    {% if event.pic9 %}
+                        <img class="img-fluid" src="{{event.pic9.url}}" alt="Hero Image Nature" />
+                        {% endif %}
+                    {% if event.pic10 %}
+                        <img class="img-fluid" src="{{event.pic10.url}}" alt="Hero Image Nature" />
+                        {% endif %}
+                    {% if event.pic11 %}
+                        <img class="img-fluid" src="{{event.pic3.url}}" alt="Hero Image Nature" />
+                        {% endif %}
                     </a>
+
                 </div>
             </div>
         </div>
-
-
-
 
 
     </div>
