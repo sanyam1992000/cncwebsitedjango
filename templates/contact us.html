@@ -8,35 +8,31 @@
                 <h1 class="text-center" style="margin-top: 40px;margin-bottom: 40px;">Contact Us</h1>
                 <hr>
                 <form id="contactForm" method="POST">
-                   {% csrf_token %} 
-                   {{ form.errors }}
 
+                    {% csrf_token %}
+                    {{ form.errors }}
                     <div class="form-row">
-                        <fieldset class="form-group">
+                        <div class="col-md-6">
+                            <div id="successfail"></div>
+                        </div>
+                    </div>
+                    <div class="form-row">
                         <div class="col-12 col-md-6" id="message">
-
                             <h2 class="h4"><i class="fa fa-envelope"></i> Contact Us<small><small class="required-input">&nbsp;(*required)</small></small>
                             </h2>
-
-
-                            <div class="form-group">
-                                <label for="id_name">Name:</label> <input type="text" name="name" maxlength="50" required id="id_name">
+                            <div class="form-group"><label for="id_name">Name</label><span class="required-input">*</span>
+                                <div class="input-group">
+                                    <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-user-o"></i></span></div><input class="form-control" type="text" id="id_name" name="name" required="" placeholder="Full Name" maxlength="50"></div>
                             </div>
-
-
-                            <div class="form-group">
-                                <label for="id_email">Email:</label> <input type="email" name="email" maxlength="254" required id="id_email">
+                            <div class="form-group"><label for="id_email">Email</label><span class="required-input">*</span>
+                                <div class="input-group">
+                                    <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-envelope-o"></i></span></div><input class="form-control" type="text" id="id_email" name="email" required="" placeholder="Email Address" maxlength="254"></div>
                             </div>
-
-
-                            <div class="form-row">
-                                <label for="id_phoneno">Phoneno:</label> <input type="number" name="phoneno" min="6000000000" max="9999999999" required id="id_phoneno">
+                            <div class="form-group"><label for="id_phoneno">Phone</label><span class="required-input">*</span>
+                                <div class="input-group">
+                                    <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-phone"></i></span></div><input class="form-control" type="text" id="id_phoneno" name="phoneno" required="" placeholder="Primary Phone" min="6000000000" max="9999999999"></div>
                             </div>
-
-                            <div class="form-group">
-                                <label for="id_query">Query:</label> <input type="text" name="query" maxlength="2000" required id="id_query">
-                            </div>
-
+                            <div class="form-group"><label for="id_query">Comments</label><textarea class="form-control" id="id_query" name="query" placeholder="Enter Comments" rows="5" maxlength="2000"></textarea></div>
                             <div class="form-group">
                                 <div class="form-row">
                                     <div class="col"><button class="btn btn-primary btn-block" type="reset"><i class="fa fa-undo"></i> Reset</button></div>
@@ -45,9 +41,6 @@
                             </div>
                             <hr class="d-flex d-md-none">
                         </div>
-
-                        </fieldset>
-
                         <div class="col-12 col-md-6">
                             <h2 class="h4"><i class="fa fa-location-arrow"></i> Locate Us</h2>
                             <div class="form-row">
@@ -57,97 +50,29 @@
                                     </div>
                                 <div class="col-sm-6 col-md-12 col-lg-6">
                                     <h2 class="h4"><i class="fa fa-user"></i> Our Info</h2>
-                                    <div><span><strong>Name</strong></span></div>
-                                    <div><span>email@awebsite.com</span></div>
-                                    <div><span>www.awebsite.com</span></div>
+                                    <div><span><strong>Career and Counseling Cell</strong></span></div>
+                                    <div><span>careerandcounsellingcell.ymca@gmail.com</span></div>
+                                    <div><span>www.carrercounsellingcell.com</span></div>
                                     <hr class="d-sm-none d-md-block d-lg-none">
                                 </div>
                                 <div class="col-sm-6 col-md-12 col-lg-6">
                                     <h2 class="h4"><i class="fa fa-location-arrow"></i> Our Address</h2>
-                                    <div><span><strong>Office Name</strong></span></div>
-                                    <div><span>55 Icannot Dr</span></div>
-                                    <div><span>Daytone Beach, FL 85150</span></div>
+                                    <div><span><strong>J.C. Bose University of Science and Technology, YMCA Faridabad</strong></span></div>
+                                    <div><span>6, Mathura Rd</span></div>
+                                    <div><span>Sector 6, Faridabad, Haryana 121006</span></div>
                                     <div><abbr data-toggle="tooltip" data-placement="top" title="Office Phone: 555-867-5309">O:</abbr> 555-867-5309</div>
                                     <hr class="d-sm-none">
                                 </div>
                             </div>
                         </div>
                     </div>
+                    </div>
                 </form>
             </div>
+        </div>
             <!-- End: Full Page Form -->
-            <!-- Start: Modal Form -->
-            <div class="modal fade" role="dialog" tabindex="-1" id="modal1">
-                <div class="modal-dialog modal-lg" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title">Contact Information</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
-                        <div class="modal-body">
-                            <form id="contactForm" method="POST">
-                                {% csrf_token %}
-                                <div class="form-row">
-                                    <div class="col-12 col-md-6" id="message">
-                                        <h2 class="h4"><i class="fa fa-envelope"></i> Contact Us<small><small class="required-input">&nbsp;(*required)</small></small>
-                                        </h2>
-
-                                        <div class="form-group"><label for="id_name">Name:</label> <input type="text" name="name" maxlength="50" required id="id_name">
-                                        </div>
-
-                                        <div class="form-group"><label for="from-email">Email</label><span class="required-input">*</span>
-                                            <div class="input-group">
-                                                <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-envelope-o"></i></span></div><input class="form-control" type="text" id="id_email" name="email" required="" placeholder="Email Address"></div>
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="col-12 col-sm-6 col-md-12 col-lg-6">
-                                                <div class="form-group"><label for="from-phoneno">Phone</label><span class="required-input">*</span>
-                                                    <div class="input-group">
-                                                        <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-phone"></i></span></div><input class="form-control" type="text" id="id_phoneno" name="phoneno" required="" placeholder="Primary Phone"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group"><label for="from-query">Comments</label><textarea class="form-control" id="id_query" name="query" placeholder="Enter your Query" rows="5"></textarea></div>
-                                        <div class="form-group">
-                                            <div class="form-row">
-                                                <div class="col"><button class="btn btn-primary btn-block" type="reset"><i class="fa fa-undo"></i> Reset</button></div>
-                                                <div class="col"><button class="btn btn-primary btn-block" type="submit" value="submit">Submit <i class="fa fa-chevron-circle-right"></i></button></div>
-                                            </div>
-                                        </div>
-                                        <hr class="d-flex d-md-none">
-                                    </div>
-                                    <div class="col-12 col-md-6">
-                                        <h2 class="h4"><i class="fa fa-location-arrow"></i> Locate Us</h2>
-                                        <div class="form-row">
-                                            <div class="col-12">
-                                                <div class="static-map"><a rel="noopener" href="https://www.google.com/maps/place/Daytona+International+Speedway/@29.1815062,-81.0744275,15z/data=!4m13!1m7!3m6!1s0x88e6d935da1cced3:0xa6b3e1bc0f2fc83a!2s1801+W+International+Speedway+Blvd,+Daytona+Beach,+FL+32114!3b1!8m2!3d29.187028!4d-81.0703076!3m4!1s0x88e6d949a4cb8593:0x1387c6c0b5c8cc97!8m2!3d29.1851681!4d-81.0705292"
-                                                        target="_blank"> <img class="img-fluid" src="http://maps.googleapis.com/maps/api/staticmap?autoscale=2&amp;size=600x210&amp;maptype=roadmap&amp;format=png&amp;visual_refresh=true&amp;markers=size:mid%7Ccolor:0xff0000%7Clabel:%7C582+1801+W+International+Speedway+Blvd+Daytona+Beach+FL+32114&amp;zoom=12" alt="Google Map of Daytona International Speedway"></a></div>
-                                            </div>
-                                            <div class="col-sm-6 col-md-12 col-lg-6">
-                                                <h2 class="h4"><i class="fa fa-user"></i> Our Info</h2>
-                                                <div><span><strong>Name</strong></span></div>
-                                                <div><span>email@awebsite.com</span></div>
-                                                <div><span>www.awebsite.com</span></div>
-                                                <hr class="d-sm-none d-md-block d-lg-none">
-                                            </div>
-                                            <div class="col-sm-6 col-md-12 col-lg-6">
-                                                <h2 class="h4"><i class="fa fa-location-arrow"></i> Our Address</h2>
-                                                <div><span><strong>Office Name</strong></span></div>
-                                                <div><span>55 Icannot Dr</span></div>
-                                                <div><span>Daytone Beach, FL 85150</span></div>
-                                                <div><abbr data-toggle="tooltip" data-placement="top" title="Office Phone: 555-867-5309">O:</abbr> 555-867-5309</div>
-                                                <hr class="d-sm-none">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- End: Modal Form -->
         </div>
         <!-- End: Contact Form v2 (Modal & Full) with Google Map -->
-    </div>
     <style>
         .masthead,.photo-background,div.jumbotron.carousel-hero{background-position:center;background-size:cover}.article-list{color:#313437;background-color:#fff}.article-list p{color:#7d8285}.article-list h2{font-weight:700;margin-bottom:40px;padding-top:40px;color:inherit}@media (max-width:767px){.article-list h2{margin-bottom:25px;padding-top:25px;font-size:24px}}.article-list .intro{font-size:16px;max-width:500px;margin:0 auto}.article-list .intro p{margin-bottom:0}.article-list .articles{padding-bottom:40px}.article-list .item{padding-top:50px;min-height:425px;text-align:center}.article-list .item .name{font-weight:700;font-size:16px;margin-top:20px;color:inherit}.article-list .item .description{font-size:14px;margin-top:15px;margin-bottom:0}.article-list .item .action{font-size:24px;width:24px;margin:22px auto 0;line-height:1;display:block;color:#4f86c3;opacity:.85;transition:opacity .2s;text-decoration:none}.article-list .item .action:hover{opacity:1}.plat{border-radius:0}.btn-primary.focus,.btn-primary:focus{box-shadow:0 0 0 0 #048f83!important}.btn-primary:hover{color:#fff;background-color:#016090;border-color:#016090}.btn.btn-primary{background-color:#048f83!important;border-color:#048f83!important}span{font-style:inherit;font-weight:inherit}.masthead{height:100vh;min-height:500px;background-image:url(https://source.unsplash.com/BtbjCFUvBXs/1920x1080);background-repeat:no-repeat}div.jumbotron.carousel-hero{color:#fff;text-align:center;padding-top:100px;padding-bottom:100px;margin-bottom:0}div.jumbotron.hero-nature{background-image:url(/assets/img/hero-background-nature.jpg?h=84cb40e1e26e6c41ea96c67a08a8ee1e)}div.jumbotron.hero-photography{background-image:url(/assets/img/hero-background-photography.jpg?h=a5f3f9534783fdb7c52f4a3e1cc03b91)}div.jumbotron.hero-technology{background-image:url(/assets/img/hero-background-technology.jpg?h=a91ce8bfb06067599e8c6eb2f97749f4)}h1.hero-title,h2.hero-title,h3.hero-title{text-shadow:0 3px 3px rgba(0,0,0,.4);color:#fff}p.hero-subtitle{max-width:600px;margin:25px auto;padding:10px 15px;color:#fff}#contactForm .h4{font-weight:400;border-bottom:1px solid silver}.required-input{color:maroon}.static-map{margin-bottom:20px}@media (max-width:768px) and (min-width:767px){#contactForm .static-map img{width:100%}}.photo-card{background-color:#2d3638;border-radius:10px;box-shadow:0 10px 20px rgba(0,0,0,.19),0 6px 6px rgba(0,0,0,.23);display:flex;flex-direction:column;width:100%;max-width:700px;margin-left:auto;margin-right:auto}.photo-background{border-top-left-radius:10px;border-top-right-radius:10px;min-height:250px}.photo-details{padding:2.1875em 5%}@media screen and (min-width:700px){.photo-card{flex-direction:row}.photo-background{border-top-left-radius:10px;border-top-right-radius:0;border-bottom-left-radius:10px;min-height:none;width:50%}.photo-details{width:50%}}.photo-details h1,.photo-details h4{color:#fff;font-weight:500;margin:0}.photo-details h1{font-size:125%;line-height:1;margin-bottom:.35em}.photo-tags ul{list-style-type:none;margin:.35em 0 0;padding:0;display:flex;flex-wrap:wrap;font-size:87.5%;text-transform:lowercase}.photo-tags li{margin:0 .35em .35em 0}.photo-tags a{background-color:#191e20;border-radius:50px;color:#fff;display:block;padding:.3125em 1.25em;text-decoration:none;transition:color .3s ease}.photo-tags a:focus,.photo-tags a:hover{color:#e37544}.photo-details p,.snip1527{color:#fff}.snip1527{box-shadow:0 0 5px rgba(0,0,0,.15);float:left;font-family:Lato,Arial,sans-serif;font-size:16px;margin:10px 1%;max-width:310px;min-width:250px;overflow:hidden;position:relative;text-align:left;width:100%}.snip1527 *{-webkit-box-sizing:border-box;box-sizing:border-box;-webkit-transition:all .25s ease;transition:all .25s ease}.snip1527 img{max-width:100%;vertical-align:top;position:relative}.snip1527 figcaption{padding:25px 20px;position:absolute;bottom:0;z-index:1}.snip1527 figcaption:before{position:absolute;top:0;bottom:0;left:0;right:0;content:'';background:-moz-linear-gradient(90deg,#700877 0,#ff2759 100%,#ff2759 100%);background:-webkit-linear-gradient(90deg,#700877 0,#ff2759 100%,#ff2759 100%);background:linear-gradient(90deg,#700877 0,#ff2759 100%,#ff2759 100%);opacity:.8;z-index:-1}.snip1527 .date{background-color:#fff;border-radius:50%;color:#700877;font-size:18px;font-weight:700;min-height:48px;min-width:48px;padding:10px 0;position:absolute;right:15px;text-align:center;text-transform:uppercase;top:-25px}.snip1527 .date span{display:block;line-height:14px}.snip1527 .date .month{font-size:11px}.snip1527 h3,.snip1527 p{margin:0;padding:0}.snip1527 h3{display:inline-block;font-weight:700;letter-spacing:-.4px;margin-bottom:5px}.snip1527 p{font-size:.8em;line-height:1.6em;margin-bottom:0}.snip1527 a{left:0;right:0;top:0;bottom:0;position:absolute;z-index:1}.snip1527.hover img,.snip1527:hover img{-webkit-transform:scale(1.1);transform:scale(1.1)}img{border-radius:5px}.card-section-imagia{padding:60px 0 30px;background:#f1f1f1}.card-section-imagia>h1{font-size:48px;text-align:center;margin:0 0 10px}.card-section-imagia>h2{font-size:24px;text-align:center;margin:0 0 60px;color:#aaa;text-transform:uppercase}.card-container-imagia{-webkit-perspective:1500px;-moz-perspective:1500px;-o-perspective:1500px;perspective:1500px;margin-bottom:30px}.card-container-imagia:hover .card-imagia{-webkit-transform:rotateY(180deg);-moz-transform:rotateY(180deg);-o-transform:rotateY(180deg);transform:rotateY(180deg)}.card-imagia{-webkit-transition:-webkit-transform .5s;-moz-transition:-moz-transform .5s;-o-transition:-o-transform .5s;transition:transform .5s;-webkit-transform-style:preserve-3d;-moz-transform-style:preserve-3d;-o-transform-style:preserve-3d;transform-style:preserve-3d;position:relative}.back-imagia,.front-imagia{-webkit-backface-visibility:hidden;-moz-backface-visibility:hidden;-o-backface-visibility:hidden;backface-visibility:hidden;position:absolute;top:0;left:0;background-color:#FFF;box-shadow:0 0 15px 0 rgba(0,0,0,.1);padding-bottom:46px}.front-imagia{z-index:2}.back-imagia{-webkit-transform:rotateY(180deg);-moz-transform:rotateY(180deg);-o-transform:rotateY(180deg);transform:rotateY(180deg);z-index:3}.back-imagia,.card-container-imagia,.front-imagia{width:100%;height:420px;border-radius:4px}.card-imagia .cover-imagia{height:120px;overflow:hidden;border-radius:4px 4px 0 0}.card-imagia .cover-imagia img{width:100%;height:auto}.card-imagia .cover-imagia.cover-gradient{background:#fff;background-image:radial-gradient(circle at 50% 100% ,#ADCACE 0,#89BECE 33%,#34A1C8 66%,#036EAD 100%)}.card-imagia .user-imagia{border-radius:50%;display:block;height:130px;margin:-65px auto 0;overflow:hidden;width:120px}.card-imagia .user-imagia img{background:#FFF;border:5px solid #FFF;width:100%}.card-imagia .content-imagia{background-color:rgba(0,0,0,0);box-shadow:none;padding:10px 20px 20px}.content-back-imagia{display:flex;align-items:center;height:100%}.card-imagia .name-imagia{font-size:22px;line-height:26px;margin:0;text-align:center;text-transform:capitalize}.card-imagia .subtitle-imagia{color:#aaa;text-align:center;margin-bottom:15px}.card-imagia .footer-imagia{width:100%;color:#aaa;padding:10px 0;text-align:center;position:absolute;bottom:0;border-top:1px solid #eee}.card-imagia .footer-imagia .social-imagia a{margin:0 7px;font-size:18px}@media screen and (-ms-high-contrast:active),(-ms-high-contrast:none){.back-imagia,.front-imagia{-ms-backface-visibility:visible;backface-visibility:visible}.back-imagia{visibility:hidden;-ms-transition:all .2s cubic-bezier(.92,.01,.83,.67)}.front-imagia{z-index:4}.card-container-imagia:hover .back-imagia{z-index:5;visibility:visible}}
     </style>
