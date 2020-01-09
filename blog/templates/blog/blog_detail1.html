@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block static %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    {% block title %}
+    <title>{{ event.event_name|truncatechars:10 }}</title>
+    {% endblock %}
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=ABeeZee">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli">
+    <link rel="stylesheet" href="{% static 'css/Stroud.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="{% static 'css/Article-Dual-Column.css' %}">
+    <link rel="stylesheet" href="{% static 'css/Basic-fancyBox-Gallery-v2.css' %}">
+    <link rel="stylesheet" href="{% static 'css/blog-1.css' %}">
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+    <link rel="stylesheet" href="{% static 'css/LinkedIn-like-Profile-Box.css' %}">
+{% endblock %}
+
+
+
+{% block content %}
+
+
+    <div class="article-dual-column">
+        <div class="container">
+            <div class="row">
+
+
+                <div class="col-md-10 col-xl-8 offset-md-1 offset-xl-1">
+                    <div class="intro">
+                        <h1 class="text-center"><strong>{{ event.event_name|title }}</strong></h1>
+                        <p class="text-center">
+                            <a href="#">Event Date</a>
+                            <span class="date">{{ event.date|date:'d F Y'}} </span>
+                        </p>
+                        <p class="text-dark text-center">{{ event.description|capfirst }}</p>
+
+                        {% if event.pic2 %}
+                        <img class="img-fluid" src="{{ event.pic2.url }}" height="300px">
+                        {% endif %}
+
+                    </div>
+                </div>
+
+                <div style="height: 40px;">
+                </div>
+                {% include 'events/profile_sidebar.html' %}
+
+            </div>
+
+
+
+
+            <div class="row">
+                <div class="col-md-10 col-lg-7 col-xl-8 offset-md-1 offset-lg-0 offset-xl-1">
+                    <div class="text">
+                        <p>
+                            {{ event.content|capfirst}}
+                        </p>
+                        {% if event.pic1 %}
+                        <figure class="figure">
+                            <img class="figure-img" src="{{event.pic1.url}}" alt="">
+                        </figure>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <!-- GALLERY -->
+        <div class="container">
+            <div class="row fbox3">
+                <div class="col-sm-4 d-flex justify-content-center align-items-center">
+                    <a data-fancybox="gallery" data-caption="Hero Image Nature" href="{% static 'img/hero-background-nature.jpg' %}">
+                        {% if event.pic3 %}
+                        <img class="img-fluid" src="{{event.pic3.url}}" alt="Hero Image Nature" />
+                        {% endif %}
+
+                    {% if event.pic4 %}
+                        <img class="img-fluid" src="{{event.pic4.url}}" alt="Hero Image Nature" />
+                        {% endif %}
+
+                    {% if event.pic5 %}
+                        <img class="img-fluid" src="{{event.pic5.url}}" alt="Hero Image Nature" />
+                        {% endif %}
+
+                    {% if event.pic6 %}
+                        <img class="img-fluid" src="{{event.pic6.url}}" alt="Hero Image Nature" />
+                        {% endif %}
+
+                    {% if event.pic7 %}
+                        <img class="img-fluid" src="{{event.pic7.url}}" alt="Hero Image Nature" />
+                        {% endif %}
+                    {% if event.pic8 %}
+                        <img class="img-fluid" src="{{event.pic8.url}}" alt="Hero Image Nature" />
+                        {% endif %}
+                    {% if event.pic9 %}
+                        <img class="img-fluid" src="{{event.pic9.url}}" alt="Hero Image Nature" />
+                        {% endif %}
+                    {% if event.pic10 %}
+                        <img class="img-fluid" src="{{event.pic10.url}}" alt="Hero Image Nature" />
+                        {% endif %}
+                    {% if event.pic11 %}
+                        <img class="img-fluid" src="{{event.pic3.url}}" alt="Hero Image Nature" />
+                        {% endif %}
+                    </a>
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+{% endblock %}
+
+
+
+    {% block scripts %}
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+    {% endblock %}
