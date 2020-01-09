@@ -2,22 +2,25 @@
 
 
 
-        <div class="text-center profile-card" style="margin:1px;background-color:#ffffff;">
-            <div class="profile-card-img" style="background-image:url(&quot;iceland.jpg&quot;);height:100px;background-size:cover;"></div>
-            <div>
-            {% if user_instance.userprofile.pic %}
-            <img class="rounded-circle" style="margin-top:-70px;" src="{{user_instance.userprofile.pic.url}}" height="150px" width="150">
-                {% endif %}
+        <div class="profile-card" style="background-color:#ffffff;">
+            <center>
+                <div class="profile-card-img" style="background-image:url(&quot;iceland.jpg&quot;);height:100px;background-size:cover;">
 
-                    <h3><strong>{{user_instance.first_name|capfirst}} {{ user_instance.last_name|capfirst }}</strong></h3>
-                    <p style="padding:20px;padding-bottom:0;padding-top:5px;"> {{profile.course}} - {{ profile.branch }} </p>
-                    <p style="padding:20px;padding-bottom:0;padding-top:5px;"> {{profile.roll_no}} </p>
                 </div>
+                    <div>
+                        {% if user_instance.userprofile.pic %}
+                        <img class="rounded-circle" style="margin-top:-70px;" src="{{user_instance.userprofile.pic.url}}" height="150px" width="150">
+                        {% endif %}
+
+                        <h3><strong>{{user_instance.first_name|capfirst}} {{ user_instance.last_name|capfirst }}</strong></h3>
+                        <p style="padding:20px;padding-bottom:0;padding-top:5px;"> {{profile.course}} - {{ profile.branch }} </p>
+                        <p style="padding:20px;padding-bottom:0;padding-top:5px;"> {{profile.roll_no}} </p>
+                    </div>
 
 
 
 
-            {% if user_instance.registration_set.exists %}
+                {% if user_instance.registration_set.exists %}
 
                 <div class="row user-list">
                 {% for registration in certificates %}

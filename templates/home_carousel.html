@@ -6,8 +6,8 @@
             <div class="carousel-inner" role="listbox">
 
                 {% for slide in slideshows %}
-                    {% if slide == slides|first %}
-                        <div class="carousel-item active intro-item bg-image" style="background-image: url('{{slide.image.url}}')">
+                    {% if forloop.counter == 1 %}
+                        <div class="carousel-item active intro-item bg-image">
                             <div class="jumbotron pulse animated hero-nature carousel-hero">
                                 <h1 class="hero-title">{{ slide.title|title }}</h1>
                                 <p class="hero-subtitle">{{ slide.description|truncatechars:200 }} I am first Slide</p>
@@ -16,7 +16,7 @@
                         </div>
 
                     {% else %}
-                        <div class="carousel-item intro-item bg-image" style="background-image: url('{{slide.image.url}}')">
+                        <div class="carousel-item intro-item bg-image")">
                             <div class="jumbotron pulse animated hero-nature carousel-hero">
                                 <h1 class="hero-title">{{ slide.title|title }}</h1>
                                 <p class="hero-subtitle">{{ slide.description|truncatechars:200 }} {{ slide.image.url }}</p>
@@ -28,7 +28,7 @@
 
 
 
-                <div class="carousel-item active bg-image" style="background-image: url({{slide.image.url}})">
+                <div class="carousel-item active bg-image">
                     <div class="jumbotron pulse animated hero-photography carousel-hero">
                         <h1 class="hero-title">Hero Photography</h1>
                         <p class="hero-subtitle">Nullam id dolo, egestas eget quam.</p>

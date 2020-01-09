@@ -20,12 +20,9 @@
         <div class="container">
             <div class="intro">
                 <h2 class="text-center"> Student Members </h2>
-                <p class="text-center">Nunc luctus in metus eget fringilla. Aliquam sed justo ligula. Vestibulum nibh erat, pellentesque ut laoreet vitae. </p>
+                <p class="text-center">Student members heading</p>
             </div>
             <div class="row people">
-
-
-
                 {% for member in members %}
                 <div class="col-md-2 col-lg-3 item"><img class="rounded-circle" src="{{ member.userprofile.pic.url }}" height="150" width="150">
                     <h3 class="name">{{member.user.first_name}} {{ member.user.last_name }}</h3>
@@ -36,9 +33,6 @@
                     {% endif %}
                 </div>
                 {% endfor %}
-
-
-
             </div>
         </div>
     </div>
