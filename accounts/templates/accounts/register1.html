@@ -5,52 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>CNC | Register</title>
 {% endblock %}
-
 {% block content %}
-<div class="banner6 py-5">
-  <!-- Row  -->
-  <div class="row">
+  <div class="card container mt-5 border-white border rounded shadow-lg" style="width: 30rem;">
+    <div class="mt-3" align="center">
+        <img src="/media/loginlogo.png" height="80" width="80" class="rounded">
+    </div>
     <div class="container">
-      <div class="col-lg-6 align-justify-center pr-4 pl-0 contact-form">
         <div class="form">
-          <h2 class="mb-3 font-weight-light"><center>Register</center></h2>
+            <h2 class="mb-4 font-weight-light mt-3"><center>Register</center></h2>
           <form class="mt-3" method="POST" enctype="multipart/form-data">
-          {% csrf_token %}
-            <!--{{form.as_p}}-->
+            {% csrf_token %}
+            <fieldset class="form-group">
             <div class="row">
               <div class="col-lg-12">
-                <div class="form-group">
+                <div class="form-group" align="center">
                   <input class="form-control" name="username" required id="id_username" type="Username" maxlength="50" placeholder="Username">
                 </div>
               </div>
 
               <div class="col-lg-12">
-                <div class="form-group">
+                <div class="form-group" align="center">
                   <input class="form-control" name="first_name" required id="id_first_name" maxlength="50" type="text" placeholder="First Name">
                 </div>
               </div>
 
               <div class="col-lg-12">
-                <div class="form-group">
+                <div class="form-group" align="center">
                   <input class="form-control" name="last_name" required id="id_last_name" maxlength="50" type="text" placeholder="Last Name">
                 </div>
               </div>
 
               <div class="col-lg-12">
-                <div class="form-group">
+                <div class="form-group" align="center">
                   <input class="form-control" name="roll_no" required id="id_roll_no" type="Number" placeholder="Roll Number" max="100000000000" min="10000000000">
                 </div>
               </div>
 
               <div class="col-lg-12">
-                <div class="form-group">
-                  <input class="form-control" name="email" required id="id_email" type="email" placeholder="email address">
+                <div class="form-group" align="center">
+                  <input class="form-control" name="email" required id="id_email" type="email" placeholder="Email Address">
                 </div>
               </div>
-              
+
               <div class="col-lg-12">
-                <div class="form-group">
-                  <input class="form-control" name="phoneno" required id="id_phoneno" type="Number" placeholder="Phone No." max="9999999999" min="6000000000">
+                <div class="form-group" align="center">
+                  <input class="form-control" name="phoneno" required id="id_phoneno" type="Number" placeholder="Primary Phone Number" max="9999999999" min="6000000000">
                 </div>
               </div>
 
@@ -58,72 +57,67 @@
                 <div class="form-group">
                   <label for="id_course">Course:</label>
                   <select class="form-control" name="course" id="id_course">
-                    <option value="BTECH">Btech</option>
-                    <option value="MTECH">Mtech</option>
+                    <option value="BTECH">B.Tech</option>
+                    <option value="MTECH">M.Tech</option>
                     <option value="BCA">BCA</option>
                     <option value="MCA">MCA</option>
-                    <option value="BSC">Bsc</option>
-                    <option value="MSC">Msc</option>
+                    <option value="BSC">B.Sc</option>
+                    <option value="MSC">M.Sc</option>
                     <option value="MBA">MBA</option>
                 </select>
                 </div>
               </div>
 
-
               <div class="col-lg-6">
                 <div class="form-group">
                   <label for="id_branch">Branch:</label>
                   <select class="form-control" name="branch" id="id_branch">
-                  <option value="CE">CE</option>
-                  <option value="IT">IT</option>
-                  <option value="ECE">ECE</option>
-                  <option value="ECS">ECS</option>
-                  <option value="EIC">EIC</option>
-                  <option value="EL">EL</option>
-                  <option value="MECH">MECH</option>
-                  <option value="CIVIL">CIVIL</option>
+                    <option value="CE">CE</option>
+                    <option value="IT">IT</option>
+                    <option value="ECE">ECE</option>
+                    <option value="ECS">ECS</option>
+                    <option value="EIC">EIC</option>
+                    <option value="EL">EL</option>
+                    <option value="MECH">MECH</option>
+                    <option value="CIVIL">CIVIL</option>
+                    <option value="Mathematics">Mathematics</option>
+                    <option value="Chemistry">Chemistry</option>
+                    <option value="Physics">Physics</option>
                 </select>
                 </div>
               </div>
 
-
               <div class="col-lg-12">
                 <div class="form-group">
-                  <input class="form-control" name="password1" minlength="6" required id="id_password1" type="password" placeholder="password">
+                  <input class="form-control" name="password1" minlength="6" required id="id_password1" type="password" placeholder="Choose Password">
                 </div>
               </div>
 
               <div class="col-lg-12">
                 <div class="form-group">
-                  <input class="form-control" name="password2" minlength="6" required id="id_password2" type="password" placeholder="confirm password">
+                  <input class="form-control" name="password2" minlength="6" required id="id_password2" type="password" placeholder="Confirm Password">
                 </div>
               </div>
 
               <div class="col-lg-12">
                 <div class="form-group">
-                  <label for="id_icard">I-card Front:</label> <input type="file" name="icard" accept="image/*" id="id_icard">
+                  <label for="id_icard">I-card Front:</label><input type="file" name="icard" accept="image/*" id="id_icard">
                 </div>
               </div>
 
-              <div class="col-lg-12">
-                <button type="submit" value="submit" class="btn btn-md btn-block btn-danger text-white border-0"><span> Create Account</span></button>
-                <!--  -->
+              <div class="col-lg-12" align="center">
+                <button type="submit" value="submit" class="btn  btn-md btn-block text-white btn-danger border-0"><span> Create Account </span></button>
+
               </div>
             </div>
-            </fieldset>
           </form>
-            <div class="col-lg-12 text-center mt-4">
-              Already have an account? <a href="{% url 'accounts:login' %}" class="text-danger">Sign In</a>
+            <div class="col mt-4" align="center">
+              Already have an account? <a href="{% url 'accounts:login' %}" class="text-danger">Log In</a>
             </div>
           </div>
-        </div>
-      </div>
     </div>
-    <div class="col-lg-6 right-image pl-3" style="background-image:url(https://instagram.fdel1-2.fna.fbcdn.net/v/t51.2885-15/e35/51360273_119018409202003_6000305432443433902_n.jpg?_nc_ht=instagram.fdel1-2.fna.fbcdn.net&_nc_cat=107&_nc_ohc=Ww-9XkrErzcAX_p7bgW&oh=3b57d1c4ae16ba4ac0406a9805b6f1b4&oe=5EA8F259);">
-    </div>
-  </div>
 </div>
-{% endblock %}
+    {% endblock %}
     {% block scripts %}
     <script src="{% static 'js/jquery.min.js' %}"></script>
     <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>

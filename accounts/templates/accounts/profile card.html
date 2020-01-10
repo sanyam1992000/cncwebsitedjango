@@ -37,16 +37,16 @@
                 {% for registration in certificates %}
                 {% if registration.attended == 'A'%}
                     <div class="col item">
-                        <div class="card border-white border rounded shadow-lg" data-bs-hover-animate="pulse" style="width: 17rem; height: 20rem;">
+                        <div class="card border-white border rounded shadow-lg" data-bs-hover-animate="pulse" style="width: 17rem; height: 15rem;">
                             <div class="card-body">
                                 <h4 class="card-title" style="margin-top: 5px;"><strong>{{ registration.event.event_name|capfirst }}</strong></h4>
                                 <h6 class="text-muted card-subtitle mb-2" style="margin-top: 0px;">{{ registration.event.date }}</h6>
                                 <p class="card-text" style="width: 180px;margin-top: 15px;margin-bottom: 20px;">{{ registration.event.description|capfirst }}</p>
 
                                 <div class="btn-group" role="group">
-                                    <button class="btn btn-primary bg-light" type="button" ><a href="{% url 'events:certificate' user_instance.username registration.event.id %}">Certificate</a></button>
+                                    <button class="btn bg-danger" type="button" ><a href="{% url 'events:certificate' user_instance.username registration.event.id %}">Certificate</a></button>
                                     <br>
-                                    <button class="btn btn-danger-gradient" type="button"><a href="{% url 'events:events_detail' registration.event.id %}">Detail</a></button>
+                                    <button class="btn bg-info" type="button"><a href="{% url 'events:events_detail' registration.event.id %}">Detail</a></button>
                                 </div>
                             </div>
                         </div>
@@ -63,8 +63,19 @@
 <style>
     .body{
         margin-top: 40px;
-        background-color: red;
+        background-color: #D9534F;
         padding-top: 250px;
+    }
+    .row .item{
+        margin-bottom: 20px;
+    }
+    a{
+        text-decoration: none;
+        color: white;
+    }
+    a:hover{
+        text-decoration: none;
+        color: white;
     }
 
 </style>
