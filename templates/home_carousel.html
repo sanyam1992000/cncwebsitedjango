@@ -10,7 +10,7 @@
                         <div class="carousel-item active intro-item bg-image">
                             <div class="jumbotron pulse animated hero-nature carousel-hero" style="background-image: url('{{slide.image.url}}');">
                                 <h1 class="hero-title">{{ slide.title|title }}</h1>
-                                <p class="hero-subtitle">{{ slide.description|truncatechars:200 }} I am first Slide</p>
+                                <p class="hero-subtitle"></p>
                                 <p><a class="btn btn-primary hero-button plat" role="button" href="{{ slide.url }}">Know more</a></p>
                             </div>
                         </div>
@@ -19,7 +19,7 @@
                         <div class="carousel-item intro-item bg-image">
                             <div class="jumbotron pulse animated hero-nature carousel-hero" style="background-image: url('{{slide.image.url}}');">
                                 <h1 class="hero-title">{{ slide.title|title }}</h1>
-                                <p class="hero-subtitle">{{ slide.description|truncatechars:200 }} {{ slide.image.url }}</p>
+                                <p class="hero-subtitle"></p>
                                 <p><a class="btn btn-primary hero-button plat" role="button" href="{{ slide.url }}">Know more</a></p>
                             </div>
                         </div>
@@ -100,6 +100,8 @@ span {
 
     </style>
 {% endif %}
+
+<!--{{ slide.description|truncatechars:200 }}-->
 
 
 
