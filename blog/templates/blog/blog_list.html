@@ -1,147 +1,176 @@
 {% extends 'base.html' %}
 {% block content %}
-
 {% load static %}
 {% block static %}
     <meta charset="utf-8">
+    <title>Blog | Career and Counselling Cell , YMCA</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css'%}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700">
     <link rel="stylesheet" href="{% static 'css/Latest-Blog.css'%}">
     <link rel="stylesheet" href="{% static 'css/styles.css'%}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
 {% endblock %}
 
 
-
-<!-- container 1 with heading -->
-<div class="blog-home3 py-3">
-  <div class="container">
-
+<body>
+    <!-- Start: Latest Blog -->
+    <div class="blog-home3 py-5">
+    <div class="container">
     <!-- Row  -->
     <div class="row justify-content-center">
       <!-- Column -->
       <div class="col-md-8 text-center">
-        <h3 class="my-3">Blogs </h3>
-        <h6 class="subtitle font-weight-normal">You can relay on our amazing features list and also our customer services will be great experience for you without doubt</h6>
+        <h2 class="my-3">BLOG</h2>
       </div>
       <!-- Column -->
       <!-- Column -->
     </div>
 
 
-    {% for post in posts %}
-        {% if forloop.counter <= 5 %}
 
-            <div class="row mt-4">
-            <!-- Column -->
-
-
-                {% if forloop.counter == 1 %}
-
-                    <div class="col-lg-6">
-
-                       <div class="card border-0 mb-4">
-                          <a href="{% url 'blog:detail' post.id %}">
-                            <img class="card-img-top" src="{{ post.pic1.url }}" alt="wrappixel kit">
-                          </a>
-                          <div class="date-pos text-center text-white p-3 bg-success-gradiant">
-                          {{ post.title|title }} &nbsp; &nbsp; {{ post.date|date:'d F Y' }}
-                          </div>
-                          <h5 class="font-weight-medium mt-3">
-                            <a href="{% url 'blog:detail' post.id %}" class="link text-decoration-none">
-                              {{ post.description|title|truncatechars:100 }}
-                            </a>
-                          </h5>
-
-                          <p class="m-t-20">
-                              {{ post.content|title|truncatewords:70 }}
-                          </p>
-                        </div>
-                      </div>
-
-                {% endif %}
-
-
-                {% if forloop.counter > 1 %}
-
-                    <!-- Column -->
-                    <div class="col-lg-6">
-                        <div class="row">
-
-
-                        {% if forloop.counter == 2 %}
-                            <div class="col-md-6">
-                                <div class="card border-0 mb-4">
-                                <a href="{% url 'blog:detail' post.id %}"><img class="card-img-top" src="{{ post.pic1.url }}" alt="wrappixel kit"></a>
-                                <div class="date-pos text-center text-white p-3 bg-success-gradiant">
-                                    {{ post.title|title }} &nbsp; &nbsp; {{ post.date|date:'d F Y' }}
-                                </div>
-                                <h6 class="font-weight-medium mt-3"><a href="{% url 'blog:detail' post.id %}" class="link text-decoration-none">
-                                    {{ post.description|title|truncatechars:100 }}</a></h6>
-                                </div>
-                            </div>
-                        {% endif %}
-
-                        {% if forloop.counter == 3 %}
-                            <div class="col-md-6">
-                                <div class="card border-0 mb-4">
-                                    <a href="#"><img class="card-img-top" src="https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/blog/blog-home/img6.jpg" alt="wrappixel kit"></a>
-                                    <div class="date-pos text-center text-white p-3 bg-success-gradiant">JOHN DOE &nbsp; &nbsp; SEPT 15, 2017
-                                    </div>
-                                    <h6 class="font-weight-medium mt-3"><a href="#" class="link text-decoration-none">New Seminar on Newest Food Recipe</a></h6>
-                                </div>
-                            </div>
-                        {% endif %}
-
-                        {% if forloop.counter == 4 %}
-                            <!-- Column -->
-                            <div class="col-md-6">
-                                <div class="card border-0 mb-4">
-                                    <a href="#"><img class="card-img-top" src="https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/blog/blog-home/img7.jpg" alt="wrappixel kit"></a>
-                                    <div class="date-pos text-center text-white p-3 bg-success-gradiant">JOHN DOE &nbsp; &nbsp; SEPT 15, 2017
-                                    </div>
-                                    <h6 class="font-weight-medium mt-3"><a href="#" class="link text-decoration-none">New Seminar on Newest Food Recipe</a></h6>
-                                </div>
-                            </div>
-
-                        {% endif %}
-
-                        {% if forloop.counter == 5 %}
-                          <div class="col-md-6">
-                              <div class="card border-0 mb-4">
-                                    <a href="#"><img class="card-img-top" src="https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/blog/blog-home/img8.jpg" alt="wrappixel kit"></a>
-                                    <div class="date-pos text-center text-white p-3 bg-success-gradiant">JOHN DOE &nbsp; &nbsp; SEPT 15, 2017
-                                    </div>
-                                    <h6 class="font-weight-medium mt-3"><a href="#" class="link text-decoration-none">New Seminar on Newest Food Recipe</a></h6>
-                              </div>
-                          </div>
-
-                        {% endif %}
-
-                        <!-- Column -->
-                        </div>
-                    </div>
-                {% endif %}
-
-            </div>
-
+    <div class="row mt-4">
+      <!-- Column -->
+        {% for post in posts %}
+        {% if forloop.counter == 1 %}
+      <div class="col-lg-6  mt-5">
+        <div class="card border-0 mb-4">
+          <a href="{% url 'blog:detail' post.id %}"><img class="card-img-top" src="{{ post.pic1.url }}" alt="" height="330" width="400"></a>
+          <div class="date-pos text-center text-white p-3 bg-success-gradiant">{{ post.title|title }} &nbsp; &nbsp; {{ post.date|date:'d F Y' }}</div>
+          <h5 class="font-weight-medium mt-3"><a href="{% url 'blog:detail' post.id %}" class="link text-decoration-none">{{ post.description|title|truncatechars:100 }}</a></h5>
+          <p class="m-t-20">{{ post.content|title|truncatewords:70 }}</p>
+        </div>
+      </div>
         {% endif %}
-    {% endfor %}
+        {% endfor %}
+      <!-- Column -->
+
+      <div class="col-lg-6">
+        <div class="row">
+            {% for post in posts %}
+            {% if forloop.counter == 2 %}
+          <!-- Column -->
+          <div class="col-md-6 mt-5">
+            <div class="card border-0 mb-4">
+              <a href="{% url 'blog:detail' post.id %}"><img class="card-img-top" src="{{ post.pic1.url }}" alt="" height="170" width="180"></a>
+              <div class="date-pos text-center text-white p-3 bg-success-gradiant">{{ post.title|title }} &nbsp; &nbsp; {{ post.date|date:'d F Y' }}</div>
+              <h6 class="font-weight-medium mt-3"><a href="{% url 'blog:detail' post.id %}" class="link text-decoration-none">{{ post.description|title|truncatechars:50 }}</a></h6>
+            </div>
+          </div>
+            {% endif %}
+            {% if forloop.counter == 3 %}
+          <!-- Column -->
+          <div class="col-md-6 mt-5">
+            <div class="card border-0 mb-4">
+              <a href="{% url 'blog:detail' post.id %}"><img class="card-img-top" src="{{ post.pic1.url }}" height="170" width="180"></a>
+              <div class="date-pos text-center text-white p-3 bg-success-gradiant">{{ post.title|title }} &nbsp; &nbsp; {{ post.date|date:'d F Y' }}</div>
+              <h6 class="font-weight-medium mt-3"><a href="{% url 'blog:detail' post.id %}" class="link text-decoration-none">{{ post.description|title|truncatechars:50 }}</a></h6>
+            </div>
+          </div>
+            {% endif %}
+            {% if forloop.counter == 4 %}
+          <!-- Column -->
+          <div class="col-md-6 mt-2">
+            <div class="card border-0 mb-4">
+              <a href="{% url 'blog:detail' post.id %}"><img class="card-img-top" src="{{ post.pic1.url }}" alt="" height="170" width="180"></a>
+              <div class="date-pos text-center text-white p-3 bg-success-gradiant">{{ post.title|title }} &nbsp; &nbsp; {{ post.date|date:'d F Y' }}</div>
+              <h6 class="font-weight-medium mt-3"><a href="{% url 'blog:detail' post.id %}" class="link text-decoration-none">{{ post.description|title|truncatechars:50 }}</a></h6>
+            </div>
+          </div>
+            {% endif %}
+            {% if forloop.counter == 5 %}
+          <!-- Column -->
+          <div class="col-md-6 mt-2">
+            <div class="card border-0 mb-4">
+              <a href="{% url 'blog:detail' post.id %}"><img class="card-img-top" src="{{ post.pic1.url }}" alt="" height="170" width="180"></a>
+              <div class="date-pos text-center text-white p-3 bg-success-gradiant">{{ post.title|title }} &nbsp; &nbsp; {{ post.date|date:'d F Y' }}</div>
+              <h6 class="font-weight-medium mt-3"><a href="{% url 'blog:detail' post.id %}" class="link text-decoration-none">{{ post.description|title|truncatechars:50 }}</a></h6>
+            </div>
+          </div>
+            {% endif %}
+          <!-- Column -->
+            {% endfor %}
+        </div>
+      </div>
+      <!-- Column -->
 
 
     </div>
-</div>
+        <br><br>
+        <hr>
+        <div class="row oldposts">
+            {% for post in posts %}
+            {% if forloop.counter > 5 %}
+                <div class="col-md-4 mt-5">
+                    <div class="card border-0 mb-4">
+                        <a href="{% url 'blog:detail' post.id %}"><img class="card-img-top" src="{{ post.pic1.url }}" alt="" height="200" width="300"></a>
+                        <div class="date-pos text-center text-white p-3 bg-success-gradiant">{{ post.title|title }} &nbsp; &nbsp; {{ post.date|date:'d F Y' }}</div>
+                        <h6 class="font-weight-medium mt-3"><a href="{% url 'blog:detail' post.id %}" class="link text-decoration-none">{{ post.description|title|truncatechars:50 }}</a></h6>
+                    </div>
+                </div>
+            {% endif %}
+            {% endfor %}
+        </div>
 
 
+    </div>
+    </div>
+    <style>
+        .blog-home3{
+            font-family:Montserrat,sans-serif;
+            color:#8d97ad;
+            font-weight:300
+        }
+        .blog-home3 a.link,.blog-home3 h1,.blog-home3 h2,.blog-home3 h3,.blog-home3 h4,.blog-home3 h5,.blog-home3 h6
+        {color:#3e4555}
 
+        .blog-home3 h5{
+            line-height:22px;font-size:18px
+        }
 
+        .blog-home3 a.link:hover{
+            color:#316ce8
+        }
 
+        .blog-home3 .font-weight-medium{
+            font-weight:500
+        }
 
+        .blog-home3 .subtitle{
+            color:#8d97ad;line-height:24px
+        }
 
+        .blog-home3 .bg-success-gradiant{
+            background:#d9534f;
+            background:-webkit-linear-gradient(legacy-direction(to right),#d9534f 0,#FFA500 100%);
+            background:-webkit-gradient(linear,left top,right top,from(#d9534f),to(#FFA500));
+            background:-webkit-linear-gradient(left,#d9534f 0,#FFA500 100%);
+            background:-o-linear-gradient(left,#d9534f 0,#FFA500 100%);
+            background:linear-gradient(to right,#d9534f 0,#FFA500 100%)
+        }
+        .blog-home3 .date-pos{
+            font-size:12px
+        }
 
+        .blog-home3 a{
+            overflow:hidden
+        }
 
-{% block scripts %}
-    <script src="{% static 'js/jquery.min.js'%}"></script>
-    <script src="{% static 'bootstrap/js/bootstrap.min.js'%}"></script>
-{% endblock %}
-{% endblock %}
+        .blog-home3 a img{
+            -webkit-transition:.2s ease-in;
+            -o-transition:.2s ease-in;
+            transition:.2s ease-in
+        }
+
+        .blog-home3 a img:hover{
+            -webkit-transform:scale(1.05);
+            -ms-transform:scale(1.05);
+            transform:scale(1.05)
+        }
+    </style>
+    <!-- End: Latest Blog -->
+    {% block scripts %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    {% endblock %}
+    {% endblock %}
