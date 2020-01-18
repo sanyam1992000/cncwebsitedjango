@@ -10,8 +10,8 @@
                         <div class="carousel-item active intro-item bg-image">
                             <div class="jumbotron pulse animated hero-nature carousel-hero" style="background-image: url('{{slide.image.url}}');">
                                 <h1 class="hero-title">{{ slide.title|title }}</h1>
-                                <p class="hero-subtitle">{{ slide.description|truncatechars:200 }} I am first Slide</p>
-                                <p><a class="btn btn-primary hero-button plat" role="button" href="{{ slide.url }}">Learn more</a></p>
+                                <p class="hero-subtitle"></p>
+                                <p><a class="btn btn-primary hero-button plat" role="button" href="{{ slide.url }}">Know more</a></p>
                             </div>
                         </div>
 
@@ -19,8 +19,8 @@
                         <div class="carousel-item intro-item bg-image">
                             <div class="jumbotron pulse animated hero-nature carousel-hero" style="background-image: url('{{slide.image.url}}');">
                                 <h1 class="hero-title">{{ slide.title|title }}</h1>
-                                <p class="hero-subtitle">{{ slide.description|truncatechars:200 }} {{ slide.image.url }}</p>
-                                <p><a class="btn btn-primary hero-button plat" role="button" href="{{ slide.url }}">Learn more</a></p>
+                                <p class="hero-subtitle"></p>
+                                <p><a class="btn btn-primary hero-button plat" role="button" href="{{ slide.url }}">Know more</a></p>
                             </div>
                         </div>
                     {% endif %}
@@ -62,7 +62,7 @@ p.hero-subtitle {
 }
 
 .plat {
-  border-radius: 0px;
+  border-radius: 30px;
 }
 
 .btn-primary.focus, .btn-primary:focus {
@@ -100,6 +100,8 @@ span {
 
     </style>
 {% endif %}
+
+<!--{{ slide.description|truncatechars:200 }}-->
 
 
 
