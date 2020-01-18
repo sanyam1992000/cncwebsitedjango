@@ -1,43 +1,111 @@
 {% extends 'base.html' %}
 {% block content %}
 
-    <h1>{{ post.title }}</h1>
-    {{ post.description }}
-    {{ post.date }}<br>
-    {{ post.content }}
-    <br>
-    <img class="img-fluid rounded" src="{{post.pic1.url }}" alt="" height="100" width="100">
+<div class="container card blog-content border-grey border rounded shadow-lg">
+    <div class="post-title">
+        {{ post.title }}
+    </div>
+    <div class="post-date">
+        {{ post.date }}
+    </div>
+    <hr>
+    <div class="post-img">
+        <img src="{{post.pic1.url }}" class="posts-img" style="height: 4%; width: 80%;">
+    </div>
+    <div class="post-content">
+        {{ post.content }}
+    </div>
+</div>
 
 
+
+<div class="container card  blog-content border-grey border rounded shadow-lg" style="border-radius: 10%">
+<div class="post-comments">
+    <div class="comment-heading">
+        Comments
+        <hr>
+    </div>
     {% if comments %}
-        <h2>Comments</h2>
-      {% for comment in comments  %}
-        <div class="media mb-4">
-          <div class="media-body">
-            <h5 class="mt-0">{{comment.comment_author}}</h5>
-            {{comment.comment_date}} <br>
-              <strong>{{ comment.comment_user }} </strong> - {{comment.comment_content}}
-              {% if request.user == comment.comment_user %}
-                <a href="{%  url 'blog:comment_delete' post.id comment.id%}"> Delete </a>
+    <div class="container comments">
+        {% for comment in comments  %}
+        <div class="container media mt-2">
+            <img class="mr-3 rounded-circle" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRq42cRCIj_c278x6YGJJXbU2gMHcdmnufPWAq7J0Zi6QpXWMug" alt="profile" height="64" width="64">
+            <div class="media-body" style="text-align: left; width: 30%; margin-right: 10%;">
+                <h4 class="mt-0">{{ comment.comment_user }}</h4>
+                {{comment.comment_date}}
+                <h5 class="">{{comment.comment_author}}</h5>
+                <h5>{{comment.comment_content}}</h5>
+
+                <br><hr>
+            </div>
+            <div class="media mt-3">
+                <div class="media-body">
+                    {% if request.user == comment.comment_user %}
+                        <a href="{%  url 'blog:comment_delete' post.id comment.id%}" class="btn btn-primary"> Delete </a>
+                    {% endif %}
                 </div>
-            {% endif %}
-          </div>
+            </div>
         </div>
-      {% endfor %}
+        {% endfor %}
+    </div>
+    {% endif %}
 
 
 
 
-        {% if request.user.is_authenticated %}
-        <div class="form">
+
+    {% if request.user.is_authenticated %}
+        <div class="form" style="margin-top: 20px; margin-bottom: 20px;">
+            <div class="row">
+                <div class="col-md-1">
+                    {% if user_instance.userprofile.pic %}
+                    <img src="{{user_instance.userprofile.pic.url}}" class="rounded-circle" height="100" width="100">
+                    {% endif %}
+                </div>
+                <div class="col-md-11">
                     <form method="POST">
-                        {% csrf_token%}
-                        <fieldset class="form-group">
-                            {{ form.as_ul }}
-                            <input type="submit" value="submit" ></fieldset>
+                    {% csrf_token%}
+                    <fieldset class="form-group">
+                        <div class="row container ml-1">
+                            <div class="col-md-10 col-sm-9 bg-danger rounded"><input name="comment_content" class="form-control"></div>
+                            <div class="col-md-1 col-sm-1"><button class="btn btn-danger bg-danger rounded shadow-md" type="submit" value="Comment">Comment</button></div>
+                        </div>
+                    </fieldset>
                     </form>
-            {% endif %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+</div>
+</div>
+<style>
+    .blog-content{
+        text-align: center;
+        margin-top: 30px;
+    }
+    .post-title{
+        text-align: center;
+        margin-top: 30px;
+        font-size: 35px;
+        font-weight: bold;
+        text-transform: uppercase;
 
+    }
+    .post-date{
+        font-size: 15px;
+    }
+    .post-content{
+        margin-top: 30px;
+        font-size: 20px;
+        margin-bottom: 30px;
+    }
+    .comment-heading{
+        margin-top:30px;
+        font-size: 30px;
+        text-transform: uppercase;
 
-{% endif %}
+    }
+
+</style>
+
 {% endblock %}
