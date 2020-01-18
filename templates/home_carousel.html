@@ -32,9 +32,15 @@
 
             <ol
                 class="carousel-indicators">
-                <li data-target="#carousel-1" data-slide-to="0" class="active"></li>
-                <li data-target="#carousel-1" data-slide-to="1"></li>
-                <li data-target="#carousel-1" data-slide-to="2"></li>
+                {% for slide in slideshows %}
+                    {% if forloop.counter == 1 %}
+                    <li data-target="#carousel-1" data-slide-to="0" class="active"></li>
+                    {% else %}
+                    <li data-target="#carousel-1" data-slide-to={{ forloop.counter0 }}></li>
+                    {% endif %}
+                {% endfor %}
+
+
             </ol>
         </div>
     </section>
