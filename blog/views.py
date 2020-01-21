@@ -8,7 +8,7 @@ from .models import Post, Comment
 
 def blog(request):
     post_all = Post.objects.all().order_by('-date')
-    paginator_post = Paginator(post_all, 10)
+    paginator_post = Paginator(post_all, 5)
     page = request.GET.get('page')
     posts = paginator_post.get_page(page)
     context = {

@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
 {% endblock %}
 
-
 <body>
     <!-- Start: Latest Blog -->
     <div class="blog-home3 py-5">
@@ -116,6 +115,9 @@
     </div>
     </div>
     <style>
+        .ppagination{
+            align-content: center;
+        }
         .blog-home3{
             font-family:Montserrat,sans-serif;
             color:#8d97ad;
@@ -168,6 +170,27 @@
             transform:scale(1.05)
         }
     </style>
+
+        <div class="ppagination">
+        <span class="step-links">
+        {% if posts.has_previous %}
+        <a href="?page=1">&laquo; First</a>
+        <a href="?page={{ posts.previous_page_number }}">Previous</a>
+        {% endif %}
+
+        {% for i in allposts.page_range %}
+          {% if i > posts.number|add:'-3' and i < posts.number|add:'3' %}
+          <a href="?page={{ i }}">{{ i }}</a>
+          {% endif %}
+        {% endfor %}
+
+        {% if posts.has_next %}
+          <a href="?page={{ posts.next_page_number }}">Next</a>
+          <a href="?page={{ posts.paginator.num_pages }}">Last &raquo;</a>
+        {% endif %}
+        </span>
+        </div>
+
     <!-- End: Latest Blog -->
     {% block scripts %}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
