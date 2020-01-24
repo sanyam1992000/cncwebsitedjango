@@ -1,7 +1,7 @@
 <div class="container body">
 </div>
     <center>
-    <div class="card profilebody border-white border rounded shadow-lg" style="width: 75%; height: 23rem; margin-top: -150px;">
+    <div class="card profilebody border-white border rounded shadow-lg" style="width: 80%; height: 30rem; margin-top: -150px; height: 27rem;">
             <div class="profile">
                 <div class="profilephoto" style="margin-top: 30px;">
                     {% if user_instance.userprofile.pic %}
@@ -17,7 +17,13 @@
                     <!-- and role or location -->
                     <h2>{{profile.roll_no}}</h2><br>
                     <h3><p>{{profile.course}} - {{ profile.branch }}</p></h3>
+                    <hr>
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <button type="button" class="btn btn-info">Edit Profile</button>
+                        <button type="button" class="btn btn-danger">Change Password</button>
+                    </div>
                 </div>
+
             </div>
     </div>
     </center>
@@ -62,9 +68,9 @@
 
 <style>
     .body{
-        margin-top: 40px;
-        background-color: #D9534F;
-        padding-top: 250px;
+        margin-top: 25px;
+        background-color: white;
+        padding-top: 150px;
     }
     .row .item{
         margin-bottom: 20px;
@@ -76,6 +82,9 @@
     a:hover{
         text-decoration: none;
         color: white;
+    }
+    .editoptions{
+        text-align: center;
     }
 
 </style>

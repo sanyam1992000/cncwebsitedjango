@@ -111,12 +111,41 @@
             {% endfor %}
         </div>
 
+        <div class="pagination">
+            <span class="step-links">
+            {% if posts.has_previous %}
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <a href="?page=1" style="padding-right: 3px;"><button type="button" class="btn btn-secondary">&laquo; First</button></a>
+                    <a href="?page={{ posts.previous_page_number }}"><button type="button" class="btn btn-secondary">Previous</button></a>
+                </div>
+            {% endif %}
+
+                <div class="btn-group" role="group" aria-label="Basic example">
+
+            {% for i in allposts.page_range %}
+            {% if i > posts.number|add:'-3' and i < posts.number|add:'3' %}
+
+                    <a href="?page={{ i }}" style="padding-right: 3px;"><button type="button" class="btn btn-secondary">{{ i }}</button></a>
+
+            {% endif %}
+            {% endfor %}
+                    </div>
+
+            {% if posts.has_next %}
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <a href="?page={{ posts.next_page_number }}" style="padding-right: 3px;"><button type="button" class="btn btn-secondary">Next</button></a>
+                    <a href="?page={{ posts.paginator.num_pages }}"><button type="button" class="btn btn-secondary">Last &raquo;</button></a>
+                </div>
+            {% endif %}
+            </span>
+        </div>
+
 
     </div>
     </div>
     <style>
-        .ppagination{
-            align-content: center;
+        .pagination{
+            text-align: center;
         }
         .blog-home3{
             font-family:Montserrat,sans-serif;
@@ -171,25 +200,8 @@
         }
     </style>
 
-        <div class="ppagination">
-        <span class="step-links">
-        {% if posts.has_previous %}
-        <a href="?page=1">&laquo; First</a>
-        <a href="?page={{ posts.previous_page_number }}">Previous</a>
-        {% endif %}
 
-        {% for i in allposts.page_range %}
-          {% if i > posts.number|add:'-3' and i < posts.number|add:'3' %}
-          <a href="?page={{ i }}">{{ i }}</a>
-          {% endif %}
-        {% endfor %}
 
-        {% if posts.has_next %}
-          <a href="?page={{ posts.next_page_number }}">Next</a>
-          <a href="?page={{ posts.paginator.num_pages }}">Last &raquo;</a>
-        {% endif %}
-        </span>
-        </div>
 
     <!-- End: Latest Blog -->
     {% block scripts %}
