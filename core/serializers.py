@@ -14,11 +14,12 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class UserProfileSerializer(serializers.HyperlinkedModelSerializer):
-    url = serializers.HyperlinkedIdentityField(view_name="core:userprofile-detail")
+    user_url = serializers.HyperlinkedIdentityField(view_name="core:userprofile-detail")
+    user = UserSerializer(many=False)
 
     class Meta:
         model = UserProfile
-        fields = ['url', 'pic', 'roll_no', 'course', 'branch', 'icard', 'phoneno']
+        fields = ['user_url', 'user', 'pic', 'roll_no', 'course', 'branch', 'icard', 'phoneno', 'password2']
 
 
 class CommentSerializer(serializers.HyperlinkedModelSerializer):
