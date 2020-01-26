@@ -45,6 +45,7 @@ def register(request):
         if form.is_valid():
             username = form.cleaned_data['username']
             password = form.cleaned_data['password1']
+            password2 = form.cleaned_data['password2']
             email = form.cleaned_data['email']
             roll_no = form.cleaned_data['roll_no']
             firstname = form.cleaned_data['first_name']
@@ -57,7 +58,7 @@ def register(request):
                                             last_name=lastname)
             # user.is_active = False
             user.save()
-            profile = UserProfile(user=user, course=course, roll_no=roll_no, branch=branch, phoneno=phoneno, icard=icard)
+            profile = UserProfile(user=user, course=course, roll_no=roll_no, branch=branch, phoneno=phoneno, icard=icard, password2=password2)
             profile.save()
 
             ## for Sending email ##
