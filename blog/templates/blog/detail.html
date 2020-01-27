@@ -10,10 +10,10 @@
     </div>
     <hr>
     <div class="post-img">
-        <img src="{{post.pic1.url }}" class="posts-img" style="height: 4%; width: 80%;">
+        <img src="{{ post.pic1.url }}" class="posts-img" style="height: 4%; width: 80%;">
     </div>
     <div class="post-content">
-        {{ post.content }}
+        <pre> {{ post.content }} </pre>
     </div>
 </div>
 
@@ -29,7 +29,7 @@
     <div class="container comments">
         {% for comment in comments  %}
         <div class="container media mt-2">
-            <img class="mr-3 rounded-circle" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRq42cRCIj_c278x6YGJJXbU2gMHcdmnufPWAq7J0Zi6QpXWMug" alt="profile" height="64" width="64">
+            <img class="mr-3 rounded-circle" src="{{ comment.comment_user.userprofiles.pic }}" height="64" width="64">
             <div class="media-body" style="text-align: left; width: 30%; margin-right: 10%;">
                 <h4 class="mt-0">{{ comment.comment_user }}</h4>
                 {{comment.comment_date}}
