@@ -30,7 +30,7 @@
         {% if forloop.counter0|divisibleby:"2" %}
             <div class="row flex-column-reverse align-items-center flex-sm-row">
                     <div class="card border-white border rounded shadow-lg col-12 col-sm-6 d-flex flex-column justify-content-center p-5 psd-right1">
-                        <center><h3 class="text-sm-center"> odd {{ event.event_name|capfirst}}</h3>
+                        <center><h3 class="text-sm-center">{{ event.event_name|capfirst}}</h3>
                         <h6 class="text-sm-center">{{ event.date }}</h6>
                         <p class="text-sm-center">{{ event.description }}<br></p>
                         <a class="text-sm-center det btn btn-danger bg-danger" href="{% url 'events:events_detail' event.id %}" >Event Details</a></center>
