@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from .serializers import UserSerializer, UserProfileSerializer, BlogSerializer, EventSerializer
-from accounts.models import UserProfile
+from accounts.models import UserProfile, FacultyProfile
 from blog.models import Post
 from events.models import Event
 from .models import SlideShowPic, ContactUs, Member
@@ -28,9 +28,10 @@ def home(request):
 
 def about(request):
     members = Member.objects.all()
-
+    faculties = FacultyProfile.objects.all()
     context = {
-        'members': members
+        'members': members,
+        'faculties': faculties,
 
     }
     return render(request, 'core/about.html', context)
