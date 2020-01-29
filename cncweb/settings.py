@@ -27,7 +27,7 @@ SECRET_KEY = '_!zs^u*$g_8owguy%y^5brfe@*vlwa2te+spf@kyhtf=+cg3t*'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['cncymca.herokuapp.com',]
+ALLOWED_HOSTS = ['cncymca.herokuapp.com','http://cncymca.herokuapp.com']
 
 # Application definition
 
@@ -77,7 +77,7 @@ TEMPLATES = [
     },
 ]
 
-SITE_ID = 1
+SITE_ID = 2
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
 )
@@ -131,8 +131,10 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 STATICFILES_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-# MEDIA_URL = '/media/'
-# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# if DEBUG:
+#     MEDIA_URL = '/media/'
+#     MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # emailid  =  careerandcounsellingcell.ymca@gmail.com
 # password = Career&Counselling
