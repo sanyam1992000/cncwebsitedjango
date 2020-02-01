@@ -18,10 +18,13 @@
                     <h2>{{profile.roll_no}}</h2><br>
                     <h3><p>{{profile.course}} - {{ profile.branch }}</p></h3>
                     <hr>
+
+                    {% if request.user == user_instance %}
                     <div class="btn-group" role="group" aria-label="Basic example">
                         <button type="button" class="btn btn-info">Edit Profile</button>
                         <button type="button" class="btn btn-danger">Change Password</button>
                     </div>
+                    {% endif %}
                 </div>
 
             </div>

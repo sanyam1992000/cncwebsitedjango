@@ -8,6 +8,8 @@ class Event(models.Model):
     description = models.CharField(max_length=1000)
     content = models.TextField(max_length=5000, blank=True, null=True)
     date = models.DateField()
+    time = models.TimeField(default=None, null=True, blank=True)
+    venue = models.CharField(default=None, max_length=100, blank=True, null=True)
     pic1 = models.ImageField(default=None, upload_to='event pics', blank=True, null=True)
     pic2 = models.ImageField(default=None, upload_to='event pics', blank=True, null=True)
     pic3 = models.ImageField(default=None, upload_to='event pics', blank=True, null=True)
@@ -19,7 +21,7 @@ class Event(models.Model):
     pic9 = models.ImageField(default=None, upload_to='event pics', blank=True, null=True)
     pic10 = models.ImageField(default=None, upload_to='event pics', blank=True, null=True)
     pic11 = models.ImageField(default=None, upload_to='event pics', blank=True, null=True) ##for home only
-    status = models.CharField(choices=(('True', 'Upcoming'), ('False', 'Happened')), max_length=10)
+    status = models.CharField(default=True, choices=(('True', 'Upcoming'), ('False', 'Happened')), max_length=10)
 
     def __str__(self):
         return self.event_name
@@ -48,8 +50,3 @@ class Registration(models.Model):
 
     class Meta:
         ordering = ['-date']
-
-
-class RequestedEvent(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    pass
