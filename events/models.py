@@ -9,7 +9,7 @@ class Event(models.Model):
     content = models.TextField(max_length=5000, blank=True, null=True)
     date = models.DateField()
     # time = models.TimeField(default=None, null=True, blank=True)
-    venue = models.CharField(default=None, max_length=100, blank=True, null=True)
+    # venue = models.CharField(default=None, max_length=100, blank=True, null=True)
     pic1 = models.ImageField(default=None, upload_to='event pics', blank=True, null=True)
     pic2 = models.ImageField(default=None, upload_to='event pics', blank=True, null=True)
     pic3 = models.ImageField(default=None, upload_to='event pics', blank=True, null=True)
