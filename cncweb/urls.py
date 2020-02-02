@@ -29,7 +29,7 @@ urlpatterns = [
     path('reset/<uidb64>/<token>/', PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
     path('reset/done/', PasswordResetCompleteView.as_view(), name='password_reset_complete'),
     path('change_password/', PasswordChangeView.as_view(), name='change_password'),
-    path('password_change_done/', PasswordChangeDoneView.as_view(), name='password_change_done'),
+    path('password_change_done/', include('core.urls', namespace='change_password_done')),
 
     path('events/', include('events.urls', namespace='events')),
     path('blog/', include('blog.urls', namespace='blog')),

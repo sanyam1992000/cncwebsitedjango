@@ -1,5 +1,6 @@
 from django.contrib import admin
 from .models import SlideShowPic, ContactUs, Member
+admin.site.site_header = 'Career And Counseling Cell'
 
 
 class ContactUsAdmin(admin.ModelAdmin):
