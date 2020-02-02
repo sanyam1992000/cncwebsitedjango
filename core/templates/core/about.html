@@ -1,39 +1,40 @@
+
 {% extends 'base.html' %}
 {% block title %}
     <title>CNC | About</title>
 {% endblock %}
 
 {% block content %}
+
 <!-- Start: Bold BS4 About and Team Section -->
     <div class="container" style="margin-top: 40px;">
         <h1 class="text-center">ABOUT</h1>
-        <p>Career and Counselling Cell has been established in the University on 5th May 2015. Official email id of the cell is cccell@jcboseust-ymca.ac.in</p>
-        <p class="text-center" style="margin-top: 30px;"><pre>
+        <p style="text-align: center">Career and Counselling Cell has been established in the University on 5th May 2015. Official email id of the cell is cccell@jcboseust-ymca.ac.in</p>
+        <p class="text-center" style="margin-top: 30px;">
         <b><h2> Broad objective of the cell are as follows:</h2></b>
-    a.       To help students to chalk out academic and career roadmaps for themselves.
-
-    b.       To create awareness among the students about emerging professional trends and entrepreneurship and market needs etc.
-
-    c.        To provide guidance to the students on various options available for higher studies available in India and abroad.
-
-    d.       To help the students in the development of their strengths, sharpening their interests and planning for a satisfying future.
-
-    e.        To provide guidance for personality development, positive attitude and inter-personal skills.
-
-    f.        To promote Value System and National Integration among students.
-
+        <ol type="a">
+        <li>To help students to chalk out academic and career roadmaps for themselves.</li>
+        <li>To create awareness among the students about emerging professional trends and entrepreneurship and market needs etc.</li>
+        <li>To provide guidance to the students on various options available for higher studies available in India and abroad.</li>
+        <li>To help the students in the development of their strengths, sharpening their interests and planning for a satisfying future.</li>
+        <li>To provide guidance for personality development, positive attitude and inter-personal skills.</li>
+        <li>To promote Value System and National Integration among students.</li>
+        </ol>
 
         <b> <h2> Avenues of Operation:</h2></b>
     The cell would facilitate following activities in broad ways:
-    a.       Organising expert lectures in different subjects for the students.
-
-    b.       Organise seminars for career building of the students in different areas.
-
-    c.        Organize counselling sessions for students.
-
-    d.       Organise career fair for the students.
-        </pre></p><br><br>
+        <ol type="a">
+            <li>Organising expert lectures in different subjects for the students.</li>
+            <li>Organise seminars for career building of the students in different areas.</li>
+            <li>Organize counselling sessions for students.</li>
+            <li>Organise career fair for the students.</li>
+        </ol>
+        </p><br><br>
     </div>
+
+    <style>
+        li{margin-top: 15px;}
+    </style>
     {% include 'core/teachers.html' %}
     {% include 'core/studentmember1.html' %}
 {% endblock %}
