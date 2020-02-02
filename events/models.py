@@ -42,8 +42,8 @@ class Registration(models.Model):
     def __str__(self):
         return self.event.event_name + self.user.username
 
-    def is_user_registered_for_event(self,user,event):
-        if self.objects.get(user=user,event=event):
+    def is_user_registered_for_event(self, user, event):
+        if self.objects.get(user=user, event=event):
             return True
         else:
             return False
