@@ -21,8 +21,8 @@
 
                     {% if request.user == user_instance %}
                     <div class="btn-group" role="group" aria-label="Basic example">
-                        <button type="button" class="btn btn-info">Edit Profile</button>
-                        <button type="button" class="btn btn-danger">Change Password</button>
+                        <a href="{% url 'accounts:edit_student_profile' user_instance.username %}"><button type="button" class="btn btn-info">Edit Profile</button></a>
+                        <a href="{% url 'change_password' %}"><button type="button" class="btn btn-danger">Change Password</button></a>
                     </div>
                     {% endif %}
                 </div>

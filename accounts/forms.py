@@ -82,10 +82,30 @@ class UserLogin(forms.Form):
 
 class EditUser(forms.ModelForm):
     email = forms.EmailField()
+    password = forms.CharField(label='Password', min_length=6,
+                               widget=forms.PasswordInput(attrs={'class': 'form-control'}))
 
     class Meta:
         model = User
-        fields = ['email']
+        fields = ['email', 'username', 'password']
+
+    def clean_username(self):
+        username = self.cleaned_data['username']
+        qs = User.objects.filter(username=username)
+        spaces = username.count(' ')
+        if qs.exists():
+            raise ValidationError('Username is already registered.')
+        elif spaces > 0:
+            raise ValidationError('Spaces not allowed in Username')
+        return username
+
+    def clean_email(self):
+        email = self.cleaned_data['email']
+        qs = User.objects.filter(email=email)
+        if qs.exists():
+            raise ValidationError('Email is already registered.')
+        return email
+
 
 
 class EditStudentProfile(forms.ModelForm):
@@ -93,3 +113,16 @@ class EditStudentProfile(forms.ModelForm):
     class Meta:
         model = UserProfile
         fields = ['pic', 'phoneno']
+
+
+class ChangePassword(forms.ModelForm):
+    current_password = forms.CharField(label='Current Password',min_length=6,
+                               widget=forms.PasswordInput(attrs={'class': 'form-control'}))
+    new_password = forms.CharField(label='New Password',min_length=6,
+                               widget=forms.PasswordInput(attrs={'class': 'form-control'}))
+    confirm_new_password = forms.CharField(label='Confirm New Password',min_length=6,
+                               widget=forms.PasswordInput(attrs={'class': 'form-control'}))
+
+    class Meta:
+        model = User
+        fields = ['current_password', 'new_password', 'confirm_new_password']

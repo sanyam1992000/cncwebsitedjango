@@ -36,7 +36,6 @@ def EventDetail(request, eventid):
     return render(request, 'events/event_detail1.html', context)
 
 
-# @login_required
 def Getpdf(request, username, eventid, *args, **kwargs):
     user = User.objects.get(username=username)
     event = Event.objects.get(id=eventid)

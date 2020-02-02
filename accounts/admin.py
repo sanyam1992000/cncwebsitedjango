@@ -2,6 +2,7 @@ from django.contrib import admin
 from .models import UserProfile, FacultyProfile
 
 # Register your models here.
+admin.site.site_header = 'Career And Counseling Cell'
 
 
 class UserProfileAdmin(admin.ModelAdmin):

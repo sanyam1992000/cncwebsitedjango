@@ -104,6 +104,7 @@ def ProfileDashboard(request, username):
 def EditStudentProfileView(request, username):
     user = request.user
     if user.username == username:
+
         if request.method == 'POST':
 
             userform = EditUser(request.POST, instance=user)
@@ -113,10 +114,13 @@ def EditStudentProfileView(request, username):
                 userform.save()
                 studentform.save()
                 messages.success(request, 'Your Profile is Updated')
+                password = self.cleaned_data.get('password', None)
+                if not self.user.check_password(password):
+                    raise ValidationError('Invalid password')
                 return redirect('core:home')
+
             else:
                 form = UserRegistrationForm(request.POST, request.FILES)
-                messages.error(request, form.errors)
         else:
             userform = EditUser(instance=user)
             studentform = EditStudentProfile(instance=user.userprofile)
