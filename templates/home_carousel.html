@@ -18,8 +18,12 @@
                     {% else %}
                         <div class="carousel-item intro-item bg-image">
                             <div class="jumbotron pulse animated hero-nature carousel-hero" style="background-image: url('{{slide.image.url}}');">
-                                <h1 class="hero-title">{{ slide.title|title }}</h1>
-                                <p class="hero-subtitle"></p>
+                                {% if slide.title %}
+                                <h1 class="hero-title">{{ slide.title }}</h1>
+                                {% endif %}
+                                {% if slide.description %}
+                                <p class="hero-subtitle">{{ slide.description }}</p>
+                                {% endif %}
                                 <p><a class="btn btn-primary hero-button plat" role="button" href="{{ slide.url }}">Know more</a></p>
                             </div>
                         </div>

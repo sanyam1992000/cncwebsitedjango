@@ -28,11 +28,7 @@ def EventsList(request):
 def EventDetail(request, eventid):
     event = get_object_or_404(Event, id=eventid)
     user = request.user
-    if Registration.objects.filter(event=event):
-        registration = Registration.objects.filter(user=user, event=event)
-        context = {'event': event, 'registration': registration}
-    else:
-        context = {'event': event}
+    context = {'event': event}
     return render(request, 'events/event_detail1.html', context)
 
 

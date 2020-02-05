@@ -4,9 +4,9 @@ from django.shortcuts import get_object_or_404
 
 
 class SlideShowPic(models.Model):
-    title = models.CharField(max_length=50, default=None)
+    title = models.CharField(max_length=50, default=None, blank=True, null=True)
     image = models.ImageField(default=None, upload_to='slide show pics')
-    description = models.CharField(max_length=300)
+    description = models.CharField(max_length=300, blank=True, null=True)
     url = models.URLField(name='url')
     number = models.IntegerField(default=1, blank=True, null=True)
 
