@@ -11,10 +11,10 @@ class InlineRegistration(admin.TabularInline):
 
 class EventAdmin(admin.ModelAdmin):
     inlines = [InlineRegistration]
-    list_display = ('event_name', 'description', 'status',)
+    list_display = ('event_name', 'description', 'date', 'status',)
     list_display_links = ('event_name', 'description')
-    # list_editable = ('status', 'date')
-    # list_filter = ('date', 'status')
+    list_editable = ('status', 'date')
+    list_filter = ('date', 'status')
     search_fields = ('user', 'roll_no', 'course', 'branch')
     list_max_show_all = 50
 

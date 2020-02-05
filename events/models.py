@@ -7,7 +7,7 @@ class Event(models.Model):
     event_name = models.CharField(max_length=100)
     description = models.CharField(max_length=1000)
     content = models.TextField(max_length=5000, blank=True, null=True)
-    # date = models.DateTimeField(blank=True, null=True)
+    date = models.DateTimeField(blank=True, null=True)
     venue = models.CharField(max_length=100, default=None, blank=True, null=True)
     pic1 = models.ImageField(default=None, upload_to='event pics', blank=True, null=True)
     pic2 = models.ImageField(default=None, upload_to='event pics', blank=True, null=True)
@@ -28,8 +28,8 @@ class Event(models.Model):
     def get_absolute_url(self):
         return reverse('blog:detail', self.id)
 
-    # class Meta:
-    #     ordering = ['-date']
+    class Meta:
+        ordering = ['-date']
 
 
 class Registration(models.Model):
