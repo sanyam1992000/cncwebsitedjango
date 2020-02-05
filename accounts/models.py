@@ -23,6 +23,11 @@ branch = (
     ('CIVIL', 'CIVIL'),
 )
 
+faculty_position = (
+    ('Head', '1-Head'),
+    ('Member', '2-Member'),
+)
+
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -42,7 +47,10 @@ class FacultyProfile(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     pic = models.ImageField(default=None, upload_to='faculty pics', blank=True, null=True)
     department = models.CharField(max_length=20)
-    position = models.CharField(max_length=20)
+    position = models.CharField(choices=faculty_position, max_length=20)
 
     def __str__(self):
         return str(self.user)
+
+    class Meta:
+        ordering = ['-position']

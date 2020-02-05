@@ -3,15 +3,15 @@ from accounts.models import User, UserProfile
 from django.shortcuts import get_object_or_404
 
 member_description = (
-    ('1', 'Student Co-ordinator'),
-    ('2', 'Member'),
-    ('3', 'Ex Student Co-ordinator'),
-    ('4', 'Ex Member')
+    ('Student Co-ordinator', '1-Student Co-ordinator'),
+    ('Member', '2-Member'),
+    ('Ex Student Co-ordinator', '3-Ex Student Co-ordinator'),
+    ('Ex Member', '4-Ex Member')
 )
 
 member_status = (
-    ('True', 'Current'),
-    ('False', 'Alumni'),
+    ('Current', 'Current'),
+    ('Alumni', 'Alumni'),
 )
 
 
