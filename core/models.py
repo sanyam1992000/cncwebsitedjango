@@ -14,6 +14,7 @@ member_status = (
     ('False', 'Alumni'),
 )
 
+
 class SlideShowPic(models.Model):
     title = models.CharField(max_length=50, default=None, blank=True, null=True)
     image = models.ImageField(default=None, upload_to='slide show pics')
@@ -48,7 +49,7 @@ class Member(models.Model):
         super().save(*args, **kwargs)  # call the actual save method
 
     class Meta:
-        ordering = ['description']
+        ordering = ['-description']
 
 
 class ContactUs(models.Model):
