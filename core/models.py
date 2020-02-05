@@ -2,6 +2,17 @@ from django.db import models
 from accounts.models import User, UserProfile
 from django.shortcuts import get_object_or_404
 
+member_description = (
+    ('1', 'Student Co-ordinator'),
+    ('2', 'Member'),
+    ('3', 'Ex Student Co-ordinator'),
+    ('4', 'Ex Member')
+)
+
+member_status = (
+    ('True', 'Current'),
+    ('False', 'Alumni'),
+)
 
 class SlideShowPic(models.Model):
     title = models.CharField(max_length=50, default=None, blank=True, null=True)
@@ -20,7 +31,8 @@ class SlideShowPic(models.Model):
 class Member(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     userprofile = models.ForeignKey(UserProfile, on_delete=models.CASCADE, default=None, blank=True, null=True)
-    description = models.CharField(max_length=100)
+    description = models.CharField(choices=member_description, max_length=100)
+    status = models.CharField(choices=member_status, max_length=100, blank=True, null=True)
 
     def __str__(self):
         return str(self.user.username)
@@ -34,6 +46,9 @@ class Member(models.Model):
         self.userprofile = userprofile1
 
         super().save(*args, **kwargs)  # call the actual save method
+
+    class Meta:
+        ordering = ['description']
 
 
 class ContactUs(models.Model):
