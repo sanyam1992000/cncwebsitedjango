@@ -28,7 +28,7 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     pic = models.ImageField(default='student pics/default_user.png', upload_to='student pics', blank=True, null=True)
     roll_no = models.BigIntegerField(unique=True)
-    course = models.CharField(choices=courses, max_length=10, default='CE')
+    course = models.CharField(choices=courses, max_length=10)
     branch = models.CharField(choices=branch, max_length=10)
     icard = models.ImageField(upload_to='icard', blank=True, null=True)
     phoneno = models.BigIntegerField(default=None)

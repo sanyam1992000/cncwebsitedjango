@@ -8,9 +8,13 @@ class SlideShowPic(models.Model):
     image = models.ImageField(default=None, upload_to='slide show pics')
     description = models.CharField(max_length=300)
     url = models.URLField(name='url')
+    number = models.IntegerField(default=1, blank=True, null=True)
 
     def __str__(self):
         return self.title
+    
+    class Meta:
+        ordering = ['number']
 
 
 class Member(models.Model):
@@ -36,4 +40,4 @@ class ContactUs(models.Model):
     name = models.CharField(max_length=50)
     email = models.EmailField(default=None)
     phoneno = models.BigIntegerField(default=None)
-    query = models.TextField(max_length=2000)
+    query = models.TextField(max_length=5000)
