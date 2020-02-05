@@ -45,7 +45,6 @@ class Member(models.Model):
     def save(self, *args, **kwargs):
         userprofile1 = self.get_user_profile(self.user)
         self.userprofile = userprofile1
-
         super().save(*args, **kwargs)  # call the actual save method
 
     class Meta:
