@@ -113,6 +113,7 @@ def EditStudentProfileView(request, username):
             if userform.is_valid() and studentform.is_valid():
                 userform.save()
                 studentform.save()
+                
                 messages.success(request, 'Your Profile is Updated')
                 password = self.cleaned_data.get('password', None)
                 if not self.user.check_password(password):
