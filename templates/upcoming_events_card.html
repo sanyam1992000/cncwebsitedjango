@@ -1,18 +1,19 @@
 
 {% if upcomingevents%}
-<center><div class="article-list" style="background-color: rgba(255, 87, 51,0.9);">
+<center><div class="article-list" style="background: rgb(2,0,36); padding-bottom: 20px;
+background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,10,151,1) 0%, rgba(255,0,0,1) 100%);">
         <div class="container">
             <!-- Start: Intro -->
-            <div class="intro" style="padding-top: 30px; margin-bottom: 50px; color: white">
-                <h2 class="text-center">Upcoming Events</h2>
+            <div class="intro" style="padding-top: 30px; margin-bottom: 50px; color: ghostwhite">
+                <h1 class="text-center">Upcoming Events</h1>
             </div>
             <!-- End: Intro -->
             <!-- Start: Articles -->
-            <div class="row articles">
+            <div class="row articles wow slideInLeft">
 
                 {% for event in upcomingevents %}
                 <a href="{% url 'events:events_detail' event.id%}" style="display: block; text-decoration: none; color:black;">
-                    <div class="col-sm-6 col-md-4 item">
+                    <div class="col-sm-6 col-md-4 item zoom">
                         <div class="card border-white border rounded shadow-lg" style="width: auto; height: 27rem;">
                             <img class="card-img-top" src="{{ event.pic1.url }}" alt="Card image cap" height="200px">
                             <div class="card-body">
@@ -39,6 +40,13 @@
     .item{
         margin-bottom: 20px;
     }
+    .zoom{
+        transition: transform .2s;
+    }
+    .zoom:hover {
+
+  transform: scale(1.05);
+}
 
 </style>
 {% endif %}
