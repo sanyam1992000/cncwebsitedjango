@@ -1,7 +1,7 @@
 {% load static %}
 <div style="margin-top: -4px;">
     <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top" >
-        <div class="container" style=""><a class="navbar-brand" href="{% url 'core:home' %}" style="font-family:Arial Narrow, cursive;font-size: 40px;color: #ffffff;"><img src="{% static 'img/logo.png' %}" height="60" width="60"></a>
+        <div class="container" style=""><a class="navbar-brand" href="{% url 'core:home' %}" style="font-family:Arial Narrow, cursive;font-size: 40px;color: #ffffff;"><img src="{% static 'img/logo.png' %}" height="70" width="70"></a>
             <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1" type="button" aria-controls="navcol-1" aria-expanded="false" aria-label="Toggle navigation"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon text-white"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="nav navbar-nav ml-auto">
@@ -32,7 +32,9 @@
 <style>
 
      .hov:hover{
-        background-color: #D9534F;
+        background: rgb(2,0,36);
+background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,10,151,1) 0%, rgba(255,0,0,1) 100%);
+         color: white;
 
     }
 
@@ -44,11 +46,28 @@
         padding-left: 5px;
     }
 
-    .bord:hover{
-        border-bottom: 2px solid  #D9534F;
-    }
+
+
+    li {
+    margin-bottom: 4px;
+}
+
+
+.bord::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #D9534F;
+    transition: width .3s;
+}
+
+.bord:hover::after {
+    width: 100%;
+
+}
     .nav-item{
-        text-transform: camelcase;
+        text-transform: capitalize;
         letter-spacing: .1px;
     }
 
