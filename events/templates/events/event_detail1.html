@@ -20,6 +20,8 @@
 <br>
 <br>
 <br>
+<div style="background: rgb(2,0,36);
+background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,10,151,1) 0%, rgba(255,0,0,1) 100%); padding: 20px;">
     <div class="article-dual-column">
         <div class="container card blog-content border-grey border rounded shadow-lg">
 
@@ -27,7 +29,7 @@
 
 
                     <div class="intro">
-                        <h1 class="text-center"><strong>{{ event.event_name|title }}</strong></h1>
+                        <h2 class="text-center">{{ event.event_name|title }}</h2>
                         <p class="text-center">
                             <h6>Event Date - {{ event.date|date:'d F Y'}} </h6>
                         </p>
@@ -35,7 +37,7 @@
                         <p class="text-dark text-center">{{ event.description|capfirst }}</p>
 
                         {% if event.pic2 %}
-                        <center><img class="img-fluid" src="{{ event.pic2.url }}" height="200px"></center><br>
+                        <center><img class="img-fluid" src="{{ event.pic2.url }}" style="width: auto; height: 300px;"></center><br>
                         {% endif %}
 
                     </div>
@@ -95,6 +97,7 @@
             </div>
         </div>
     </div>
+</div>
 
 
 
@@ -108,6 +111,10 @@
         text-align: center;
         margin-top: 30px;
     }
+    .text{
+        text-align: left;
+    }
+
     </style>
 {% endblock %}
 

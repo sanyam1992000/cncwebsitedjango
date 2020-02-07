@@ -3,6 +3,8 @@
 <br>
 <br>
 <br>
+<div  class="wow slideInUp" style="background: rgb(2,0,36);
+background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,10,151,1) 0%, rgba(255,0,0,1) 100%); padding: 50px;">
 <div class="container card blog-content border-grey border rounded shadow-lg">
     <div class="post-title">
         {{ post.title }}
@@ -11,8 +13,8 @@
         {{ post.date }}
     </div>
     <hr>
-    <div class="post-img">
-        <img src="{{ post.pic1.url }}" class="posts-img" height="200px" width="200px">
+    <div class="post-img" style="text-align: center">
+        <img src="{{ post.pic1.url }}" class="posts-img" style="width: auto; height: 300px">
     </div>
     <div class="post-content">
         <p> {{ post.content|escape|linebreaks }} </p>
@@ -23,7 +25,7 @@
 
 <div class="container card  blog-content border-grey border rounded shadow-lg" style="border-radius: 10%">
 <div class="post-comments">
-    <div class="comment-heading">
+    <div class="comment-heading" style="text-align: center">
         Comments
         <hr>
     </div>
@@ -43,7 +45,8 @@
             <div class="media mt-3">
                 <div class="media-body">
                     {% if request.user == comment.comment_user %}
-                        <a href="{%  url 'blog:comment_delete' post.id comment.id%}" class="btn btn-primary"> Delete </a>
+                        <a href="{%  url 'blog:comment_delete' post.id comment.id%}" class="btn" style="background: rgb(2,0,36);
+background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,10,151,1) 0%, rgba(255,0,0,1) 100%); color: ghostwhite"> Delete </a>
                     {% endif %}
                 </div>
             </div>
@@ -80,9 +83,10 @@
     {% endif %}
 </div>
 </div>
+</div>
 <style>
     .blog-content{
-        text-align: center;
+
         margin-top: 30px;
     }
     .post-title{
@@ -95,6 +99,7 @@
     }
     .post-date{
         font-size: 15px;
+        text-align: center;
     }
     .post-content{
         margin-top: 30px;

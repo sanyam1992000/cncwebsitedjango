@@ -89,15 +89,16 @@ class EditUser(forms.ModelForm):
         model = User
         fields = ['email', 'username', 'password']
 
-    def clean_username(self):
-        username = self.cleaned_data['username']
-        qs = User.objects.filter(username=username)
-        spaces = username.count(' ')
-        if qs.exists():
-            raise ValidationError('Username is already registered.')
-        elif spaces > 0:
-            raise ValidationError('Spaces not allowed in Username')
-        return username
+    # def clean_username(self):
+    #     username = self.cleaned_data['username']
+    #     qs = User.objects.filter(username=username)
+    #     spaces = username.count(' ')
+    #     if u
+    #     elif qs.exists():
+    #         raise ValidationError('Username is already registered.')
+    #     elif spaces > 0:
+    #         raise ValidationError('Spaces not allowed in Username')
+    #     return username
 
     def clean_email(self):
         email = self.cleaned_data['email']

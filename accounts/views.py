@@ -9,6 +9,8 @@ from django.contrib.auth.models import User
 from django.conf import settings
 from events.views import Registration
 from django.http import HttpResponseForbidden
+from django.core.exceptions import ValidationError
+
 # Create your views here.
 
 
@@ -104,24 +106,28 @@ def ProfileDashboard(request, username):
 def EditStudentProfileView(request, username):
     user = request.user
     if user.username == username:
-
         if request.method == 'POST':
-
             userform = EditUser(request.POST, instance=user)
             studentform = EditStudentProfile(request.POST, request.FILES, instance=user.userprofile)
 
             if userform.is_valid() and studentform.is_valid():
+                password = userform.cleaned_data['password']
+                username = userform.cleaned_data['username']
+                try:
+                    user1 = User.objects.get(username='username')
+                    if user1 != user:
+                        raise ValidationError('Username already taken')
+                except:
+                    pass
+
+                if user.check_password(password):
+                    raise ValidationError('Invalid password')
+
+                messages.success(request, 'Your Profile is Updated')
                 userform.save()
                 studentform.save()
-                
-                messages.success(request, 'Your Profile is Updated')
-                password = self.cleaned_data.get('password', None)
-                if not self.user.check_password(password):
-                    raise ValidationError('Invalid password')
                 return redirect('core:home')
 
-            else:
-                form = UserRegistrationForm(request.POST, request.FILES)
         else:
             userform = EditUser(instance=user)
             studentform = EditStudentProfile(instance=user.userprofile)
