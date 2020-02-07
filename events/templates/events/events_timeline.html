@@ -1,0 +1,79 @@
+{% load static %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    {% block static %}
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=ABeeZee">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli">
+    <link rel="stylesheet" href="{% static 'css/Side-By-Side-Section.css'%}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="{% static 'css/Article-Dual-Column.css'%}">
+    <link rel="stylesheet" href="{% static 'css/Basic-fancyBox-Gallery-v2.css'%}">
+    <link rel="stylesheet" href="{% static 'css/blog-1.css'%}">
+    <link rel="stylesheet" href="{% static 'css/blog.css'%}">
+    <link rel="stylesheet" href="{% static 'css/LinkedIn-like-Profile-Box.css'%}">
+
+    {% endblock %}
+
+    <section class="index-howto-alt py-3">
+        <div class="x_001_laptop_main_wrap"></div>
+        <div class="container">
+            <h2 class="text-center mb-3 mt-4"><strong>EVENTS SO FAR</strong></h2>
+            <div class="psd-line pos-rel" style="position:relative;">
+
+
+        {% for event in events %}
+                {% if event.status == 'False' %}
+        {% if forloop.counter0|divisibleby:"2" %}
+            <div class="row flex-column-reverse align-items-center flex-sm-row">
+                    <div class="card border-white border rounded shadow-lg col-12 col-sm-6 d-flex flex-column justify-content-center p-5 psd-right1">
+                        <center><h3 class="text-sm-center">{{ event.event_name|capfirst}}</h3>
+                        <h6 class="text-sm-center">{{ event.date }}</h6>
+                        <p class="text-sm-center">{{ event.description }}<br></p>
+                        <a class="text-sm-center det btn btn-danger bg-danger" href="{% url 'events:events_detail' event.id %}" >Event Details</a></center>
+                    </div>
+
+                    <div class="col-12 col-sm-6 d-flex flex-row justify-content-center align-items-center intro-card-2 p-5">
+                        <img class="howto-img imground" src="{{ event.pic2.url }}" alt="" href="{% url 'events:events_detail' event.id %}" width="200" height="200">
+                    </div>
+                </div>
+        {% elif not forloop.counter0|divisibleby:"2"%}
+            <div class="row align-items-center">
+                    <div class="col-12 col-sm-6 d-flex flex-row justify-content-center align-items-center intro-card-3 p-5">
+                        <img class="howto-img imground" src="{{ event.pic2.url }}" href="{% url 'events:events_detail' event.id %}" alt="" width="200" height="200">
+                    </div>
+                    <div class="card border-white border rounded shadow-lg col-12 col-sm-6 d-flex flex-column justify-content-center p-5 psd-left2">
+                        <center><h3 class="text-sm-center">{{ event.event_name|capfirst}}</h3>
+                        <h6 class="text-sm-center">{{ event.date }}</h6>
+                        <p class="text-sm-center">{{ event.description }}<br></p>
+                        <a class="text-sm-center det btn btn-danger bg-danger" href="{% url 'events:events_detail' event.id %}">Event Details</a></center></div>
+                    </div>
+        {% endif %}
+    {% endif %}
+     {% endfor %}
+            </div>
+
+        </div>
+    </section>
+<style>
+    .imground{
+        border: 13px solid #D9534F;
+        border-radius: 100%;
+    }
+    .det:hover{
+        display: block;
+        text-decoration: none;
+    }
+    .det{
+        width: 10rem;
+    }
+</style>
+
+    {% block scripts %}
+    <script src="{% static 'js/jquery.min.js'%}"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.min.js'%}"></script>
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+    {% endblock %}
