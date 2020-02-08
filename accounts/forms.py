@@ -83,12 +83,10 @@ class UserLogin(forms.Form):
 class EditUser(forms.ModelForm):
     username = forms.CharField(label='Username',max_length=100)
     email = forms.EmailField()
-    password1 = forms.CharField(label='Password', min_length=6,
-                               widget=forms.PasswordInput(attrs={'class': 'form-control'}))
 
     class Meta:
         model = User
-        fields = ['email', 'username', 'password1']
+        fields = ['email', 'username']
 
     # def clean_password1(self):
     #     password = self.cleaned_data['password1']

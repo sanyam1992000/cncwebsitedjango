@@ -106,30 +106,33 @@ def ProfileDashboard(request, username):
 def EditStudentProfileView(request, username):
     user = request.user
     old_username = user.username
+
     if user.username == username:
         if request.method == 'POST':
+
             userform = EditUser(request.POST, instance=user)
             studentform = EditStudentProfile(request.POST, request.FILES, instance=user.userprofile)
+
             if userform.is_valid() and studentform.is_valid():
                 user1 = User.objects.filter(username='new_username')
 
-                if not user.check_password('password1'):
-                    return redirect('accounts:edit_student_profile', user.username)
+                # if not user.check_password('password1'):
+                #     messages.error(request, 'Wrong Password')
+                #     return redirect('accounts:edit_student_profile', user.username)
 
-                if user1:
-                    if user1.username != old_username:
-                        raise ValidationError('Username already taken')
+                if user1 and old_username == user1.username:
+                    messages.error(request, 'Username already taken')
+                    return redirect('accounts:edit_student_profile',user.username)
 
                 messages.success(request, 'Your Profile is Updated')
                 userform.save()
                 studentform.save()
-                return redirect('core:home')
+                return redirect('accounts:dashboard', user.username)
 
         else:
             userform = EditUser(instance=user)
             studentform = EditStudentProfile(instance=user.userprofile)
         return render(request, 'accounts/edit_user_profile.html', {'userform': userform, 'studentform': studentform})
-
 
     else:
         return HttpResponseForbidden()
