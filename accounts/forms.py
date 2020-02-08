@@ -47,7 +47,7 @@ class UserRegistrationForm(forms.Form):
         p2 = cleaned_data.get('password2')
         if p1 and p2:
             if p1 != p2:
-                raise ValidationError({'password2': 'Password Mismatch'})
+                raise ValidationError('Password Mismatch')
 
     def clean_email(self):
         email = self.cleaned_data['email']
@@ -81,6 +81,7 @@ class UserLogin(forms.Form):
 
 
 class EditUser(forms.ModelForm):
+    username = forms.CharField(label='Username',max_length=100)
     email = forms.EmailField()
     password = forms.CharField(label='Password', min_length=6,
                                widget=forms.PasswordInput(attrs={'class': 'form-control'}))
@@ -88,6 +89,11 @@ class EditUser(forms.ModelForm):
     class Meta:
         model = User
         fields = ['email', 'username', 'password']
+
+    def clean_old_password(self):
+        password = self.cleaned_data['password']
+        if not self.user.check_password(password):
+            raise ValidationError('Invalid password')
 
     # def clean_username(self):
     #     username = self.cleaned_data['username']
@@ -100,13 +106,12 @@ class EditUser(forms.ModelForm):
     #         raise ValidationError('Spaces not allowed in Username')
     #     return username
 
-    def clean_email(self):
-        email = self.cleaned_data['email']
-        qs = User.objects.filter(email=email)
-        if qs.exists():
-            raise ValidationError('Email is already registered.')
-        return email
-
+    # def clean_email(self):
+    #     email = self.cleaned_data['email']
+    #     qs = User.objects.filter(email=email)
+    #     if qs.exists():
+    #         raise ValidationError('Email is already registered.')
+    #     return email
 
 
 class EditStudentProfile(forms.ModelForm):
