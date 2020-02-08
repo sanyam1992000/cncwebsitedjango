@@ -13,7 +13,8 @@
 {% endblock %}
 
 <body>
-
+<div style="background: rgb(2,0,36);
+background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,10,151,1) 0%, rgba(255,0,0,1) 100%);">
     <br>
     <br>
     <br>
@@ -24,24 +25,26 @@
     <div class="row justify-content-center">
       <!-- Column -->
       <div class="col-md-8 text-center">
-        <h2 class="my-3">BLOG</h2>
+        <h2 class="my-3 text-white">BLOG</h2>
       </div>
+
       <!-- Column -->
       <!-- Column -->
     </div>
+        <hr style="background-color: white">
 
 
 
-    <div class="row mt-4">
+    <div class="row mt-3">
       <!-- Column -->
         {% for post in posts %}
         {% if forloop.counter == 1 %}
       <div class="col-lg-6  mt-5">
-        <div class="card border-0 mb-4">
-          <a href="{% url 'blog:detail' post.id %}"><img class="card-img-top" src="{{ post.pic1.url }}" alt="" height="330" width="400"></a>
+        <div class="card shadow-lg border-0 mb-4">
+          <a href="{% url 'blog:detail' post.id %}"><img class="card-img-top" style="border-radius: 35px;" src="{{ post.pic1.url }}" alt="" height="330" width="400"></a>
           <div class="date-pos text-center text-white p-3 bg-success-gradiant">{{ post.title|title }} &nbsp; &nbsp; {{ post.date|date:'d F Y' }}</div>
-          <h5 class="font-weight-medium mt-3"><a href="{% url 'blog:detail' post.id %}" class="link text-decoration-none">{{ post.description|title|truncatechars:100 }}</a></h5>
-          <p class="m-t-20">{{ post.content|title|truncatewords:70 }}</p>
+          <h5 class="font-weight-medium container mt-3"><a href="{% url 'blog:detail' post.id %}" class="link text-decoration-none">{{ post.description|title|truncatechars:100 }}</a></h5>
+          <p class="m-t-20 container">{{ post.content|title|truncatewords:70 }}</p>
         </div>
       </div>
         {% endif %}
@@ -54,40 +57,40 @@
             {% if forloop.counter == 2 %}
           <!-- Column -->
           <div class="col-md-6 mt-5">
-            <div class="card border-0 mb-4">
-              <a href="{% url 'blog:detail' post.id %}"><img class="card-img-top" src="{{ post.pic1.url }}" alt="" height="170" width="180"></a>
-              <div class="date-pos text-center text-white p-3 bg-success-gradiant">{{ post.title|title }} &nbsp; &nbsp; {{ post.date|date:'d F Y' }}</div>
-              <h6 class="font-weight-medium mt-3"><a href="{% url 'blog:detail' post.id %}" class="link text-decoration-none">{{ post.description|title|truncatechars:50 }}</a></h6>
+            <div class="card shadow-lg border-0 mb-4">
+              <a href="{% url 'blog:detail' post.id %}"><img class="card-img-top" style="border-radius: 35px;"src="{{ post.pic1.url }}" alt="" height="170" width="180"></a>
+              <div class="date-pos container text-center text-white p-3 bg-success-gradiant">{{ post.title|title }} &nbsp; &nbsp; {{ post.date|date:'d F Y' }}</div>
+              <h6 class="font-weight-medium container mt-3"><a href="{% url 'blog:detail' post.id %}" class="link text-decoration-none">{{ post.description|title|truncatechars:50 }}</a></h6>
             </div>
           </div>
             {% endif %}
             {% if forloop.counter == 3 %}
           <!-- Column -->
           <div class="col-md-6 mt-5">
-            <div class="card border-0 mb-4">
-              <a href="{% url 'blog:detail' post.id %}"><img class="card-img-top" src="{{ post.pic1.url }}" height="170" width="180"></a>
-              <div class="date-pos text-center text-white p-3 bg-success-gradiant">{{ post.title|title }} &nbsp; &nbsp; {{ post.date|date:'d F Y' }}</div>
-              <h6 class="font-weight-medium mt-3"><a href="{% url 'blog:detail' post.id %}" class="link text-decoration-none">{{ post.description|title|truncatechars:50 }}</a></h6>
+            <div class="card shadow-lg border-0 mb-4">
+              <a href="{% url 'blog:detail' post.id %}"><img class="card-img-top" style="border-radius: 35px;" src="{{ post.pic1.url }}" height="170" width="180"></a>
+              <div class="date-pos container text-center text-white p-3 bg-success-gradiant">{{ post.title|title }} &nbsp; &nbsp; {{ post.date|date:'d F Y' }}</div>
+              <h6 class="font-weight-medium container mt-3"><a href="{% url 'blog:detail' post.id %}" class="link text-decoration-none">{{ post.description|title|truncatechars:50 }}</a></h6>
             </div>
           </div>
             {% endif %}
             {% if forloop.counter == 4 %}
           <!-- Column -->
           <div class="col-md-6 mt-2">
-            <div class="card border-0 mb-4">
-              <a href="{% url 'blog:detail' post.id %}"><img class="card-img-top" src="{{ post.pic1.url }}" alt="" height="170" width="180"></a>
-              <div class="date-pos text-center text-white p-3 bg-success-gradiant">{{ post.title|title }} &nbsp; &nbsp; {{ post.date|date:'d F Y' }}</div>
-              <h6 class="font-weight-medium mt-3"><a href="{% url 'blog:detail' post.id %}" class="link text-decoration-none">{{ post.description|title|truncatechars:50 }}</a></h6>
+            <div class="card shadow-lg border-0 mb-4">
+              <a href="{% url 'blog:detail' post.id %}"><img class="card-img-top" style="border-radius: 35px;" src="{{ post.pic1.url }}" alt="" height="170" width="180"></a>
+              <div class="date-pos container text-center text-white p-3 bg-success-gradiant">{{ post.title|title }} &nbsp; &nbsp; {{ post.date|date:'d F Y' }}</div>
+              <h6 class="font-weight-medium container mt-3"><a href="{% url 'blog:detail' post.id %}" class="link text-decoration-none">{{ post.description|title|truncatechars:50 }}</a></h6>
             </div>
           </div>
             {% endif %}
             {% if forloop.counter == 5 %}
           <!-- Column -->
           <div class="col-md-6 mt-2">
-            <div class="card border-0 mb-4">
-              <a href="{% url 'blog:detail' post.id %}"><img class="card-img-top" src="{{ post.pic1.url }}" alt="" height="170" width="180"></a>
-              <div class="date-pos text-center text-white p-3 bg-success-gradiant">{{ post.title|title }} &nbsp; &nbsp; {{ post.date|date:'d F Y' }}</div>
-              <h6 class="font-weight-medium mt-3"><a href="{% url 'blog:detail' post.id %}" class="link text-decoration-none">{{ post.description|title|truncatechars:50 }}</a></h6>
+            <div class="card shadow-lg border-0 mb-4">
+              <a href="{% url 'blog:detail' post.id %}"><img class="card-img-top" style="border-radius: 35px;" src="{{ post.pic1.url }}" alt="" height="170" width="180"></a>
+              <div class="date-pos text-center container text-white p-3 bg-success-gradiant">{{ post.title|title }} &nbsp; &nbsp; {{ post.date|date:'d F Y' }}</div>
+              <h6 class="font-weight-medium container mt-3"><a href="{% url 'blog:detail' post.id %}" class="link text-decoration-none">{{ post.description|title|truncatechars:50 }}</a></h6>
             </div>
           </div>
             {% endif %}
@@ -105,10 +108,10 @@
             {% for post in posts %}
             {% if forloop.counter > 5 %}
                 <div class="col-md-4 mt-5">
-                    <div class="card border-0 mb-4">
-                        <a href="{% url 'blog:detail' post.id %}"><img class="card-img-top" src="{{ post.pic1.url }}" alt="" height="200" width="300"></a>
-                        <div class="date-pos text-center text-white p-3 bg-success-gradiant">{{ post.title|title }} &nbsp; &nbsp; {{ post.date|date:'d F Y' }}</div>
-                        <h6 class="font-weight-medium mt-3"><a href="{% url 'blog:detail' post.id %}" class="link text-decoration-none">{{ post.description|title|truncatechars:50 }}</a></h6>
+                    <div class="card shadow-lg border-0 mb-4">
+                        <a href="{% url 'blog:detail' post.id %}"><img class="card-img-top" style="border-radius: 35px;" src="{{ post.pic1.url }}" alt="" height="200" width="300"></a>
+                        <div class="date-pos container text-center text-white p-3 bg-success-gradiant">{{ post.title|title }} &nbsp; &nbsp; {{ post.date|date:'d F Y' }}</div>
+                        <h6 class="font-weight-medium container mt-3"><a href="{% url 'blog:detail' post.id %}" class="link text-decoration-none">{{ post.description|title|truncatechars:50 }}</a></h6>
                     </div>
                 </div>
             {% endif %}
@@ -119,7 +122,7 @@
             <span class="step-links">
             {% if posts.has_previous %}
                 <div class="btn-group" role="group" aria-label="Basic example">
-                    <a href="?page=1" style="padding-right: 3px;"><button type="button" class="btn btn-secondary">&laquo; First</button></a>
+                    <a href="?page=1" style="padding-right: 3px;"><button type="button" class="btn btn-light">&laquo; First</button></a>
                     <a href="?page={{ posts.previous_page_number }}"><button type="button" class="btn btn-secondary">Previous</button></a>
                 </div>
             {% endif %}
@@ -129,7 +132,7 @@
             {% for i in allposts.page_range %}
             {% if i > posts.number|add:'-3' and i < posts.number|add:'3' %}
 
-                    <a href="?page={{ i }}" style="padding-right: 3px;"><button type="button" class="btn btn-secondary">{{ i }}</button></a>
+                    <a href="?page={{ i }}" style="padding-right: 3px;"><button type="button" class="btn btn-light">{{ i }}</button></a>
 
             {% endif %}
             {% endfor %}
@@ -137,8 +140,8 @@
 
             {% if posts.has_next %}
                 <div class="btn-group" role="group" aria-label="Basic example">
-                    <a href="?page={{ posts.next_page_number }}" style="padding-right: 3px;"><button type="button" class="btn btn-secondary">Next</button></a>
-                    <a href="?page={{ posts.paginator.num_pages }}"><button type="button" class="btn btn-secondary">Last &raquo;</button></a>
+                    <a href="?page={{ posts.next_page_number }}" style="padding-right: 3px;"><button type="button" class="btn btn-light">Next</button></a>
+                    <a href="?page={{ posts.paginator.num_pages }}"><button type="button" class="btn btn-light">Last &raquo;</button></a>
                 </div>
             {% endif %}
             </span>
@@ -147,6 +150,8 @@
 
     </div>
     </div>
+</div>
+</body>
     <style>
         .pagination{
             text-align: center;
@@ -176,8 +181,7 @@
         }
 
         .blog-home3 .bg-success-gradiant{
-            background: rgb(2,0,36);
-background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,10,151,1) 0%, rgba(255,0,0,1) 100%);
+            background: linear-gradient(to right, rgba(45, 205, 168,1), rgba(21,245,168,1));
 
 
 
@@ -207,6 +211,9 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,10,151,1) 0%, rgb
             -webkit-transform:scale(1.05);
             -ms-transform:scale(1.05);
             transform:scale(1.05)
+        }
+        .card{
+            border-radius: 34px;
         }
     </style>
 

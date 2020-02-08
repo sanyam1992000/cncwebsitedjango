@@ -4,7 +4,7 @@
 <br>
 <br>
 <div  class="wow slideInUp" style="background: rgb(2,0,36);
-background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,10,151,1) 0%, rgba(255,0,0,1) 100%); padding: 50px;">
+background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,10,151,1) 0%, rgba(255,0,0,1) 100%); padding: 20px; padding-top: 50px">
 <div class="container card blog-content border-grey border rounded shadow-lg">
     <div class="post-title">
         {{ post.title }}
@@ -14,7 +14,7 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,10,151,1) 0%, rgb
     </div>
     <hr>
     <div class="post-img" style="text-align: center">
-        <img src="{{ post.pic1.url }}" class="posts-img" style="width: auto; height: 300px">
+        <img src="{{ post.pic1.url }}" class="posts-img img-fluid" style="height: 300px">
     </div>
     <div class="post-content">
         <p> {{ post.content|escape|linebreaks }} </p>

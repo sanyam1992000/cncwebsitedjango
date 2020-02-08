@@ -1,7 +1,7 @@
 <div class="container body">
 </div>
     <center>
-    <div class="card profilebody border-white border rounded shadow-lg" style="width: 80%; height: 30rem; margin-top: -150px; height: 27rem;">
+    <div class="card profilebody border-white border rounded shadow-lg img-fluid" style="height: auto; margin-top: -150px;">
             <div class="profile">
                 <div class="profilephoto" style="margin-top: 30px;">
                     {% if user_instance.userprofile.pic %}
@@ -12,17 +12,18 @@
                 </div>
                 <div class="profiledetails">
                     <br>
-                    <h1>{{user_instance.first_name|capfirst}} {{ user_instance.last_name|capfirst }}</h1>
+                    <h2>{{user_instance.first_name|capfirst}} {{ user_instance.last_name|capfirst }}</h2>
                     <br>
                     <!-- and role or location -->
-                    <h2>{{profile.roll_no}}</h2><br>
-                    <h3><p>{{profile.course}} - {{ profile.branch }}</p></h3>
-                    <hr>
+                    <h4>{{profile.roll_no}}</h4><br>
+                    <h5><p>{{profile.course}} - {{ profile.branch }}</p></h5>
+
 
                     {% if request.user == user_instance %}
-                    <div class="btn-group" role="group" aria-label="Basic example">
-                        <a href="{% url 'accounts:edit_student_profile' user_instance.username %}"><button type="button" class="btn btn-info">Edit Profile</button></a>
-                        <a href="{% url 'change_password' %}"><button type="button" class="btn btn-danger">Change Password</button></a>
+                     <hr>
+                    <button class="btn-group align-center mb-3" role="group" aria-label="Basic example">
+                        <button type="button" class="btn btn-primary "><a href="{% url 'accounts:edit_student_profile' user_instance.username %}">Edit Profile</a></button>
+                        <button type="button" class="btn btn-danger"><a href="{% url 'change_password' %}">Password</a></button>
                     </div>
                     {% endif %}
                 </div>
@@ -31,14 +32,13 @@
     </div>
     </center>
     <br>
-    <hr>
+
 
     <div class="container certibody">
-        <center>
-            <h1>
-                <br>
+        <div style="text-align: center">
+            <h2 class="text-white img-fluid">
                 CERTIFICATES
-            </h1>
+            </h2>
             <br><br>
         {% if user_instance.registration_set.exists %}
 
@@ -46,7 +46,7 @@
                 {% for registration in certificates %}
                 {% if registration.attended == 'A'%}
                     <div class="col item">
-                        <div class="card border-white border rounded shadow-lg" data-bs-hover-animate="pulse" style="width: 17rem; height: auto;">
+                        <div class="card border-white border rounded shadow-lg" data-bs-hover-animate="pulse" style="width: 23rem; height: auto;">
                             <div class="card-body">
                                 <h4 class="card-title" style="margin-top: 5px;"><strong>{{ registration.event.event_name|capfirst }}</strong></h4>
                                 <h6 class="text-muted card-subtitle mb-2" style="margin-top: 0px;">{{ registration.event.date }}</h6>
@@ -65,7 +65,7 @@
                 {% endfor %}
                 </div>
         {% endif %}
-        </center>
+        </div>
     </div>
 
 
