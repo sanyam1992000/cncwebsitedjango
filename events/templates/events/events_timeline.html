@@ -34,6 +34,7 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,10,151,1) 0%, rgb
                     <div class="card border-white border rounded shadow-lg col-12 col-sm-6 d-flex flex-column justify-content-center p-5 psd-right1">
                         <center><h3 class="text-sm-center">{{ event.event_name|capfirst}}</h3>
                         <h6 class="text-sm-center">{{ event.date }}</h6>
+                            <h6 class="text-sm-center">{{ event.venue }}</h6>
                         <p class="text-sm-center">{{ event.description }}<br></p>
                         <a class="text-sm-center text-white det btn" style="background: rgb(2,0,36);
 background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,10,151,1) 0%, rgba(255,0,0,1) 100%)" href="{% url 'events:events_detail' event.id %}" >Event Details</a></center>
