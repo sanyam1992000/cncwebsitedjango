@@ -17,12 +17,14 @@
     <link rel="stylesheet" href="{% static 'css/LinkedIn-like-Profile-Box.css'%}">
 
     {% endblock %}
-
+<div style="background: rgb(2,0,36);
+background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,10,151,1) 0%, rgba(255,0,0,1) 100%); padding: 20px; padding-top: 50px">
     <section class="index-howto-alt py-3">
         <div class="x_001_laptop_main_wrap"></div>
         <div class="container">
-            <h2 class="text-center mb-3 mt-4">EVENTS SO FAR</h2>
+            <h2 class="text-center mb-3 mt-4 text-white">EVENTS SO FAR</h2>
             <div class="psd-line pos-rel" style="position:relative;">
+                <hr style="background-color: ghostwhite">
 
 
         {% for event in events %}
@@ -33,7 +35,8 @@
                         <center><h3 class="text-sm-center">{{ event.event_name|capfirst}}</h3>
                         <h6 class="text-sm-center">{{ event.date }}</h6>
                         <p class="text-sm-center">{{ event.description }}<br></p>
-                        <a class="text-sm-center det btn btn-danger bg-danger" href="{% url 'events:events_detail' event.id %}" >Event Details</a></center>
+                        <a class="text-sm-center text-white det btn" style="background: rgb(2,0,36);
+background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,10,151,1) 0%, rgba(255,0,0,1) 100%)" href="{% url 'events:events_detail' event.id %}" >Event Details</a></center>
                     </div>
 
                     <div class="col-12 col-sm-6 d-flex flex-row justify-content-center align-items-center intro-card-2 p-5">
@@ -49,7 +52,8 @@
                         <center><h3 class="text-sm-center">{{ event.event_name|capfirst}}</h3>
                         <h6 class="text-sm-center">{{ event.date }}</h6>
                         <p class="text-sm-center">{{ event.description }}<br></p>
-                        <a class="text-sm-center det btn btn-danger bg-danger" href="{% url 'events:events_detail' event.id %}">Event Details</a></center></div>
+                        <a class="text-sm-center text-white det btn" style="background: rgb(2,0,36);
+background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,10,151,1) 0%, rgba(255,0,0,1) 100%)" href="{% url 'events:events_detail' event.id %}">Event Details</a></center></div>
                     </div>
         {% endif %}
     {% endif %}
@@ -58,9 +62,10 @@
 
         </div>
     </section>
+</div>
 <style>
     .imground{
-        border: 13px solid #D9534F;
+        border: 8px solid ghostwhite;
         border-radius: 100%;
     }
     .det:hover{
