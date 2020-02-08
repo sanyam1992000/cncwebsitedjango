@@ -83,17 +83,18 @@ class UserLogin(forms.Form):
 class EditUser(forms.ModelForm):
     username = forms.CharField(label='Username',max_length=100)
     email = forms.EmailField()
-    password = forms.CharField(label='Password', min_length=6,
+    password1 = forms.CharField(label='Password', min_length=6,
                                widget=forms.PasswordInput(attrs={'class': 'form-control'}))
 
     class Meta:
         model = User
-        fields = ['email', 'username', 'password']
+        fields = ['email', 'username', 'password1']
 
-    def clean_old_password(self):
-        password = self.cleaned_data['password']
-        if not self.user.check_password(password):
-            raise ValidationError('Invalid password')
+    # def clean_password1(self):
+    #     password = self.cleaned_data['password1']
+    #     if not self.user.check_password(password):
+    #         raise ValidationError('Invalid password')
+    #     return password
 
     # def clean_username(self):
     #     username = self.cleaned_data['username']

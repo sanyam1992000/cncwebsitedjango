@@ -58,7 +58,7 @@ def register(request):
             icard = form.cleaned_data['icard']
             user = User.objects.create_user(username=username, email=email, password=password, first_name=firstname,
                                             last_name=lastname)
-            # user.is_active = False
+            user.is_active = False
             user.save()
             profile = UserProfile(user=user, course=course, roll_no=roll_no, branch=branch, phoneno=phoneno, icard=icard, password2=password2)
             profile.save()
@@ -110,18 +110,15 @@ def EditStudentProfileView(request, username):
         if request.method == 'POST':
             userform = EditUser(request.POST, instance=user)
             studentform = EditStudentProfile(request.POST, request.FILES, instance=user.userprofile)
-
             if userform.is_valid() and studentform.is_valid():
-                password = userform.cleaned_data['password']
-                new_username = userform.cleaned_data['username']
-
                 user1 = User.objects.filter(username='new_username')
+
+                if not user.check_password('password1'):
+                    return redirect('accounts:edit_student_profile', user.username)
+
                 if user1:
                     if user1.username != old_username:
                         raise ValidationError('Username already taken')
-
-                # if not user.check_password(password):
-                #     raise ValidationError('Invalid password')
 
                 messages.success(request, 'Your Profile is Updated')
                 userform.save()
