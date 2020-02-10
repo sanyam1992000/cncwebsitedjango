@@ -41,7 +41,7 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,10,151,1) 0%, rgb
         {% if forloop.counter == 1 %}
       <div class="col-lg-6  mt-5">
         <div class="card shadow-lg border-0 mb-4">
-          <a href="{% url 'blog:detail' post.id %}"><img class="card-img-top" style="border-radius: 35px;" src="{{ post.pic1.url }}" alt="" height="330" width="400"></a>
+          <a href="{% url 'blog:detail' post.id %}"><img class="card-img-top" style="border-radius: 3px;" src="{{ post.pic1.url }}" alt="" height="330" width="400"></a>
           <div class="date-pos text-center text-white p-3 bg-success-gradiant">{{ post.title|title }} &nbsp; &nbsp; {{ post.date|date:'d F Y' }}</div>
           <h5 class="font-weight-medium container mt-3"><a href="{% url 'blog:detail' post.id %}" class="link text-decoration-none">{{ post.description|title|truncatechars:100 }}</a></h5>
           <p class="m-t-20 container">{{ post.content|title|truncatewords:70 }}</p>
@@ -58,7 +58,7 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,10,151,1) 0%, rgb
           <!-- Column -->
           <div class="col-md-6 mt-5">
             <div class="card shadow-lg border-0 mb-4">
-              <a href="{% url 'blog:detail' post.id %}"><img class="card-img-top" style="border-radius: 35px;"src="{{ post.pic1.url }}" alt="" height="170" width="180"></a>
+              <a href="{% url 'blog:detail' post.id %}"><img class="card-img-top" style="border-radius: 3px;"src="{{ post.pic1.url }}" alt="" height="170" width="180"></a>
               <div class="date-pos container text-center text-white p-3 bg-success-gradiant">{{ post.title|title }} &nbsp; &nbsp; {{ post.date|date:'d F Y' }}</div>
               <h6 class="font-weight-medium container mt-3"><a href="{% url 'blog:detail' post.id %}" class="link text-decoration-none">{{ post.description|title|truncatechars:50 }}</a></h6>
             </div>
@@ -68,7 +68,7 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,10,151,1) 0%, rgb
           <!-- Column -->
           <div class="col-md-6 mt-5">
             <div class="card shadow-lg border-0 mb-4">
-              <a href="{% url 'blog:detail' post.id %}"><img class="card-img-top" style="border-radius: 35px;" src="{{ post.pic1.url }}" height="170" width="180"></a>
+              <a href="{% url 'blog:detail' post.id %}"><img class="card-img-top" style="border-radius: 3px;" src="{{ post.pic1.url }}" height="170" width="180"></a>
               <div class="date-pos container text-center text-white p-3 bg-success-gradiant">{{ post.title|title }} &nbsp; &nbsp; {{ post.date|date:'d F Y' }}</div>
               <h6 class="font-weight-medium container mt-3"><a href="{% url 'blog:detail' post.id %}" class="link text-decoration-none">{{ post.description|title|truncatechars:50 }}</a></h6>
             </div>
@@ -78,7 +78,7 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,10,151,1) 0%, rgb
           <!-- Column -->
           <div class="col-md-6 mt-2">
             <div class="card shadow-lg border-0 mb-4">
-              <a href="{% url 'blog:detail' post.id %}"><img class="card-img-top" style="border-radius: 35px;" src="{{ post.pic1.url }}" alt="" height="170" width="180"></a>
+              <a href="{% url 'blog:detail' post.id %}"><img class="card-img-top" style="border-radius: 3px;" src="{{ post.pic1.url }}" alt="" height="170" width="180"></a>
               <div class="date-pos container text-center text-white p-3 bg-success-gradiant">{{ post.title|title }} &nbsp; &nbsp; {{ post.date|date:'d F Y' }}</div>
               <h6 class="font-weight-medium container mt-3"><a href="{% url 'blog:detail' post.id %}" class="link text-decoration-none">{{ post.description|title|truncatechars:50 }}</a></h6>
             </div>
@@ -88,7 +88,7 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,10,151,1) 0%, rgb
           <!-- Column -->
           <div class="col-md-6 mt-2">
             <div class="card shadow-lg border-0 mb-4">
-              <a href="{% url 'blog:detail' post.id %}"><img class="card-img-top" style="border-radius: 35px;" src="{{ post.pic1.url }}" alt="" height="170" width="180"></a>
+              <a href="{% url 'blog:detail' post.id %}"><img class="card-img-top" style="border-radius: 3px;" src="{{ post.pic1.url }}" alt="" height="170" width="180"></a>
               <div class="date-pos text-center container text-white p-3 bg-success-gradiant">{{ post.title|title }} &nbsp; &nbsp; {{ post.date|date:'d F Y' }}</div>
               <h6 class="font-weight-medium container mt-3"><a href="{% url 'blog:detail' post.id %}" class="link text-decoration-none">{{ post.description|title|truncatechars:50 }}</a></h6>
             </div>

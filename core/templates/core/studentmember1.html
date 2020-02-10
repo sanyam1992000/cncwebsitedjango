@@ -21,8 +21,8 @@
 
                 <div class="row user-list">
                 {% for member in members %}
-                    <div class="col item">
-                        <div class="card border-white border rounded shadow-lg" data-bs-hover-animate="pulse" style="width: 18rem;">
+                    <div class="col-md-3 item">
+                        <div class="card border-white border rounded shadow-lg" data-bs-hover-animate="pulse" style="width: 15rem; height: 18rem;">
                             <div class="card-body">
                                 <div class="card-title" style="margin-top: 5px;"><a href="{% url 'accounts:dashboard' member.user.username %}"><img class="img" src="{{ member.userprofile.pic.url }}" height="130" width="130"></a></div>
                                 <a href="{% url 'accounts:dashboard' member.user.username %}"><h6 class="text-muted card-subtitle mb-2 name" style="margin-top: 0px;">{{member.user.first_name}} {{ member.user.last_name }}</h6></a>
