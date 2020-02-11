@@ -20,6 +20,53 @@
 <div style="background: rgb(2,0,36);
 background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,10,151,1) 0%, rgba(255,0,0,1) 100%); padding: 20px; padding-top: 50px">
     <section class="index-howto-alt py-3">
+
+
+
+    <div>
+
+        <form class="form-inline my-2 my-lg-1">
+        <div class="col-lg-3">
+            <div class="form-group">
+                <label for="id_course">Month:</label>
+                <select style="border-radius: 10px;" class="form-control" name="month" id="id_month">
+                    <option value="01">January</option>
+                    <option value="02">February</option>
+                    <option value="03">March</option>
+                    <option value="04">April</option>
+                    <option value="05">May</option>
+                    <option value="06">June</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="col-lg-3">
+            <div class="form-group">
+                <label for="id_course">Year:</label>
+                <select style="border-radius: 10px;" class="form-control" name="year" id="id_course">
+                    <option value="2019">2019</option>
+                    <option value="2018">2018</option>
+                </select>
+            </div>
+        </div>
+        <button class="btn btn-primary my-2 my-sm-0" type="submit">Submit</button>
+        </form>
+
+          <form class="form-inline my-2 my-lg-1">
+            <input
+                class="form-control mr-sm-2"
+                type="search"
+                placeholder="Search by Event Name"
+                aria-label="Search"
+                name='search'
+                value="{{search_term}}">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+    </div>
+
+
+
+
         <div class="x_001_laptop_main_wrap"></div>
         <div class="container">
             <h2 class="text-center mb-3 mt-4 text-white">EVENTS SO FAR</h2>
@@ -63,6 +110,37 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,10,151,1) 0%, rgb
 
         </div>
     </section>
+
+    <div class="pagination">
+            <span class="step-links">
+            {% if events.has_previous %}
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <a href="?page=1&{{params}}" style="padding-right: 3px;"><button type="button" class="btn btn-light">&laquo; First</button></a>
+                    <a href="?page={{ events.previous_page_number }}&{{params}}"><button type="button" class="btn btn-secondary">Previous</button></a>
+                </div>
+            {% endif %}
+
+                <div class="btn-group" role="group" aria-label="Basic example">
+
+            {% for i in allevents.page_range %}
+            {% if i > events.number|add:'-3' and i < events.number|add:'3' %}
+
+                    <a href="?page={{ i }}&{{params}}" style="padding-right: 3px;"><button type="button" class="btn btn-light">{{ i }}</button></a>
+
+            {% endif %}
+            {% endfor %}
+                    </div>
+
+            {% if events.has_next %}
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <a href="?page={{ events.next_page_number }}&{{params}}" style="padding-right: 3px;"><button type="button" class="btn btn-light">Next</button></a>
+                    <a href="?page={{ events.paginator.num_pages }}&{{params}}"><button type="button" class="btn btn-light">Last &raquo;</button></a>
+                </div>
+            {% endif %}
+            </span>
+        </div>
+
+
 </div>
 <style>
     .imground{

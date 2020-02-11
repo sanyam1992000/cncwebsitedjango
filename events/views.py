@@ -6,6 +6,7 @@ from .certificates import render_to_pdf
 from django.contrib.auth.models import User
 import datetime
 from django.contrib import messages
+from django.core.paginator import Paginator
 
 
 # Create your views here.
@@ -13,14 +14,29 @@ from django.contrib import messages
 
 def EventsList(request):
     events = Event.objects.filter(status='False').order_by('-date')
-    user = request.user
-    if user.is_authenticated:
-        registrations = Registration.objects.filter(user=user)
-    else:
-        registrations = []
+    get_dict_copy = request.GET.copy()
+
+    search_term = ''
+    if 'month' and 'year' in request.GET:
+        m = int(request.GET['month'])
+        y = int(request.GET['year'])
+        events = Event.objects.filter(status='False', date__gte=datetime.date(y, m, 1), date__lt=datetime.date(y, m+1, 1)).order_by('-date')
+
+    if 'search' in request.GET:
+        search_term = request.GET['search']
+        events = Event.objects.filter(status='False', event_name__icontains=search_term).order_by('-date')
+        params = get_dict_copy.appendlist('search', search_term) and get_dict_copy.urlencode()
+
+    paginator_event = Paginator(events, 10)
+    page = request.GET.get('page')
+    events = paginator_event.get_page(page)
+
+    params = get_dict_copy.pop('page', True) and get_dict_copy.urlencode()
     context = {
+        'allevents': paginator_event,
         'events': events,
-        'registrations': registrations,
+        'params': params,
+        'search_term': search_term,
     }
     return render(request, 'events/event_list.html', context)
 
