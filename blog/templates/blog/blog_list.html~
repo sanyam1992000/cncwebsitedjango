@@ -1,0 +1,278 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+{% block static %}
+    <meta charset="utf-8">
+    <title>Blog | Career and Counselling Cell , YMCA</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700">
+    <link rel="stylesheet" href="{% static 'css/Latest-Blog.css'%}">
+    <link rel="stylesheet" href="{% static 'css/styles.css'%}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+{% endblock %}
+
+<body>
+<div style="background: rgb(2,0,36);
+background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,10,151,1) 0%, rgba(255,0,0,1) 100%);">
+    <br>
+    <br>
+    <br>
+    <!-- Start: Latest Blog -->
+    <div class="wow slideInUp blog-home3 py-5" >
+    <div class="container">
+    <!-- Row  -->
+    <div class="row justify-content-center">
+      <!-- Column -->
+      <div class="col-md-8 text-center">
+        <h2 class="my-3 text-white">BLOG</h2>
+      </div>
+
+
+
+
+        <!----- Filters ----------->
+        <form class="form-inline my-2 my-lg-1">
+        <div class="col-lg-3">
+            <div class="form-group">
+                <label for="id_course">Month:</label>
+                <select style="border-radius: 10px;" class="form-control" name="month" id="id_month">
+                    <option value="01">January</option>
+                    <option value="02">February</option>
+                    <option value="03">March</option>
+                    <option value="04">April</option>
+                    <option value="05">May</option>
+                    <option value="06">June</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="col-lg-3">
+            <div class="form-group">
+                <label for="id_course">Year:</label>
+                <select style="border-radius: 10px;" class="form-control" name="year" id="id_course">
+                    <option value="2019">2019</option>
+                    <option value="2018">2018</option>
+                </select>
+            </div>
+        </div>
+        <button class="btn btn-primary my-2 my-sm-0" type="submit">Submit</button>
+        </form>
+
+          <form class="form-inline my-2 my-lg-1">
+            <input
+                class="form-control mr-sm-2"
+                type="search"
+                placeholder="Search by Event Name"
+                aria-label="Search"
+                name='search'
+                value="{{search_term}}">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+    </div>
+
+
+
+
+
+      <!-- Column -->
+      <!-- Column -->
+    </div>
+        <hr style="background-color: white">
+
+
+
+    <div class="row mt-3">
+      <!-- Column -->
+        {% for post in posts %}
+        {% if forloop.counter == 1 %}
+      <div class="col-lg-6  mt-5">
+        <div class="card shadow-lg border-0 mb-4">
+          <a href="{% url 'blog:detail' post.id %}"><img class="card-img-top" style="border-radius: 3px;" src="{{ post.pic1.url }}" alt="" height="330" width="400"></a>
+          <div class="date-pos text-center text-white p-3 bg-success-gradiant">{{ post.title|title }} &nbsp; &nbsp; {{ post.date|date:'d F Y' }}</div>
+          <h5 class="font-weight-medium container mt-3"><a href="{% url 'blog:detail' post.id %}" class="link text-decoration-none">{{ post.description|title|truncatechars:100 }}</a></h5>
+          <p class="m-t-20 container">{{ post.content|title|truncatewords:70 }}</p>
+        </div>
+      </div>
+        {% endif %}
+        {% endfor %}
+      <!-- Column -->
+
+      <div class="col-lg-6">
+        <div class="row">
+            {% for post in posts %}
+            {% if forloop.counter == 2 %}
+          <!-- Column -->
+          <div class="col-md-6 mt-5">
+            <div class="card shadow-lg border-0 mb-4">
+              <a href="{% url 'blog:detail' post.id %}"><img class="card-img-top" style="border-radius: 3px;"src="{{ post.pic1.url }}" alt="" height="170" width="180"></a>
+              <div class="date-pos container text-center text-white p-3 bg-success-gradiant">{{ post.title|title }} &nbsp; &nbsp; {{ post.date|date:'d F Y' }}</div>
+              <h6 class="font-weight-medium container mt-3"><a href="{% url 'blog:detail' post.id %}" class="link text-decoration-none">{{ post.description|title|truncatechars:50 }}</a></h6>
+            </div>
+          </div>
+            {% endif %}
+            {% if forloop.counter == 3 %}
+          <!-- Column -->
+          <div class="col-md-6 mt-5">
+            <div class="card shadow-lg border-0 mb-4">
+              <a href="{% url 'blog:detail' post.id %}"><img class="card-img-top" style="border-radius: 3px;" src="{{ post.pic1.url }}" height="170" width="180"></a>
+              <div class="date-pos container text-center text-white p-3 bg-success-gradiant">{{ post.title|title }} &nbsp; &nbsp; {{ post.date|date:'d F Y' }}</div>
+              <h6 class="font-weight-medium container mt-3"><a href="{% url 'blog:detail' post.id %}" class="link text-decoration-none">{{ post.description|title|truncatechars:50 }}</a></h6>
+            </div>
+          </div>
+            {% endif %}
+            {% if forloop.counter == 4 %}
+          <!-- Column -->
+          <div class="col-md-6 mt-2">
+            <div class="card shadow-lg border-0 mb-4">
+              <a href="{% url 'blog:detail' post.id %}"><img class="card-img-top" style="border-radius: 3px;" src="{{ post.pic1.url }}" alt="" height="170" width="180"></a>
+              <div class="date-pos container text-center text-white p-3 bg-success-gradiant">{{ post.title|title }} &nbsp; &nbsp; {{ post.date|date:'d F Y' }}</div>
+              <h6 class="font-weight-medium container mt-3"><a href="{% url 'blog:detail' post.id %}" class="link text-decoration-none">{{ post.description|title|truncatechars:50 }}</a></h6>
+            </div>
+          </div>
+            {% endif %}
+            {% if forloop.counter == 5 %}
+          <!-- Column -->
+          <div class="col-md-6 mt-2">
+            <div class="card shadow-lg border-0 mb-4">
+              <a href="{% url 'blog:detail' post.id %}"><img class="card-img-top" style="border-radius: 3px;" src="{{ post.pic1.url }}" alt="" height="170" width="180"></a>
+              <div class="date-pos text-center container text-white p-3 bg-success-gradiant">{{ post.title|title }} &nbsp; &nbsp; {{ post.date|date:'d F Y' }}</div>
+              <h6 class="font-weight-medium container mt-3"><a href="{% url 'blog:detail' post.id %}" class="link text-decoration-none">{{ post.description|title|truncatechars:50 }}</a></h6>
+            </div>
+          </div>
+            {% endif %}
+          <!-- Column -->
+            {% endfor %}
+        </div>
+      </div>
+      <!-- Column -->
+
+
+    </div>
+        <br><br>
+        <hr>
+        <div class="row oldposts">
+            {% for post in posts %}
+            {% if forloop.counter > 5 %}
+                <div class="col-md-4 mt-5">
+                    <div class="card shadow-lg border-0 mb-4">
+                        <a href="{% url 'blog:detail' post.id %}"><img class="card-img-top" style="border-radius: 35px;" src="{{ post.pic1.url }}" alt="" height="200" width="300"></a>
+                        <div class="date-pos container text-center text-white p-3 bg-success-gradiant">{{ post.title|title }} &nbsp; &nbsp; {{ post.date|date:'d F Y' }}</div>
+                        <h6 class="font-weight-medium container mt-3"><a href="{% url 'blog:detail' post.id %}" class="link text-decoration-none">{{ post.description|title|truncatechars:50 }}</a></h6>
+                    </div>
+                </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+
+
+
+        <!----------- {agination ------------->
+        <div class="pagination">
+            <span class="step-links">
+            {% if posts.has_previous %}
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <a href="?page=1&{{params}}" style="padding-right: 3px;"><button type="button" class="btn btn-light">&laquo; First</button></a>
+                    <a href="?page={{ posts.previous_page_number }}&{{params}}"><button type="button" class="btn btn-secondary">Previous</button></a>
+                </div>
+            {% endif %}
+
+                <div class="btn-group" role="group" aria-label="Basic example">
+
+            {% for i in allposts.page_range %}
+            {% if i > posts.number|add:'-3' and i < posts.number|add:'3' %}
+
+                    <a href="?page={{ i }}&{{params}}" style="padding-right: 3px;"><button type="button" class="btn btn-light">{{ i }}</button></a>
+
+            {% endif %}
+            {% endfor %}
+                    </div>
+
+            {% if posts.has_next %}
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <a href="?page={{ posts.next_page_number }}&{{params}}" style="padding-right: 3px;"><button type="button" class="btn btn-light">Next</button></a>
+                    <a href="?page={{ posts.paginator.num_pages }}&{{params}}"><button type="button" class="btn btn-light">Last &raquo;</button></a>
+                </div>
+            {% endif %}
+            </span>
+        </div>
+
+
+    </div>
+    </div>
+</div>
+</body>
+    <style>
+        .pagination{
+            text-align: center;
+        }
+        .blog-home3{
+            font-family:Montserrat,sans-serif;
+            color:#8d97ad;
+            font-weight:300
+        }
+        .blog-home3 a.link,.blog-home3 h1,.blog-home3 h2,.blog-home3 h3,.blog-home3 h4,.blog-home3 h5,.blog-home3 h6
+        {color:#3e4555}
+
+        .blog-home3 h5{
+            line-height:22px;font-size:18px
+        }
+
+        .blog-home3 a.link:hover{
+            color:#316ce8
+        }
+
+        .blog-home3 .font-weight-medium{
+            font-weight:500
+        }
+
+        .blog-home3 .subtitle{
+            color:#8d97ad;line-height:24px
+        }
+
+        .blog-home3 .bg-success-gradiant{
+            background: linear-gradient(to right, rgba(45, 205, 168,1), rgba(21,245,168,1));
+
+
+
+
+           /* background:#d9534f;
+            background:-webkit-linear-gradient(legacy-direction(to right),#d9534f 0,#FFA500 100%);
+            background:-webkit-gradient(linear,left top,right top,from(#d9534f),to(#FFA500));
+            background:-webkit-linear-gradient(left,#d9534f 0,#FFA500 100%);
+            background:-o-linear-gradient(left,#d9534f 0,#FFA500 100%);
+            background:linear-gradient(to right,#d9534f 0,#FFA500 100%)*/
+        }
+        .blog-home3 .date-pos{
+            font-size:12px
+        }
+
+        .blog-home3 a{
+            overflow:hidden
+        }
+
+        .blog-home3 a img{
+            -webkit-transition:.2s ease-in;
+            -o-transition:.2s ease-in;
+            transition:.2s ease-in
+        }
+
+        .blog-home3 a img:hover{
+            -webkit-transform:scale(1.05);
+            -ms-transform:scale(1.05);
+            transform:scale(1.05)
+        }
+        .card{
+            border-radius: 34px;
+        }
+    </style>
+
+
+
+
+    <!-- End: Latest Blog -->
+    {% block scripts %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    {% endblock %}
+    {% endblock %}
