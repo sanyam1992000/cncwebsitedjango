@@ -8,12 +8,30 @@ from .models import Post, Comment
 
 def blog(request):
     post_all = Post.objects.all().order_by('-date')
-    paginator_post = Paginator(post_all, 9)
+    get_dict_copy = request.GET.copy()
+
+    search_term = ''
+    if 'month' and 'year' in request.GET:
+        m = int(request.GET['month'])
+        y = int(request.GET['year'])
+        posts = Post.objects.filter(date__gte=datetime.date(y, m, 1),
+                                      date__lt=datetime.date(y, m + 1, 1)).order_by('-date')
+
+    if 'search' in request.GET:
+        search_term = request.GET['search']
+        posts = Post.objects.filter(event_name__icontains=search_term).order_by('-date')
+        params = get_dict_copy.appendlist('search', search_term) and get_dict_copy.urlencode()
+
+    paginator_post = Paginator(post_all, 13)
     page = request.GET.get('page')
     posts = paginator_post.get_page(page)
+    params = get_dict_copy.pop('page', True) and get_dict_copy.urlencode()
+
     context = {
         'allposts': paginator_post,
         'posts': posts,
+        'params': params,
+        'search_term': search_term,
     }
     return render(request, 'blog/blog_list.html', context=context)
 
