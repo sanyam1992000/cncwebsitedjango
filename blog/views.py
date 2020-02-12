@@ -14,13 +14,11 @@ def blog(request):
     if 'month' and 'year' in request.GET:
         m = int(request.GET['month'])
         y = int(request.GET['year'])
-        posts = Post.objects.filter(date__gte=datetime.date(y, m, 1),
-                                      date__lt=datetime.date(y, m + 1, 1)).order_by('-date')
+        post_all = Post.objects.filter(date__gte=datetime.date(y, m, 1), date__lt=datetime.date(y, m + 1, 1)).order_by('-date')
 
     if 'search' in request.GET:
         search_term = request.GET['search']
-        posts = Post.objects.filter(event_name__icontains=search_term).order_by('-date')
-        params = get_dict_copy.appendlist('search', search_term) and get_dict_copy.urlencode()
+        post_all = Post.objects.filter(event_name__icontains=search_term).order_by('-date')
 
     paginator_post = Paginator(post_all, 13)
     page = request.GET.get('page')
