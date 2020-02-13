@@ -17,18 +17,25 @@
     <link rel="stylesheet" href="{% static 'css/LinkedIn-like-Profile-Box.css'%}">
 
     {% endblock %}
-<div style="background: rgb(2,0,36);
-background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,10,151,1) 0%, rgba(255,0,0,1) 100%); padding: 20px; padding-top: 50px">
-    <section class="index-howto-alt py-3">
+<div style="padding: 20px; padding-top: 50px">
+    <section class="index-howto-alt">
 
 
 
-    <div>
 
-        <form class="form-inline my-2 my-lg-1">
-        <div class="col-lg-3">
+
+
+
+        <div class="x_001_laptop_main_wrap"></div>
+        <div class="container">
+            <h2 class="text-center mb-4">EVENTS SO FAR</h2>
+        <div class="">
+            <div class="row" style="display: flex; justify-content: center;">
+        <form class="form-inline">
+
+        <div class="col-md-4">
             <div class="form-group">
-                <label for="id_course">Month:</label>
+<!--                <label for="id_course">Month:</label>-->
                 <select style="border-radius: 10px;" class="form-control" name="month" id="id_month">
                     <option value="01">January</option>
                     <option value="02">February</option>
@@ -46,39 +53,37 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,10,151,1) 0%, rgb
             </div>
         </div>
 
-        <div class="col-lg-3">
+        <div class="col-md-4">
             <div class="form-group">
-                <label for="id_course">Year:</label>
-                <select style="border-radius: 10px;" class="form-control" name="year" id="id_course">
+<!--                <label for="id_course">Year:</label>-->
+                <select style="border-radius: 10px;" class="form-control ml-1 mr-2" name="year" id="id_course">
                     <option value="2020">2020</option>
                     <option value="2019">2019</option>
                     <option value="2018">2018</option>
                 </select>
             </div>
         </div>
-        <button class="btn btn-primary my-2 my-sm-0" type="submit">Submit</button>
+            <div class="col-md-4">
+        <button class="btn btn-danger  my-2 my-sm-0" type="submit">Search</button>
+            </div>
         </form>
+                 </div>
+        </div>
 
-          <form class="form-inline my-2 my-lg-1">
-            <input
-                class="form-control mr-sm-2"
-                type="search"
-                placeholder="Search by Event Name"
-                aria-label="Search"
-                name='search'
-                value="{{search_term}}">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-          </form>
-    </div>
+<!--          <form class="form-inline my-2 my-lg-1">-->
+<!--            <input-->
+<!--                class="form-control mr-sm-2"-->
+<!--                type="search"-->
+<!--                placeholder="Search by Event Name"-->
+<!--                aria-label="Search"-->
+<!--                name='search'-->
+<!--                value="{{search_term}}">-->
+<!--            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
+<!--          </form>-->
 
-
-
-
-        <div class="x_001_laptop_main_wrap"></div>
-        <div class="container">
-            <h2 class="text-center mb-3 mt-4 text-white">EVENTS SO FAR</h2>
             <div class="psd-line pos-rel" style="position:relative;">
-                <hr style="background-color: ghostwhite">
+                <hr>
+
 
 
         {% for event in events %}
@@ -122,8 +127,8 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,10,151,1) 0%, rgb
             <span class="step-links">
             {% if events.has_previous %}
                 <div class="btn-group" role="group" aria-label="Basic example">
-                    <a href="?page=1&{{params}}" style="padding-right: 3px;"><button type="button" class="btn btn-light">&laquo; First</button></a>
-                    <a href="?page={{ events.previous_page_number }}&{{params}}"><button type="button" class="btn btn-secondary">Previous</button></a>
+                    <a href="?page=1&{{params}}" style="padding-right: 3px;"><button type="button" class="btn btn-dark">&laquo; First</button></a>
+                    <a href="?page={{ events.previous_page_number }}&{{params}}"><button type="button" class="btn btn-dark">Previous</button></a>
                 </div>
             {% endif %}
 
@@ -132,7 +137,7 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,10,151,1) 0%, rgb
             {% for i in allevents.page_range %}
             {% if i > events.number|add:'-3' and i < events.number|add:'3' %}
 
-                    <a href="?page={{ i }}&{{params}}" style="padding-right: 3px;"><button type="button" class="btn btn-light">{{ i }}</button></a>
+                    <a href="?page={{ i }}&{{params}}" style="padding-right: 3px;"><button type="button" class="btn btn-dark">{{ i }}</button></a>
 
             {% endif %}
             {% endfor %}
@@ -140,8 +145,8 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,10,151,1) 0%, rgb
 
             {% if events.has_next %}
                 <div class="btn-group" role="group" aria-label="Basic example">
-                    <a href="?page={{ events.next_page_number }}&{{params}}" style="padding-right: 3px;"><button type="button" class="btn btn-light">Next</button></a>
-                    <a href="?page={{ events.paginator.num_pages }}&{{params}}"><button type="button" class="btn btn-light">Last &raquo;</button></a>
+                    <a href="?page={{ events.next_page_number }}&{{params}}" style="padding-right: 3px;"><button type="button" class="btn btn-dark">Next</button></a>
+                    <a href="?page={{ events.paginator.num_pages }}&{{params}}"><button type="button" class="btn btn-dark">Last &raquo;</button></a>
                 </div>
             {% endif %}
             </span>
@@ -151,7 +156,7 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,10,151,1) 0%, rgb
 </div>
 <style>
     .imground{
-        border: 8px solid ghostwhite;
+        border: 8px solid red;
         border-radius: 100%;
     }
     .det:hover{

@@ -24,18 +24,20 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,10,151,1) 0%, rgb
     <!-- Row  -->
     <div class="row justify-content-center">
       <!-- Column -->
-      <div class="col-md-8 text-center">
-        <h2 class="my-3 text-white">BLOG</h2>
+      <div class="col-md-8 text-center mb-3">
+        <h2 class="my-1 text-white">BLOG</h2>
       </div>
 
 
 
 
         <!----- Filters ----------->
-        <form class="form-inline my-2 my-lg-1">
-        <div class="col-lg-3">
+        <div class="">
+            <div class="container row" style="display: flex; justify-content: center;">
+        <form class="form-inline" style="margin-bottom: 30px">
+        <div class="col-md-4">
             <div class="form-group">
-                <label for="id_course">Month:</label>
+<!--                <label for="id_course">Month:</label>-->
                 <select style="border-radius: 10px;" class="form-control" name="month" id="id_month">
                     <option value="01">January</option>
                     <option value="02">February</option>
@@ -49,36 +51,45 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,10,151,1) 0%, rgb
                     <option value="10">October</option>
                     <option value="11">November</option>
                     <option value="12">December</option>
-
-
                 </select>
             </div>
         </div>
 
-        <div class="col-lg-3">
+        <div class="col-md-4">
             <div class="form-group">
-                <label for="id_course">Year:</label>
-                <select style="border-radius: 10px;" class="form-control" name="year" id="id_course">
+<!--                <label for="id_course">Year:</label>-->
+                <select style="border-radius: 10px;" class="form-control ml-1 mr-1" name="year" id="id_course">
                     <option value="2020">2020</option>
                     <option value="2019">2019</option>
                     <option value="2018">2018</option>
                 </select>
             </div>
         </div>
-        <button class="btn btn-primary my-2 my-sm-0" type="submit">Submit</button>
-        </form>
 
-          <form class="form-inline my-2 my-lg-1">
-            <input
-                class="form-control mr-sm-2"
-                type="search"
-                placeholder="Search by Event Name"
-                aria-label="Search"
-                name='search'
-                value="{{search_term}}">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-          </form>
+
+            <div class="col-md-4">
+        <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
+            </div>
+        </form>
+<!--        <div class="row">-->
+<!--          <form class="form-inline">-->
+<!--              <div class="col-lg-8">-->
+<!--            <input-->
+<!--                class="form-control mr-sm-2"-->
+<!--                type="search"-->
+<!--                placeholder="Search by Event Name"-->
+<!--                aria-label="Search"-->
+<!--                name='search'-->
+<!--                value="{{search_term}}">-->
+<!--              </div>-->
+<!--              <div class="col-lg-4">-->
+<!--            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
+<!--              </div>-->
+<!--          </form>-->
+<!--        </div>-->
     </div>
+        </div>
+
 
 
 
@@ -90,14 +101,14 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,10,151,1) 0%, rgb
         <hr style="background-color: white">
 
 
-
-    <div class="row mt-3">
+<div class="container">
+    <div class="container row mt-3">
       <!-- Column -->
         {% for post in posts %}
         {% if forloop.counter == 1 %}
       <div class="col-lg-6  mt-5">
         <div class="card shadow-lg border-0 mb-4">
-          <a href="{% url 'blog:detail' post.id %}"><img class="card-img-top" style="border-radius: 3px;" src="{{ post.pic1.url }}" alt="" height="330" width="400"></a>
+          <a href="{% url 'blog:detail' post.id %}"><img class="card-img-top" src="{{ post.pic1.url }}" alt="" height="330" width="400"></a>
           <div class="date-pos text-center text-white p-3 bg-success-gradiant">{{ post.title|title }} &nbsp; &nbsp; {{ post.date|date:'d F Y' }}</div>
           <h5 class="font-weight-medium container mt-3"><a href="{% url 'blog:detail' post.id %}" class="link text-decoration-none">{{ post.description|title|truncatechars:100 }}</a></h5>
           <p class="m-t-20 container">{{ post.content|title|truncatewords:70 }}</p>
@@ -114,7 +125,7 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,10,151,1) 0%, rgb
           <!-- Column -->
           <div class="col-md-6 mt-5">
             <div class="card shadow-lg border-0 mb-4">
-              <a href="{% url 'blog:detail' post.id %}"><img class="card-img-top" style="border-radius: 3px;"src="{{ post.pic1.url }}" alt="" height="170" width="180"></a>
+              <a href="{% url 'blog:detail' post.id %}"><img class="card-img-top" src="{{ post.pic1.url }}" alt="" height="170" width="180"></a>
               <div class="date-pos container text-center text-white p-3 bg-success-gradiant">{{ post.title|title }} &nbsp; &nbsp; {{ post.date|date:'d F Y' }}</div>
               <h6 class="font-weight-medium container mt-3"><a href="{% url 'blog:detail' post.id %}" class="link text-decoration-none">{{ post.description|title|truncatechars:50 }}</a></h6>
             </div>
@@ -124,7 +135,7 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,10,151,1) 0%, rgb
           <!-- Column -->
           <div class="col-md-6 mt-5">
             <div class="card shadow-lg border-0 mb-4">
-              <a href="{% url 'blog:detail' post.id %}"><img class="card-img-top" style="border-radius: 3px;" src="{{ post.pic1.url }}" height="170" width="180"></a>
+              <a href="{% url 'blog:detail' post.id %}"><img class="card-img-top" src="{{ post.pic1.url }}" height="170" width="180"></a>
               <div class="date-pos container text-center text-white p-3 bg-success-gradiant">{{ post.title|title }} &nbsp; &nbsp; {{ post.date|date:'d F Y' }}</div>
               <h6 class="font-weight-medium container mt-3"><a href="{% url 'blog:detail' post.id %}" class="link text-decoration-none">{{ post.description|title|truncatechars:50 }}</a></h6>
             </div>
@@ -134,7 +145,7 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,10,151,1) 0%, rgb
           <!-- Column -->
           <div class="col-md-6 mt-2">
             <div class="card shadow-lg border-0 mb-4">
-              <a href="{% url 'blog:detail' post.id %}"><img class="card-img-top" style="border-radius: 3px;" src="{{ post.pic1.url }}" alt="" height="170" width="180"></a>
+              <a href="{% url 'blog:detail' post.id %}"><img class="card-img-top" src="{{ post.pic1.url }}" alt="" height="170" width="180"></a>
               <div class="date-pos container text-center text-white p-3 bg-success-gradiant">{{ post.title|title }} &nbsp; &nbsp; {{ post.date|date:'d F Y' }}</div>
               <h6 class="font-weight-medium container mt-3"><a href="{% url 'blog:detail' post.id %}" class="link text-decoration-none">{{ post.description|title|truncatechars:50 }}</a></h6>
             </div>
@@ -144,7 +155,7 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,10,151,1) 0%, rgb
           <!-- Column -->
           <div class="col-md-6 mt-2">
             <div class="card shadow-lg border-0 mb-4">
-              <a href="{% url 'blog:detail' post.id %}"><img class="card-img-top" style="border-radius: 3px;" src="{{ post.pic1.url }}" alt="" height="170" width="180"></a>
+              <a href="{% url 'blog:detail' post.id %}"><img class="card-img-top" src="{{ post.pic1.url }}" alt="" height="170" width="180"></a>
               <div class="date-pos text-center container text-white p-3 bg-success-gradiant">{{ post.title|title }} &nbsp; &nbsp; {{ post.date|date:'d F Y' }}</div>
               <h6 class="font-weight-medium container mt-3"><a href="{% url 'blog:detail' post.id %}" class="link text-decoration-none">{{ post.description|title|truncatechars:50 }}</a></h6>
             </div>
@@ -165,7 +176,7 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,10,151,1) 0%, rgb
             {% if forloop.counter > 5 %}
                 <div class="col-md-4 mt-5">
                     <div class="card shadow-lg border-0 mb-4">
-                        <a href="{% url 'blog:detail' post.id %}"><img class="card-img-top" style="border-radius: 35px;" src="{{ post.pic1.url }}" alt="" height="200" width="300"></a>
+                        <a href="{% url 'blog:detail' post.id %}"><img class="card-img-top" src="{{ post.pic1.url }}" alt="" height="200" width="300"></a>
                         <div class="date-pos container text-center text-white p-3 bg-success-gradiant">{{ post.title|title }} &nbsp; &nbsp; {{ post.date|date:'d F Y' }}</div>
                         <h6 class="font-weight-medium container mt-3"><a href="{% url 'blog:detail' post.id %}" class="link text-decoration-none">{{ post.description|title|truncatechars:50 }}</a></h6>
                     </div>
@@ -206,7 +217,7 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,10,151,1) 0%, rgb
             </span>
         </div>
 
-
+</div>
     </div>
     </div>
 </div>
@@ -272,7 +283,7 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,10,151,1) 0%, rgb
             transform:scale(1.05)
         }
         .card{
-            border-radius: 34px;
+            border-radius: 3px;
         }
     </style>
 
