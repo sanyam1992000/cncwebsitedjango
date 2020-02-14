@@ -143,14 +143,7 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'careerandcounsellingcell.ymca@gmail.com'
 EMAIL_HOST_PASSWORD = 'kdmjcmiabtkwibvd'
-# EMAIL_HOST_USER = 'saksham1991999@gmail.com'
-# EMAIL_HOST_PASSWORD = 's2ksh2m19'
-# # EMAIL_HOST_USER = 'sanyam30dav@gmail.com'
-# # EMAIL_HOST_PASSWORD = 's2ny2mmitt2l'
-# EMAIL_HOST = 'smtp.rediffmail.com'
-# EMAIL_PORT = 25
-# EMAIL_HOST_USER = 'sanyam30dav@rediff.com'
-# EMAIL_HOST_PASSWORD = 'dinesh'
+
 
 
 
