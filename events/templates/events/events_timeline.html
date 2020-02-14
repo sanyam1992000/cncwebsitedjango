@@ -22,14 +22,16 @@
         <div class="x_001_laptop_main_wrap"></div>
         <div class="container">
             <h2 class="text-center mb-4">EVENTS SO FAR</h2>
-        <div class="">
-            <div class="row" style="display: flex; justify-content: center;">
+
+        <div class="col-md-12">
+        <div class="row" style="justify-content: center;">
         <form class="form-inline">
 
         <div class="col-md-4">
             <div class="form-group">
 <!--                <label for="id_course">Month:</label>-->
                 <select style="border-radius: 10px;" class="form-control" name="month" id="id_month">
+                    <option value="">-----</option>
                     <option value="01">January</option>
                     <option value="02">February</option>
                     <option value="03">March</option>
@@ -50,20 +52,32 @@
             <div class="form-group">
 <!--                <label for="id_course">Year:</label>-->
                 <select style="border-radius: 10px;" class="form-control ml-1 mr-2" name="year" id="id_course">
+                    <option value="">------</option>
                     <option value="2020">2020</option>
                     <option value="2019">2019</option>
                     <option value="2018">2018</option>
                 </select>
             </div>
         </div>
+
+            <div class="col-md-4">
+                <input
+                class="form-control mr-sm-2"
+                type="search"
+                placeholder="Search by Event Name"
+                aria-label="Search"
+                name='search'
+                value="{{search_term}}">
+
+            </div>
             <div class="col-md-4">
         <button class="btn btn-danger  my-2 my-sm-0" type="submit">Search</button>
             </div>
         </form>
-                 </div>
+        </div>
         </div>
 
-<!--          <form class="form-inline my-2 my-lg-1">-->
+<!--          <form class="form-inline my-2 my-lg-1" action="?{{ params }}&">-->
 <!--            <input-->
 <!--                class="form-control mr-sm-2"-->
 <!--                type="search"-->

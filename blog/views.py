@@ -9,17 +9,28 @@ from .models import Post, Comment
 def blog(request):
     post_all = Post.objects.all().order_by('-date')
     get_dict_copy = request.GET.copy()
-
+    
     search_term = ''
-    if 'month' and 'year' in request.GET:
-        m = int(request.GET['month'])
-        y = int(request.GET['year'])
-        post_all = Post.objects.filter(date__gte=datetime.date(y, m, 1), date__lt=datetime.date(y, m + 1, 1)).order_by('-date')
-
-    if 'search' in request.GET:
+    
+    if 'month' and 'year' and 'search' in request.GET:
+        m = request.GET['month']
+        y = request.GET['year']
         search_term = request.GET['search']
-        post_all = Post.objects.filter(event_name__icontains=search_term).order_by('-date')
+        
+        if m == '' and y == '':
+            post_all = Post.objects.filter(title__icontains=search_term).order_by('-date')
+        elif m == '':
+            y = int(y)
+            post_all = Post.objects.filter(date__year=y, title__icontains=search_term).order_by('-date')
+        elif y=='':
+            m = int(m)
+            post_all = Post.objects.filter(date__month=m, title__icontains=search_term).order_by('-date')
 
+        else:
+            m = int(m)
+            y = int(y)
+            post_all = Post.objects.filter(status='False', date__gte=datetime.date(y, m, 1), date__lt=datetime.date(y, m+1, 1), event_name__icontains=search_term).order_by('-date')
+    
     paginator_post = Paginator(post_all, 13)
     page = request.GET.get('page')
     posts = paginator_post.get_page(page)

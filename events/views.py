@@ -17,15 +17,28 @@ def EventsList(request):
     get_dict_copy = request.GET.copy()
 
     search_term = ''
-    if 'month' and 'year' in request.GET:
-        m = int(request.GET['month'])
-        y = int(request.GET['year'])
-        events = Event.objects.filter(status='False', date__gte=datetime.date(y, m, 1), date__lt=datetime.date(y, m+1, 1)).order_by('-date')
+    if 'month' and 'year' and 'search' in request.GET:
+        m = request.GET['month']
+        y = request.GET['year']
+        search_term = request.GET['search']
 
-    if 'search' in request.GET:
+        if m == '' and y == '':
+            events = Event.objects.filter(status='False',event_name__icontains=search_term).order_by('-date')
+        elif m == '':
+            y = int(y)
+            events = Event.objects.filter(status='False', date__year=y, event_name__icontains=search_term).order_by('-date')
+        elif y=='':
+            m = int(m)
+            events = Event.objects.filter(status='False', date__month=m, event_name__icontains=search_term).order_by('-date')
+
+        else:
+            m = int(m)
+            y = int(y)
+            events = Event.objects.filter(status='False', date__gte=datetime.date(y, m, 1), date__lt=datetime.date(y, m+1, 1), event_name__icontains=search_term).order_by('-date')
+
+    elif 'search' in request.GET:
         search_term = request.GET['search']
         events = Event.objects.filter(status='False', event_name__icontains=search_term).order_by('-date')
-        params = get_dict_copy.appendlist('search', search_term) and get_dict_copy.urlencode()
 
     paginator_event = Paginator(events, 10)
     page = request.GET.get('page')
