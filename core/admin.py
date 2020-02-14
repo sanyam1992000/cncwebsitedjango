@@ -8,13 +8,37 @@ class ContactUsAdmin(admin.ModelAdmin):
     list_display_links = ('name', 'email', 'phoneno')
     list_filter = ('name', 'phoneno')
     search_fields = ('name', 'email', 'phoneno', 'query')
-    list_max_show_all = 20
+    list_max_show_all = 50
 
     fieldsets = (
         (None, {'fields': ('name', 'email', 'phoneno', 'query')}),
     )
 
 
-admin.site.register(Member)
-admin.site.register(SlideShowPic)
+class MembersAdmin(admin.ModelAdmin):
+    list_display = ('user', 'userprofile', 'description', 'status')
+    list_display_links = ('user', 'userprofile')
+    list_filter = ('description', 'status')
+    search_fields = ('user', 'userprofile', 'description', 'status')
+    list_max_show_all = 100
+
+    fieldsets = (
+        (None, {'fields': ('user', 'userprofile', 'description', 'status')}),
+    )
+
+
+class SlideShowPicAdmin(admin.ModelAdmin):
+    list_display = ('title', 'image', 'description', 'url', 'number')
+    list_display_links = ('title', 'description')
+    list_filter = ('number',)
+    search_fields = ('title', 'image', 'description', 'url', 'number')
+    list_max_show_all = 100
+
+    fieldsets = (
+        (None, {'fields': ('title', 'image', 'description', 'url', 'number')}),
+    )
+
+
+admin.site.register(Member, MembersAdmin)
+admin.site.register(SlideShowPic, SlideShowPicAdmin)
 admin.site.register(ContactUs, ContactUsAdmin)
