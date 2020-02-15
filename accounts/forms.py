@@ -22,7 +22,11 @@ branch = (
     ('EIC', 'EIC'),
     ('EL', 'EL'),
     ('MECH', 'MECH'),
-    ('CIVIL', 'CIVIL'),
+    ('CIVIL','CIVIL'),
+    ('Mathematics', 'Mathematics'),
+    ('Chemistry','Chemistry'),
+    ('Physics','Physics'),
+
 )
 
 
