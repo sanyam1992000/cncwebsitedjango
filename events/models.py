@@ -6,6 +6,7 @@ from django.urls import reverse
 class Event(models.Model):
     event_name = models.CharField(max_length=100)
     description = models.CharField(max_length=1000)
+    certi_description = models.CharField(max_length=1000, null=True, blank=True, default='')
     content = models.TextField(max_length=5000, blank=True, null=True)
     date = models.DateTimeField(blank=True, null=True)
     venue = models.CharField(max_length=100, default=None, blank=True, null=True)
