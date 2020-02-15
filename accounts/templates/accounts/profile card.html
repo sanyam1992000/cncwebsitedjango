@@ -54,9 +54,7 @@
                             <div class="card-body">
                                 <h4 class="card-title" style="margin-top: 5px;"><strong>{{ registration.event.event_name|capfirst }}</strong></h4>
                                 <h6 class="text-muted card-subtitle mb-2" style="margin-top: 0px;">{{ registration.event.date }}</h6>
-                                <div>
                                 <p class="card-text" style="width: 180px;margin-top: 15px;margin-bottom: 20px;">{{ registration.event.description|capfirst|truncatechars:50 }}</p>
-                                </div>
 
                                 <div class="btn-group" role="group">
                                     <button class="btn bg-danger" type="button" ><a href="{% url 'events:certificate' user_instance.username registration.event.id %}">Certificate</a></button>
