@@ -25,21 +25,21 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,10,151,1) 0%, rgb
     <!-- Row  -->
     <div class="row justify-content-center">
       <!-- Column -->
-      <div class="col-md-8 text-center mb-3">
+      <div class="col-md-12 text-center mb-3">
         <h2 class="my-1 text-white">BLOG</h2>
       </div>
+    </div>
 
 
 
 
         <!----- Filters ----------->
-        <div class="col-md-12">
-        <div class="row" style="justify-content: center;">
+
+        <div class="row wow slideInUp" style="justify-content: center;">
         <form class="form-inline">
 
-        <div class="col-md-4">
+        <div class="col-md-3">
             <div class="form-group">
-<!--                <label for="id_course">Month:</label>-->
                 <select style="border-radius: 10px;" class="form-control" name="month" id="id_month">
                     <option value="">Select Month</option>
                     <option value="01">January</option>
@@ -58,10 +58,9 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,10,151,1) 0%, rgb
             </div>
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-3">
             <div class="form-group">
-<!--                <label for="id_course">Year:</label>-->
-                <select style="border-radius: 10px;" class="form-control ml-1 mr-2" name="year" id="id_course">
+                <select style="border-radius: 10px;" class="form-control" name="year" id="id_course">
                     <option value="">Select Year</option>
                     <option value="2020">2020</option>
                     <option value="2019">2019</option>
@@ -69,10 +68,9 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,10,151,1) 0%, rgb
                 </select>
             </div>
         </div>
-
             <div class="col-md-4">
                 <input
-                class="form-control mr-sm-2"
+                class="form-control"
                 type="search"
                 placeholder="Search by Event Name"
                 aria-label="Search"
@@ -80,29 +78,13 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,10,151,1) 0%, rgb
                 value="{{search_term}}">
 
             </div>
-            <div class="col-md-4">
-        <button class="btn btn-danger  my-2 my-sm-0" type="submit">Search</button>
+
+            <div class="col-md-2">
+        <button class="btn btn-primary  my-2 my-sm-0" type="submit">Search</button>
             </div>
         </form>
         </div>
-        </div>
 
-<!--        <div class="row">-->
-<!--          <form class="form-inline">-->
-<!--              <div class="col-lg-8">-->
-<!--            <input-->
-<!--                class="form-control mr-sm-2"-->
-<!--                type="search"-->
-<!--                placeholder="Search by Event Name"-->
-<!--                aria-label="Search"-->
-<!--                name='search'-->
-<!--                value="{{search_term}}">-->
-<!--              </div>-->
-<!--              <div class="col-lg-4">-->
-<!--            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
-<!--              </div>-->
-<!--          </form>-->
-<!--        </div>-->
     </div>
         </div>
 
@@ -114,10 +96,9 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,10,151,1) 0%, rgb
       <!-- Column -->
       <!-- Column -->
     </div>
-        <hr style="background-color: white">
 
 
-<div class="container">
+<div class="container wow slideInUp">
     <div class="container row mt-3">
       <!-- Column -->
         {% for post in posts %}
