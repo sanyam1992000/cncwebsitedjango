@@ -19,6 +19,7 @@ class MembersAdmin(admin.ModelAdmin):
     list_display = ('user', 'userprofile', 'description', 'status')
     list_display_links = ('user', 'userprofile')
     list_filter = ('description', 'status')
+    list_editable = ('description', 'status')
     search_fields = ('user', 'userprofile', 'description', 'status')
     list_max_show_all = 100
 
@@ -31,6 +32,7 @@ class SlideShowPicAdmin(admin.ModelAdmin):
     list_display = ('title', 'image', 'description', 'url', 'number')
     list_display_links = ('title', 'description')
     list_filter = ('number',)
+    list_editable = ('url', 'number')
     search_fields = ('title', 'image', 'description', 'url', 'number')
     list_max_show_all = 100
 
