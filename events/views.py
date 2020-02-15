@@ -66,9 +66,10 @@ def Getpdf(request, username, eventid, *args, **kwargs):
     event = Event.objects.get(id=eventid)
     if username == user.username:
         data = {
-            'user': user
+            'user': user,
+            'event': event,
         }
-        pdf = render_to_pdf('events/certi1.html', )
+        pdf = render_to_pdf('events/certi1.html', data)
         return HttpResponse(pdf, content_type='application/pdf')
     else:
         return HttpResponse('404')
