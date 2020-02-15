@@ -20,7 +20,7 @@ def login_user(request):
         form = UserLogin(request.POST)
         username = request.POST['username']
         password = request.POST['password']
-        user = authenticate(request, username=username, password=password)
+        user = authenticate(request, username=username.lower(), password=password)
         if user is not None:
             login(request, user)
             redirect_url = request.GET.get('next', 'core:home')
@@ -56,7 +56,7 @@ def register(request):
             branch = form.cleaned_data['branch']
             phoneno = form.cleaned_data['phoneno']
             icard = form.cleaned_data['icard']
-            user = User.objects.create_user(username=username, email=email, password=password, first_name=firstname,
+            user = User.objects.create_user(username=username.lower(), email=email, password=password, first_name=firstname,
                                             last_name=lastname)
             user.save()
             profile = UserProfile(user=user, course=course, roll_no=roll_no, branch=branch, phoneno=phoneno, icard=icard, password2=password2)
