@@ -123,7 +123,7 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,10,151,1) 0%, rgb
           <div class="col-md-6 mt-5">
             <div class="card shadow-lg border-0 mb-4">
               <a href="{% url 'blog:detail' post.id %}"><img class="card-img-top" src="{{ post.pic1.url }}" alt="" height="170" width="180"></a>
-              <div class="date-pos container text-center text-white p-1 bg-success-gradiant">{{ post.title|title|truncatechars:40 }} &nbsp; &nbsp; {{ post.date|date:'d F Y' }}</div>
+              <div class="date-pos container text-center p-1 bg-success-gradiant">{{ post.title|title|truncatechars:40 }} &nbsp; &nbsp; {{ post.date|date:'d F Y' }}</div>
               <h6 class="font-weight-medium container mt-2"><a href="{% url 'blog:detail' post.id %}" class="link text-decoration-none">{{ post.description|title|truncatechars:50 }}</a></h6>
             </div>
           </div>
@@ -133,7 +133,7 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,10,151,1) 0%, rgb
           <div class="col-md-6 mt-5">
             <div class="card shadow-lg border-0 mb-4">
               <a href="{% url 'blog:detail' post.id %}"><img class="card-img-top" src="{{ post.pic1.url }}" height="170" width="180"></a>
-              <div class="date-pos container text-center text-white p-1 bg-success-gradiant">{{ post.title|title|truncatechars:40 }} &nbsp; &nbsp; {{ post.date|date:'d F Y' }}</div>
+              <div class="date-pos container text-center p-1 bg-success-gradiant">{{ post.title|title|truncatechars:40 }} &nbsp; &nbsp; {{ post.date|date:'d F Y' }}</div>
               <h6 class="font-weight-medium container mt-2"><a href="{% url 'blog:detail' post.id %}" class="link text-decoration-none">{{ post.description|title|truncatechars:50 }}</a></h6>
             </div>
           </div>
@@ -168,7 +168,7 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,10,151,1) 0%, rgb
     </div>
         <br><br>
         <hr>
-        <div class="row oldposts">
+        <div class="container row oldposts">
             {% for post in posts %}
             {% if forloop.counter > 5 %}
                 <div class="col-md-4 mt-5">
