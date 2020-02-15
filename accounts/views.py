@@ -56,7 +56,7 @@ def register(request):
             branch = form.cleaned_data['branch']
             phoneno = form.cleaned_data['phoneno']
             icard = form.cleaned_data['icard']
-            user = User.objects.create_user(username=username, email=email, password=password, first_name=firstname,
+            user = User.objects.create_user(username=username.lower(), email=email, password=password, first_name=firstname,
                                             last_name=lastname)
             user.is_active = False
             user.save()
