@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli">
 
     {% endblock %}
-<div style="padding: 20px; padding-top: 50px">
+<div class="wow slideInUp" style="padding: 20px; padding-top: 50px; margin-top: 10px">
     <section class="index-howto-alt">
 
 
@@ -18,20 +18,19 @@
 
 
 
-
-        <div class="x_001_laptop_main_wrap"></div>
-        <div class="container">
-            <h2 class="text-center mb-4">EVENTS SO FAR</h2>
-
-        <div class="col-md-12">
-        <div class="row" style="justify-content: center;">
+        <div class=" wow slideInUp row justify-content-center">
+      <!-- Column -->
+      <div class="col-md-12 text-center mb-3">
+        <h2 class="my-1">EVENTS SO FAR</h2>
+      </div>
+    </div>
+        <div class="wow slideInUp row" style="justify-content: center;">
         <form class="form-inline">
 
-        <div class="col-md-4">
+        <div class="col-md-3">
             <div class="form-group">
-<!--                <label for="id_course">Month:</label>-->
                 <select style="border-radius: 10px;" class="form-control" name="month" id="id_month">
-                    <option value="">-----</option>
+                    <option value="">Select Month</option>
                     <option value="01">January</option>
                     <option value="02">February</option>
                     <option value="03">March</option>
@@ -48,21 +47,19 @@
             </div>
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-3">
             <div class="form-group">
-<!--                <label for="id_course">Year:</label>-->
-                <select style="border-radius: 10px;" class="form-control ml-1 mr-2" name="year" id="id_course">
-                    <option value="">------</option>
+                <select style="border-radius: 10px;" class="form-control" name="year" id="id_course">
+                    <option value="">Select Year</option>
                     <option value="2020">2020</option>
                     <option value="2019">2019</option>
                     <option value="2018">2018</option>
                 </select>
             </div>
         </div>
-
             <div class="col-md-4">
                 <input
-                class="form-control mr-sm-2"
+                class="form-control"
                 type="search"
                 placeholder="Search by Event Name"
                 aria-label="Search"
@@ -70,12 +67,17 @@
                 value="{{search_term}}">
 
             </div>
-            <div class="col-md-4">
+
+            <div class="col-md-2">
         <button class="btn btn-danger  my-2 my-sm-0" type="submit">Search</button>
             </div>
         </form>
         </div>
+
+    </div>
         </div>
+<hr>
+
 
 <!--          <form class="form-inline my-2 my-lg-1" action="?{{ params }}&">-->
 <!--            <input-->
@@ -88,15 +90,14 @@
 <!--            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
 <!--          </form>-->
 
-            <div class="psd-line pos-rel" style="position:relative;">
-                <hr>
 
 
-
+<div class="bg-white p-0">
+<div class="container mt-3">
         {% for event in events %}
                 {% if event.status == 'False' %}
         {% if forloop.counter0|divisibleby:"2" %}
-            <div class="row flex-column-reverse align-items-center flex-sm-row">
+            <div class="row wow slideInLeft flex-column-reverse align-items-center flex-sm-row">
                     <div class="card border-white border rounded shadow-lg col-12 col-sm-6 d-flex flex-column justify-content-center p-5 psd-right1">
                         <center><h3 class="text-sm-center">{{ event.event_name|capfirst}}</h3>
                         <h6 class="text-sm-center">{{ event.date }}</h6>
@@ -111,7 +112,7 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,10,151,1) 0%, rgb
                     </div>
                 </div>
         {% elif not forloop.counter0|divisibleby:"2"%}
-            <div class="row align-items-center">
+            <div class="row wow slideInRight align-items-center">
                     <div class="col-12 col-sm-6 d-flex flex-row justify-content-center align-items-center intro-card-3 p-5">
                         <img class="howto-img imground" src="{{ event.pic2.url }}" href="{% url 'events:events_detail' event.id %}" alt="" width="200" height="200">
                     </div>
@@ -125,17 +126,19 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,10,151,1) 0%, rgb
         {% endif %}
     {% endif %}
      {% endfor %}
+</div>
+</div>
             </div>
 
         </div>
     </section>
 
-    <div class="pagination">
+    <div class="pagination container" style="padding: 50px">
             <span class="step-links">
             {% if events.has_previous %}
                 <div class="btn-group" role="group" aria-label="Basic example">
-                    <a href="?page=1&{{params}}" style="padding-right: 3px;"><button type="button" class="btn btn-dark">&laquo; First</button></a>
-                    <a href="?page={{ events.previous_page_number }}&{{params}}"><button type="button" class="btn btn-dark">Previous</button></a>
+                    <a href="?page=1&{{params}}" style="padding-right: 3px;"><button type="button" class="btn btn-secondary">&laquo; First</button></a>
+                    <a href="?page={{ events.previous_page_number }}&{{params}}"><button type="button" class="btn btn-secondary">Previous</button></a>
                 </div>
             {% endif %}
 
@@ -144,7 +147,7 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,10,151,1) 0%, rgb
             {% for i in allevents.page_range %}
             {% if i > events.number|add:'-3' and i < events.number|add:'3' %}
 
-                    <a href="?page={{ i }}&{{params}}" style="padding-right: 3px;"><button type="button" class="btn btn-dark">{{ i }}</button></a>
+                    <a href="?page={{ i }}&{{params}}" style="padding-right: 3px;"><button type="button" class="btn btn-secondary">{{ i }}</button></a>
 
             {% endif %}
             {% endfor %}
@@ -152,8 +155,8 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,10,151,1) 0%, rgb
 
             {% if events.has_next %}
                 <div class="btn-group" role="group" aria-label="Basic example">
-                    <a href="?page={{ events.next_page_number }}&{{params}}" style="padding-right: 3px;"><button type="button" class="btn btn-dark">Next</button></a>
-                    <a href="?page={{ events.paginator.num_pages }}&{{params}}"><button type="button" class="btn btn-dark">Last &raquo;</button></a>
+                    <a href="?page={{ events.next_page_number }}&{{params}}" style="padding-right: 3px;"><button type="button" class="btn btn-secondary">Next</button></a>
+                    <a href="?page={{ events.paginator.num_pages }}&{{params}}"><button type="button" class="btn btn-secondary">Last &raquo;</button></a>
                 </div>
             {% endif %}
             </span>
