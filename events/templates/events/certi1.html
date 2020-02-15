@@ -1,4 +1,4 @@
-
+{% load static %}
 <html>
 <head>
 
@@ -7,7 +7,7 @@
     @page {
         size: a4 landscape;
         padding: 10pt;
-        background-image: url('../../static/img/3401082.jpg');
+        background-image: url("{% static 'img/3401082.jpg' %}");
 
         @frame header_frame {
         -pdf-frame-content: header_content;
