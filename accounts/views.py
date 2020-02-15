@@ -58,7 +58,6 @@ def register(request):
             icard = form.cleaned_data['icard']
             user = User.objects.create_user(username=username.lower(), email=email, password=password, first_name=firstname,
                                             last_name=lastname)
-            user.is_active = False
             user.save()
             profile = UserProfile(user=user, course=course, roll_no=roll_no, branch=branch, phoneno=phoneno, icard=icard, password2=password2)
             profile.save()
