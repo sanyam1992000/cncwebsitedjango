@@ -1,13 +1,14 @@
 from django.contrib.auth.models import User
 from django.db import models
 from django.urls import reverse
+from ckeditor_uploader.fields import RichTextUploadingField
 
 
 class Event(models.Model):
     event_name = models.CharField(max_length=100)
     description = models.CharField(max_length=1000)
-    certi_description = models.CharField(max_length=1000, null=True, blank=True, default='')
-    content = models.TextField(max_length=5000, blank=True, null=True)
+    certi_description = RichTextUploadingField(blank=True, null=True)
+    content = RichTextUploadingField(blank=True, null=True)
     date = models.DateTimeField(blank=True, null=True)
     venue = models.CharField(max_length=100, default=None, blank=True, null=True)
     pic1 = models.ImageField(default=None, upload_to='event pics', blank=True, null=True)
