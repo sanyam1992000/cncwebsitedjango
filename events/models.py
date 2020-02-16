@@ -27,7 +27,7 @@ class Event(models.Model):
         return self.event_name
 
     def get_absolute_url(self):
-        return reverse('blog:detail', self.id)
+        return reverse('events:events_detail', args=[str(self.pk)])
 
     class Meta:
         ordering = ['-date']

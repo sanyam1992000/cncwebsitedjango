@@ -18,8 +18,39 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth.views import PasswordResetView, PasswordResetDoneView, PasswordResetCompleteView, PasswordResetConfirmView, PasswordChangeView, PasswordChangeDoneView
-from core import views
-from accounts import views as account_views
+from django.contrib.sitemaps.views import sitemap
+from django.contrib.sitemaps import GenericSitemap
+from blog.models import Post
+from events.models import Event
+from events.models import Event
+from accounts.models import UserProfile, FacultyProfile
+import blog.views
+from blog.sitemaps import StaticViewSitemap
+
+sitemaps = {
+    'static': StaticViewSitemap,
+    
+    'blog': GenericSitemap({
+        'queryset': Post.objects.all(),
+        'date_field': 'date',
+    }, priority=0.7),
+    
+    'event': GenericSitemap({
+        'queryset': Event.objects.all(),
+        'date_field': 'date',
+    }, priority=0.8),
+    
+    'students': GenericSitemap({
+        'queryset': UserProfile.objects.all(),
+    }, priority=0.9),
+
+    'teachers': GenericSitemap({
+        'queryset': FacultyProfile.objects.all(),
+    }, priority=0.9),
+
+    
+}
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -36,7 +67,7 @@ urlpatterns = [
     path('blog/', include('blog.urls', namespace='blog')),
     path('accounts/', include('accounts.urls', namespace='accounts')),
     path('api-auth/', include('rest_framework.urls')),
-
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap')
 ]
 
 if settings.DEBUG:

@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.urls import reverse
+
 # Create your models here.
 
 courses = (
@@ -45,6 +47,12 @@ class UserProfile(models.Model):
 
     def __str__(self):
         return str(self.user) + ' ' + str(self.roll_no)
+    
+    def get_absolute_url(self):
+        return reverse('accounts:dashboard', args=[str(self.user.username)])
+    
+    class Meta:
+        ordering = ['-roll_no', 'branch', 'course']
 
 
 class FacultyProfile(models.Model):
@@ -55,6 +63,9 @@ class FacultyProfile(models.Model):
 
     def __str__(self):
         return str(self.user)
-
+    
+    def get_absolute_url(self):
+        return reverse('accounts:dashboard', args=[str(self.user.username)])
+    
     class Meta:
         ordering = ['-position']
