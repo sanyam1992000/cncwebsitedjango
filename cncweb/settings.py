@@ -174,12 +174,96 @@ CKEDITOR_FILENAME_GENERATOR = 'utils.get_filename'
 CKEDITOR_BROWSE_SHOW_DIRS = True
 CKEDITOR_RESTRICT_BY_DATE = True
 AWS_QUERYSTRING_AUTH = False
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+
 
 CKEDITOR_CONFIGS = {
     'default': {
-        'toolbar': 'full',
-        'extraPlugins': 'codesnippet'
-    },
+        'toolbar': 'YourCustomToolbarConfig',
+        'toolbar_YourCustomToolbarConfig': [
+            {'name': 'document', 'items': ['Source', '-', 'Save', 'NewPage', 'Preview', 'Print', '-', 'Templates']},
+            {'name': 'clipboard', 'items': ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo']},
+            {'name': 'editing', 'items': ['Find', 'Replace', '-', 'SelectAll']},
+            {'name': 'forms',
+             'items': ['Form', 'Checkbox', 'Radio', 'TextField', 'Textarea', 'Select', 'Button', 'ImageButton',
+                       'HiddenField']},
+            '/',
+            {'name': 'basicstyles',
+             'items': ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat']},
+            {'name': 'paragraph',
+             'items': ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'CreateDiv', '-',
+                       'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl',
+                       'Language']},
+            {'name': 'links', 'items': ['Link', 'Unlink', 'Anchor']},
+            {'name': 'insert',
+             'items': ['Image', 'Flash', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak', 'Iframe']},
+            '/',
+            {'name': 'styles', 'items': ['Styles', 'Format', 'Font', 'FontSize']},
+            {'name': 'colors', 'items': ['TextColor', 'BGColor']},
+            {'name': 'tools', 'items': ['Maximize', 'ShowBlocks']},
+            {'name': 'about', 'items': ['About']},
+            '/',
+            {'name': 'yourcustomtools', 'items': [
+                'Preview',
+                'Maximize',
+                'CodeSnippet'
+            ]},
+               '/',
+            {'name': 'extra', 'items': [
+                'CodeSnippet'
+            ]},
+            ['CodeSnippet'],
+        ],
+
+        'mathJaxLib': '//cdn.mathjax.org/mathjax/2.2-latest/MathJax.js?config=TeX-AMS_HTML',
+        'tabSpaces': 4,
+        'extraPlugins': ','.join([
+            'div',
+            'autolink',
+            'autoembed',
+            'embedsemantic',
+            'autogrow',
+            # 'devtools',
+            'widget',
+            'lineutils',
+            'clipboard',
+            'dialog',
+            'dialogui',
+            'elementspath'
+        ]),
+    }
 }
+
+# CKEDITOR_CONFIGS = {
+#     'default': {
+#         'toolbar': 'full',
+#         'toolbar_full': [
+#                 ['Source', '-', 'Save', 'NewPage', 'Preview', 'Print', '-', 'Templates','Link', 'Unlink', 'Anchor',
+#                     'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo',
+#                     'Find', 'Replace', '-', 'SelectAll',
+#                     'Form', 'Checkbox', 'Radio', 'TextField', 'Textarea', 'Select', 'Button', 'ImageButton', 'HiddenField',
+#
+#                     'CodeSnippet',
+#                  ],
+#         ],
+#         'extraPlugins': 'codesnippet',
+#         # 'extraPlugins': ','.join([
+#         #     'uploadimage', # the upload image feature
+#         #     # your extra plugins here
+#         #     'div',
+#         #     'autolink',
+#         #     'autoembed',
+#         #     'embedsemantic',
+#         #     'autogrow',
+#         #     # 'devtools',
+#         #     'widget',
+#         #     'lineutils',
+#         #     'clipboard',
+#         #     'dialog',
+#         #     'dialogui',
+#         #     'elementspath'
+#         # ]),
+#     },
+# }
 
 django_heroku.settings(locals())
