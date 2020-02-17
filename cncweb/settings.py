@@ -169,11 +169,12 @@ AWS_S3_HOST = 's3.us-east-2.amazonaws.com'
 CKEDITOR_JQUERY_URL = 'https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js'
 
 CKEDITOR_UPLOAD_PATH = 'uploads/'
+CKEDITOR_JQUERY_URL = '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'
 CKEDITOR_IMAGE_BACKEND = "pillow"
-CKEDITOR_FILENAME_GENERATOR = 'utils.get_filename'
+# CKEDITOR_FILENAME_GENERATOR = 'utils.get_filename'
 CKEDITOR_BROWSE_SHOW_DIRS = True
 CKEDITOR_RESTRICT_BY_DATE = True
-AWS_QUERYSTRING_AUTH = False
+# AWS_QUERYSTRING_AUTH = False
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 

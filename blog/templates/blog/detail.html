@@ -17,7 +17,7 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,10,151,1) 0%, rgb
         <img src="{{ post.pic1.url }}" class="posts-img img-fluid" style="height: 300px">
     </div>
     <div class="post-content">
-        <p> {{ post.content|escape|linebreaks }} </p>
+        <p> {{ post.content|safe }} </p>
     </div>
 </div>
 

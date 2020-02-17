@@ -108,7 +108,7 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,10,151,1) 0%, rgb
           <a href="{% url 'blog:detail' post.id %}"><img class="card-img-top" src="{{ post.pic1.url }}" alt="" height="330" width="400"></a>
           <div class="date-pos text-center p-1 bg-success-gradiant">{{ post.title|title|truncatechars:40 }} &nbsp; &nbsp; {{ post.date|date:'d F Y' }}</div>
           <h5 class="font-weight-medium container mt-2"><a href="{% url 'blog:detail' post.id %}" class="link text-decoration-none">{{ post.description|title|truncatechars:100 }}</a></h5>
-          <p class="m-t-20 container">{{ post.content|title|truncatewords:70 }}</p>
+          <p class="m-t-20 container">{{ post.content|safe|truncatewords:70 }}</p>
         </div>
       </div>
         {% endif %}

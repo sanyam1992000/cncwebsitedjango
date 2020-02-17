@@ -33,7 +33,7 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,10,151,1) 0%, rgb
                             <h6>Event Date - {{ event.date|date:'d F Y'}} </h6>
                         </p>
                         <hr>
-                        <p class="text-dark text-center">{{ event.description|capfirst }}</p>
+                        <p class="text-dark text-center">{{ event.description|capfirst|safe }}</p>
 
                         {% if event.pic2 %}
                         <center><img class="img-fluid" src="{{ event.pic2.url }}" style="height: 300px;"></center><br>
@@ -43,8 +43,9 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,10,151,1) 0%, rgb
 
                     <div class="text">
                         <p>
-                            {{ event.content|capfirst|escape|linebreaks}}
+                            {{ event.content|safe }}
                         </p>
+                        <br>
                         {% if event.pic1 %}
                         <figure class="figure">
                             <img class="figure-img" src="{{event.pic1.url}}" alt="" height="200px">
