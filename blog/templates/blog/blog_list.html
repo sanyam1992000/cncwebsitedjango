@@ -14,8 +14,7 @@
 {% endblock %}
 
 <body>
-<div style="background: rgb(2,0,36);
-background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,10,151,1) 0%, rgba(255,0,0,1) 100%);">
+<div>
     <br>
     <br>
     <br>
@@ -26,12 +25,9 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,10,151,1) 0%, rgb
     <div class="row justify-content-center">
       <!-- Column -->
       <div class="col-md-12 text-center mb-3">
-        <h2 class="my-1 text-white">BLOG</h2>
+        <h2 class="my-1">BLOG</h2>
       </div>
     </div>
-
-
-
 
         <!----- Filters ----------->
 
@@ -87,11 +83,6 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,10,151,1) 0%, rgb
 
     </div>
         </div>
-
-
-
-
-
 
       <!-- Column -->
       <!-- Column -->
@@ -166,8 +157,6 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,10,151,1) 0%, rgb
 
 
     </div>
-        <br><br>
-        <hr>
         <div class="container row oldposts">
             {% for post in posts %}
             {% if forloop.counter > 5 %}
@@ -184,7 +173,7 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,10,151,1) 0%, rgb
 
 
 
-        <!----------- {agination ------------->
+        <!----------- Pagination ------------->
         <div class="pagination">
             <span class="step-links">
             {% if posts.has_previous %}

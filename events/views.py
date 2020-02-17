@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 import datetime
 from django.contrib import messages
 from django.core.paginator import Paginator
+import urllib.request
 
 
 # Create your views here.
