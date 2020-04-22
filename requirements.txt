@@ -30,3 +30,4 @@ django-storages==1.8
 boto==2.49.0
 boto3==1.11.9
 botocore==1.14.9
+django-import-export
