@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+{% load static %}
+{% load staticfiles %}
     {% block static %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
@@ -27,7 +29,9 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+
     {% endblock %}
+
 {% block content %}
 <div style="background: rgb(2,0,36);
 background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,10,151,1) 0%, rgba(255,0,0,1) 100%); padding: 20px; padding-top: 50px">
