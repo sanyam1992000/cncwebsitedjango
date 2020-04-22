@@ -1,5 +1,7 @@
 from django.contrib import admin
 from .models import Post, Comment
+from import_export.admin import ImportExportModelAdmin, ImportExportActionModelAdmin
+
 admin.site.site_header = 'Career And Counseling Cell'
 # Register your models here.
 
@@ -8,7 +10,7 @@ class InlineComments(admin.TabularInline):
     model = Comment
 
 
-class PostAdmin(admin.ModelAdmin):
+class PostAdmin(ImportExportModelAdmin, ImportExportActionModelAdmin):
     inlines = [InlineComments]
     list_display = ('title', 'description', 'date',)
     list_display_links = ('title', 'description')
@@ -18,7 +20,7 @@ class PostAdmin(admin.ModelAdmin):
     list_max_show_all = 50
 
 
-class CommentAdmin(admin.ModelAdmin):
+class CommentAdmin(ImportExportModelAdmin, ImportExportActionModelAdmin):
     list_display = ('comment_user', 'article', 'comment_content', 'comment_date')
     list_display_links = ('comment_user', 'article')
     list_editable = ('comment_content',)

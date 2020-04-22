@@ -1,9 +1,11 @@
 from django.contrib import admin
 from .models import SlideShowPic, ContactUs, Member
+from import_export.admin import ImportExportModelAdmin, ImportExportActionModelAdmin
+
 admin.site.site_header = 'Career And Counseling Cell'
 
 
-class ContactUsAdmin(admin.ModelAdmin):
+class ContactUsAdmin(ImportExportModelAdmin, ImportExportActionModelAdmin):
     list_display = ('name', 'email', 'phoneno', 'query')
     list_display_links = ('name', 'email', 'phoneno')
     list_filter = ('name', 'phoneno')
@@ -15,7 +17,7 @@ class ContactUsAdmin(admin.ModelAdmin):
     )
 
 
-class MembersAdmin(admin.ModelAdmin):
+class MembersAdmin(ImportExportModelAdmin, ImportExportActionModelAdmin):
     list_display = ('user', 'userprofile', 'description', 'status')
     list_display_links = ('user', 'userprofile')
     list_filter = ('description', 'status')

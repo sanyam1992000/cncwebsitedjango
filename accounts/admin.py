@@ -1,11 +1,13 @@
 from django.contrib import admin
 from .models import UserProfile, FacultyProfile
+from import_export.admin import ImportExportModelAdmin, ImportExportActionModelAdmin
+
 
 # Register your models here.
 admin.site.site_header = 'Career And Counseling Cell'
 
 
-class UserProfileAdmin(admin.ModelAdmin):
+class UserProfileAdmin(ImportExportModelAdmin, ImportExportActionModelAdmin):
     list_display = ('user', 'roll_no', 'course', 'branch')
     list_display_links = ('user', 'roll_no')
     list_filter = ('course', 'branch')
@@ -17,7 +19,7 @@ class UserProfileAdmin(admin.ModelAdmin):
     )
 
 
-class FacultyProfileAdmin(admin.ModelAdmin):
+class FacultyProfileAdmin(ImportExportModelAdmin, ImportExportActionModelAdmin):
     list_display = ('user', 'department', 'position',)
     list_display_links = ('user', 'department')
     list_filter = ('department', 'position')
