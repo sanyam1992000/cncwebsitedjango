@@ -12,14 +12,14 @@
     <meta property="og:url" content="https://www.cncjcbust.tech/">
     <meta property="og:title" content="{{user_instance.first_name|capfirst}} {{ user_instance.last_name|capfirst }} | Career and Counseling Cell | JC Bose UST">
     <meta property="og:description" content="Career and Counseling helps student to achieve excellence in their respective fields. We guide students by conducting seminars by their Role Models and help them to overcome the barrier.">
-    <meta property="og:image" content="{{user_instance.user{{user_instance.first_name|capfirst}} {{ user_instance.last_name|capfirst }}.pic.url}}">
+    <meta property="og:image" content="{{user_instance.pic.url}}">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://www.cncjcbust.tech/">
     <meta property="twitter:title" content="{{user_instance.first_name|capfirst}} {{ user_instance.last_name|capfirst }} | Career and Counseling Cell | JC Bose UST">
     <meta property="twitter:description" content="Career and Counseling helps student to achieve excellence in their respective fields. We guide students by conducting seminars by their Role Models and help them to overcome the barrier.">
-    <meta property="twitter:image" content="{{user_instance.user{{user_instance.first_name|capfirst}} {{ user_instance.last_name|capfirst }}.pic.url}}">
+    <meta property="twitter:image" content="{{user_instance.pic.url}}">
 
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=ABeeZee">
@@ -37,6 +37,6 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,10,151,1) 0%, rgb
 <br>
 <br>
 
-                {% include 'accounts/{{user_instance.first_name|capfirst}} {{ user_instance.last_name|capfirst }} card.html' %}
+                {% include 'accounts/profile card.html' %}
 </div>
 {% endblock %}

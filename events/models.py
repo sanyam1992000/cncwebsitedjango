@@ -11,7 +11,7 @@ class Event(models.Model):
     content = RichTextUploadingField(blank=True, null=True)
     date = models.DateTimeField(blank=True, null=True)
     venue = models.CharField(max_length=100, default=None, blank=True, null=True)
-    pic1 = models.ImageField(default=None, upload_to='event pics', blank=True, null=True)
+    pic1 = models.ImageField(default=None, upload_to='event pics')
     pic2 = models.ImageField(default=None, upload_to='event pics', blank=True, null=True)
     pic3 = models.ImageField(default=None, upload_to='event pics', blank=True, null=True)
     pic4 = models.ImageField(default=None, upload_to='event pics', blank=True, null=True)
