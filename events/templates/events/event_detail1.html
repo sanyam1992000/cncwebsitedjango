@@ -3,9 +3,25 @@
 {% block static %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    {% block title %}
-    <title>CNC | {{ event.event_name|truncatechars:30 }}</title>
-    {% endblock %}
+
+    <title>{{ event.event_name|title }} | Career and Counseling Cell | JC Bose UST</title>
+    <meta name="title" content="{{ event.event_name|title }} | Career and Counseling Cell | JC Bose UST">
+    <meta name="description" content="{{ event.description|safe|truncatechars:150 }}">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.cncjcbust.tech/events/{{ event.id }}/">
+    <meta property="og:title" content="{{ event.event_name|title }} | Career and Counseling Cell | JC Bose UST">
+    <meta property="og:description" content="{{ event.description|safe|truncatechars:150 }}">
+    <meta property="og:image" content="{{event.pic1.url}}">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.cncjcbust.tech/events/{{ event.id }}/">
+    <meta property="twitter:title" content="{{ event.event_name|title }} | Career and Counseling Cell | JC Bose UST">
+    <meta property="twitter:description" content="{{ event.description|safe|truncatechars:150 }}">
+    <meta property="twitter:image" content="{{event.pic1.url}}">
+
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=ABeeZee">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">

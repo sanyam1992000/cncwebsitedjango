@@ -31,3 +31,5 @@ boto==2.49.0
 boto3==1.11.9
 botocore==1.14.9
 django-import-export
+django-cors-headers==3.2.1
+django-cors-middleware==1.5.0
