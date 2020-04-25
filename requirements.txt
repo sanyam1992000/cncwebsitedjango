@@ -33,3 +33,4 @@ botocore==1.14.9
 django-import-export
 django-cors-headers==3.2.1
 django-cors-middleware==1.5.0
+django-robots

@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'ckeditor_uploader',
     'import_export',
     'corsheaders',
+    'robots',
 
     'core',
     'blog',
@@ -202,6 +203,10 @@ CKEDITOR_RESTRICT_BY_DATE = True
 # AWS_QUERYSTRING_AUTH = False
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
+
+ROBOTS_USE_HOST = False
+ROBOTS_USE_SCHEME_IN_HOST = True
+ROBOTS_CACHE_TIMEOUT = 60*60*24
 
 CKEDITOR_CONFIGS = {
     'default': {
