@@ -25,7 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '_!zs^u*$g_8owguy%y^5brfe@*vlwa2te+spf@kyhtf=+cg3t*'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['cncymca.herokuapp.com', 'http://cncymca.herokuapp.com']
 
@@ -172,9 +172,6 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'careerandcounsellingcell.ymca@gmail.com'
 EMAIL_HOST_PASSWORD = 'kdmjcmiabtkwibvd'
-
-
-
 
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
