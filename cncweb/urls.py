@@ -43,11 +43,11 @@ sitemaps = {
 
     'students': GenericSitemap({
         'queryset': UserProfile.objects.all(),
-    }, priority=0.9),
+    }, priority=0.5),
 
     'teachers': GenericSitemap({
         'queryset': FacultyProfile.objects.all(),
-    }, priority=0.9),
+    }, priority=0.6),
 
 }
 
