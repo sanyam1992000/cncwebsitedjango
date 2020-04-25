@@ -68,4 +68,4 @@ class FacultyProfile(models.Model):
         return reverse('accounts:dashboard', args=[str(self.user.username)])
     
     class Meta:
-        ordering = ['-position']
+        ordering = ['position']
