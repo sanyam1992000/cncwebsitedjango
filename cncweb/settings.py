@@ -27,7 +27,7 @@ SECRET_KEY = '_!zs^u*$g_8owguy%y^5brfe@*vlwa2te+spf@kyhtf=+cg3t*'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['cncymca.herokuapp.com', 'http://cncymca.herokuapp.com']
+ALLOWED_HOSTS = ['cncymca.herokuapp.com', 'www.cncymca.herokuapp.com']
 
 # Application definition
 
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'rest_framework',
@@ -57,6 +58,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # add whitenoise
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -156,6 +158,7 @@ CORS_ALLOW_HEADERS = (
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
@@ -168,10 +171,19 @@ STATICFILES_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # emailid  =  careerandcounsellingcell.ymca@gmail.com
 # password = Career&Counselling
 
+ADMINS = (
+    ('Admin', 'careerandcounsellingcell.ymca@gmail.com'),
+    ('Sanyam', 'sanyam1992000@gmail.com'),
+    ('Sanyam', 'sanyam30dav@gmail.com'),
+)
+MANAGERS = ADMINS
+
+
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'careerandcounsellingcell.ymca@gmail.com'
-EMAIL_HOST_PASSWORD = 'kdmjcmiabtkwibvd'
+# EMAIL_HOST_USER = 'sanyam19092000@gmail.com'
+EMAIL_HOST_PASSWORD = 'opotfpjlylyenpgx'
 
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False

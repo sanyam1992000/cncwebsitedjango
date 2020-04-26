@@ -3,20 +3,20 @@
     <meta charset="utf-8">
     <title>{{ post.title }} | Career and Counseling Cell | JC Bose UST</title>
     <meta name="title" content="{{ post.title }} | Career and Counseling Cell | JC Bose UST">
-    <meta name="description" content="{{ post.content|safe|truncate:140  }}">
+    <meta name="description" content="{{ post.content|safe|truncatechars:150  }}">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.cncjcbust.tech/blog/{{ post.id }}/">
     <meta property="og:title" content="{{ post.title }} | Career and Counseling Cell | JC Bose UST">
-    <meta property="og:description" content="{{ post.content|safe|truncate:140  }}">
+    <meta property="og:description" content="{{ post.content|safe|truncatechars:150  }}">
     <meta property="og:image" content="{{ post.pic1.url }}">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://www.cncjcbust.tech/blog/{{ post.id }}/">
     <meta property="twitter:title" content="{{ post.title }} | Career and Counseling Cell | JC Bose UST">
-    <meta property="twitter:description" content="{{ post.content|safe|truncate:140  }}">
+    <meta property="twitter:description" content="{{ post.content|safe|truncatechars:150  }}">
     <meta property="twitter:image" content="{{ post.pic1.url }}">
 
 {% endblock %}
