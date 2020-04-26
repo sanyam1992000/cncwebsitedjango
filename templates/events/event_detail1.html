@@ -13,14 +13,18 @@
     <meta property="og:url" content="https://www.cncjcbust.tech/events/{{ event.id }}/">
     <meta property="og:title" content="{{ event.event_name|title }} | Career and Counseling Cell | JC Bose UST">
     <meta property="og:description" content="{{ event.description|safe|truncatechars:150 }}">
+    {% if event.pic1.url %}
     <meta property="og:image" content="{{event.pic1.url}}">
+    {% endif %}
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://www.cncjcbust.tech/events/{{ event.id }}/">
     <meta property="twitter:title" content="{{ event.event_name|title }} | Career and Counseling Cell | JC Bose UST">
     <meta property="twitter:description" content="{{ event.description|safe|truncatechars:150 }}">
-    <meta property="twitter:image" content="{{event.pic1.url}}">
+    {% if event.pic1.url %}
+    <meta property="og:image" content="{{event.pic1.url}}">
+    {% endif %}
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=ABeeZee">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900">
@@ -73,38 +77,38 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,10,151,1) 0%, rgb
             <div class="container mb-4">
 
                 <div class="d-flex justify-content-center">
-                    <a data-fancybox="gallery" data-caption="Hero Image Nature" href="{% static 'img/hero-background-nature.jpg' %}">
+                    <a data-fancybox="gallery" data-caption="Event Image Career and Counselling Cell" href="#">
                         <div class="row">
                         {% if event.pic3 %}
-                        <img class="col-sm-6 col-md-4  img-fluid mt-3 mb-3" src="{{event.pic3.url}}" alt="Hero Image Nature" />
+                        <img class="col-sm-6 col-md-4  img-fluid mt-3 mb-3" src="{{event.pic3.url}}" alt="Event Image Career and Counselling Cell" />
                         {% endif %}
 
                     {% if event.pic4 %}
-                        <img class="col-sm-6 col-md-4  img-fluid mt-3 mb-3" src="{{event.pic4.url}}" alt="Hero Image Nature" />
+                        <img class="col-sm-6 col-md-4  img-fluid mt-3 mb-3" src="{{event.pic4.url}}" alt="Event Image Career and Counselling Cell" />
                         {% endif %}
 
                     {% if event.pic5 %}
-                        <img class="col-sm-6 col-md-4  img-fluid mt-3 mb-3" src="{{event.pic5.url}}" alt="Hero Image Nature" />
+                        <img class="col-sm-6 col-md-4  img-fluid mt-3 mb-3" src="{{event.pic5.url}}" alt="Event Image Career and Counselling Cell" />
                         {% endif %}
 
                     {% if event.pic6 %}
-                        <img class="col-sm-6 col-md-4  img-fluid mt-3 mb-3" src="{{event.pic6.url}}" alt="Hero Image Nature" />
+                        <img class="col-sm-6 col-md-4  img-fluid mt-3 mb-3" src="{{event.pic6.url}}" alt="Event Image Career and Counselling Cell" />
                         {% endif %}
 
                     {% if event.pic7 %}
-                        <img class="col-sm-6 col-md-4  img-fluid mt-3 mb-3" src="{{event.pic7.url}}" alt="Hero Image Nature" />
+                        <img class="col-sm-6 col-md-4  img-fluid mt-3 mb-3" src="{{event.pic7.url}}" alt="Event Image Career and Counselling Cell" />
                         {% endif %}
                     {% if event.pic8 %}
-                        <img class="col-sm-6 col-md-4  img-fluid mt-3 mb-3" src="{{event.pic8.url}}" alt="Hero Image Nature" />
+                        <img class="col-sm-6 col-md-4  img-fluid mt-3 mb-3" src="{{event.pic8.url}}" alt="Event Image Career and Counselling Cell" />
                         {% endif %}
                     {% if event.pic9 %}
-                        <img class="col-sm-6 col-md-4  img-fluid mt-3 mb-3" src="{{event.pic9.url}}" alt="Hero Image Nature" />
+                        <img class="col-sm-6 col-md-4  img-fluid mt-3 mb-3" src="{{event.pic9.url}}" alt="Event Image Career and Counselling Cell" />
                         {% endif %}
                     {% if event.pic10 %}
-                        <img class="col-sm-6 col-md-4  img-fluid mt-3 mb-3" src="{{event.pic10.url}}" alt="Hero Image Nature" />
+                        <img class="col-sm-6 col-md-4  img-fluid mt-3 mb-3" src="{{event.pic10.url}}" alt="Event Image Career and Counselling Cell" />
                         {% endif %}
                     {% if event.pic11 %}
-                        <img class="col-sm-6 col-md-4  img-fluid mt-3 mb-3" src="{{event.pic3.url}}" alt="Hero Image Nature" />
+                        <img class="col-sm-6 col-md-4  img-fluid mt-3 mb-3" src="{{event.pic3.url}}" alt="Event Image Career and Counselling Cell" />
                         {% endif %}
                         </div>
                     </a>
