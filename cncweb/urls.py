@@ -74,10 +74,10 @@ urlpatterns = [
 
 ]
 
-handler404 = coreviews.handler404
-handler500 = coreviews.handler500
-handler403 = coreviews.handler403
-handler400 = coreviews.handler400
+handler404 = 'core.views.handler404'
+handler500 = 'core.views.handler500'
+handler403 = 'core.views.handler403'
+handler400 = 'core.views.handler400'
 
 
 if settings.DEBUG==True:
