@@ -14,7 +14,6 @@ from django.conf import settings
 
 
 def home(request):
-
     SlideShowPics = SlideShowPic.objects.all()
     upcomingevents = Event.objects.filter(status='True')
     events = Event.objects.filter(status='False')
