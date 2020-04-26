@@ -51,3 +51,17 @@ class Registration(models.Model):
 
     class Meta:
         ordering = ['-date']
+
+
+class Institute(models.Model):
+    institute = models.CharField(max_length=100)
+    previous_events = RichTextUploadingField(blank=True, null=True)
+    contact_person = models.CharField(max_length=1000, blank=True, null=True)
+    contact_person_phone_number = models.BigIntegerField(blank=True, null=True)
+    email = models.EmailField(max_length=100, default=None, blank=True, null=True)
+
+    def __str__(self):
+        return self.institute
+
+    class Meta:
+        ordering = ['institute']

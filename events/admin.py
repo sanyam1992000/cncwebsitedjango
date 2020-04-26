@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Event, Registration
+from .models import Event, Registration, Institute
 from import_export.admin import ImportExportModelAdmin, ImportExportActionModelAdmin
 
 admin.site.site_header = 'Career And Counseling Cell'
@@ -29,5 +29,13 @@ class RegistrationAdmin(ImportExportModelAdmin, ImportExportActionModelAdmin):
     search_fields = ('user', 'event')
 
 
+class InstitutesAdmin(ImportExportModelAdmin, ImportExportActionModelAdmin):
+    list_display = ('institute', 'contact_person', 'contact_person_phone_number', 'email')
+    list_display_links = ('institute', 'contact_person', 'contact_person_phone_number', 'email')
+    list_filter = ('institute',)
+    search_fields = ('institute', 'contact_person', 'contact_person_phone_number', 'email', 'previous_events')
+
+
 admin.site.register(Event, EventAdmin)
 admin.site.register(Registration, RegistrationAdmin)
+admin.site.register(Institute, InstitutesAdmin)
