@@ -29,7 +29,7 @@ def blog(request):
         else:
             m = int(m)
             y = int(y)
-            post_all = Post.objects.filter(status='False', date__gte=datetime.date(y, m, 1), date__lt=datetime.date(y, m+1, 1), title__icontains=search_term).order_by('-date')
+            post_all = Post.objects.filter(date__gte=datetime.date(y, m, 1), date__lt=datetime.date(y, m+1, 1), title__icontains=search_term).order_by('-date')
     
     paginator_post = Paginator(post_all, 13)
     page = request.GET.get('page')
