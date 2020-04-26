@@ -27,6 +27,7 @@ from events.models import Event
 from accounts.models import UserProfile, FacultyProfile
 import blog.views
 from blog.sitemaps import StaticViewSitemap
+from core import views as coreviews
 
 sitemaps = {
     'static': StaticViewSitemap,
@@ -73,6 +74,12 @@ urlpatterns = [
 
 ]
 
-if settings.DEBUG:
-    # urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+handler404 = coreviews.handler404
+handler500 = coreviews.handler500
+handler403 = coreviews.handler403
+handler400 = coreviews.handler400
+
+
+if settings.DEBUG==True:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

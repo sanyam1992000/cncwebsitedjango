@@ -25,8 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '_!zs^u*$g_8owguy%y^5brfe@*vlwa2te+spf@kyhtf=+cg3t*'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-TEMPLATE_DEBUG = False
+DEBUG = False
 
 ALLOWED_HOSTS = ['cncymca.herokuapp.com', 'www.cncymca.herokuapp.com']
 
@@ -165,9 +164,9 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 STATICFILES_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-# if DEBUG:
-#     MEDIA_URL = '/media/'
-#     MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+if DEBUG:
+    MEDIA_URL = '/media/'
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # emailid  =  careerandcounsellingcell.ymca@gmail.com
 # password = Career&Counselling
