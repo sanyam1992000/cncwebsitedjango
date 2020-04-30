@@ -37,7 +37,7 @@ class Event(models.Model):
 class Registration(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='registrations')
     event = models.ForeignKey(Event, on_delete=models.CASCADE)
-    date = models.DateTimeField(auto_now_add=True)
+    date = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     attended = models.CharField(choices=(('A', 'Attended'), ('NA', 'Not Attended')), max_length=10, default='NA')
 
     def __str__(self):

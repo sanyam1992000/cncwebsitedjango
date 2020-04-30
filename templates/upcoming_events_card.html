@@ -21,7 +21,7 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,10,151,1) 0%, rgb
                             <p class="card-text">
                                 Date - {{ event.date|date:"d F Y" }}
                                 <br>
-                                {{ event.description|truncatewords:10 }}
+                                {{ event.description|truncatechars:105 }}
                                 <br>
                                 <br>
                             </p>

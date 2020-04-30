@@ -30,7 +30,7 @@ class SlideShowPic(models.Model):
 
 
 class Member(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     userprofile = models.ForeignKey(UserProfile, on_delete=models.CASCADE, default=None, blank=True, null=True)
     description = models.CharField(choices=member_description, max_length=100)
     status = models.CharField(choices=member_status, max_length=100, blank=True, null=True)

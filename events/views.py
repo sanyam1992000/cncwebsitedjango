@@ -58,13 +58,21 @@ def EventsList(request):
 def EventDetail(request, eventid):
     event = get_object_or_404(Event, id=eventid)
     user = request.user
-    context = {'event': event}
+    try:
+        registration = Registration.objects.get(user=user, event=event)
+    except:
+        registration = None
+
+    context = {
+        'event': event,
+        'registration': registration
+    }
     return render(request, 'events/event_detail1.html', context)
 
 
 def Getpdf(request, username, eventid, *args, **kwargs):
-    user = User.objects.get(username=username)
-    event = Event.objects.get(id=eventid)
+    user = get_object_or_404(User, username=username)
+    event = get_object_or_404(Event, id=eventid)
     if username == user.username:
         data = {
             'user': user,
@@ -79,25 +87,17 @@ def Getpdf(request, username, eventid, *args, **kwargs):
 @login_required
 def RegisterForEvent(request, eventid):
     user = request.user
-    event = Event.objects.get(id=eventid)
-    date = datetime.datetime.now()
-    registration = Registration(user=user, event=event, date=date)
-    registration.save()
+    event = get_object_or_404(Event, id=eventid)
+    registration = Registration.objects.get_or_create(user=user, event=event)
     messages.success(request, 'Thanks for registering for Event - {}'.format(event.event_name))
-    if event.status == 'True':
-        return redirect('events:events_list')
-    else:
-        return redirect('events:events_detail', eventid=event.id)
+    return redirect('events:events_detail', eventid=event.id)
 
 
 @login_required
 def UnregisterForEvent(request, eventid):
     user = request.user
-    event = Event.objects.get(id=eventid)
-    registration = Registration.objects.get(user=user, event=event)
+    event = get_object_or_404(Event, id=eventid)
+    registration = get_object_or_404(Registration, user=user, event=event)
     registration.delete()
     messages.error(request, 'You\'ve Unregistered for Event - {}'.format(event.event_name))
-    if event.status == 'True':
-        return redirect('events:events_list')
-    else:
-        return redirect('events:events_detail', eventid=event.id)
+    return redirect('events:events_detail', eventid=event.id)

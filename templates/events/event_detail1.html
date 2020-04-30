@@ -75,9 +75,7 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,10,151,1) 0%, rgb
                     <br>
             <br>
             <div class="container mb-4">
-
                 <div class="d-flex justify-content-center">
-                    <a data-fancybox="gallery" data-caption="Event Image Career and Counselling Cell" href="#">
                         <div class="row">
                         {% if event.pic3 %}
                         <img class="col-sm-6 col-md-4  img-fluid mt-3 mb-3" src="{{event.pic3.url}}" alt="Event Image Career and Counselling Cell" />
@@ -111,9 +109,23 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,10,151,1) 0%, rgb
                         <img class="col-sm-6 col-md-4  img-fluid mt-3 mb-3" src="{{event.pic3.url}}" alt="Event Image Career and Counselling Cell" />
                         {% endif %}
                         </div>
-                    </a>
 
                 </div>
+            </div>
+            <div style="align-self: center; padding-bottom: 20px">
+                {% if event.status == 'True' %}
+                    {% if registration %}
+                        <div class="row" style="align-self: center">
+                            <a class="text-sm-center text-white det btn" style="background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,10,151,1) 0%, rgba(255,0,0,1) 100%)" href="{% url 'events:unregister_for_event' event.id%}">Unregister</a></center>
+                        </div>
+                    {% else %}
+                        <div class="row" style="align-self: center">
+                            <a class="text-sm-center text-white det btn" style="background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,10,151,1) 0%, rgba(255,0,0,1) 100%)" href="{% url 'events:register_for_event' event.id%}">Reegister</a></center>
+                        </div>
+                    {% endif %}
+                {% endif %}
             </div>
         </div>
     </div>
