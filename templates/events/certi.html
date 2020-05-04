@@ -1,12 +1,190 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+{% extends 'base.html'%}
+{% block static %}
     <meta charset="UTF-8">
-    <title>ergergre</title>
-</head>
-<body>
-This is to certify that {{ user.username }}
-has successfully participated in _event_
-{{ user.id }}
-</body>
-</html>
+    <title>Certificate</title>
+    <style>
+        @page{size: letter landscape;
+            margin: 0cm;
+        }
+
+        body {
+            font-family: Roboto;
+        }
+
+        .certificate-container {
+            align-self: center;
+            padding: 50px;
+            width: 1024px;
+        }
+        #endorsed{
+            margin-left: 100px;
+        }
+        .certificate {
+            border: 20px solid black;
+            padding: 25px;
+            height: 600px;
+            position: relative;
+        }
+        .topic-description-text-muted{
+            margin: 40px;
+        }
+        .certificate:after {
+            content: '';
+            top: 0px;
+            left: 0px;
+            bottom: 0px;
+            right: 0px;
+            position: absolute;
+            background-size: 100%;
+            z-index: -1;
+        }
+
+        .certificate-header > .logo {
+            width: 80px;
+            height: 80px;
+        }
+
+        .certificate-title {
+            text-align: center;
+        }
+
+        .certificate-body {
+            text-align: center;
+        }
+
+        h1 {
+            font-weight: 400;
+            font-size: 48px;
+            color: #0C5280;
+        }
+
+        .student-name {
+            margin: 20px;
+            font-size: 24px;
+        }
+
+        .certificate-content {
+            margin: 0 auto;
+            width: 750px;
+        }
+
+        .about-certificate {
+            width: 380px;
+            margin: 0 auto;
+        }
+
+        .topic-description {
+
+            text-align: center;
+        }
+
+    </style>
+{% endblock %}
+
+
+{% block content %}
+<body oncontextmenu="return false;">
+<div></div>
+<div></div>
+<div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <center>
+    <div class="card container profilebody border-white border rounded shadow-lg img-fluid" style="height: auto; margin-top: -150px;">
+            <div class="wow slideInUp profile">
+                <div class="profilephoto" style="margin-top: 30px;">
+                    {% if user.userprofile.pic %}
+                    <a href="#">
+                        <img src="{{user.userprofile.pic.url}}" height="100" width="100" class="rounded-circle">
+                    </a>
+                    {% endif %}
+                </div>
+                <div class="profiledetails">
+                    <br>
+                    <h2>{{user.first_name|capfirst}} {{ user.last_name|capfirst }}</h2>
+                    <br>
+                    <!-- and role or location -->
+                    <h4>{{profile.roll_no}}</h4><br>
+                    <h5><p>{{profile.course}} - {{ profile.branch }}</p></h5>
+
+
+                    {% if request.user == user %}
+                    <div style="padding-bottom: 20px">
+                     <hr>
+
+                        <button type="button" class="btn btn-info"><a href="{% url 'accounts:edit_student_profile' user.username %}">Edit Profile</a></button>
+                        <button type="button" class="btn btn-danger"><a href="{% url 'change_password' %}">Password</a></button>
+                    </div>
+                    {% endif %}
+                </div>
+
+            </div>
+    </div>
+    </center>
+</div>
+    <br>
+
+
+<div class="certificate-container" style="align: center">
+
+
+    <div class="certificate">
+        <div class="row">
+            <div class="col-md-6">
+                <img src="http://cncymca.herokuapp.com/static/img/logo.227277181681.png" alt="Logo" style="height: 100px; width: auto; float: left;">
+            </div>
+            <div class="col-md-6">
+                <img src="https://upload.wikimedia.org/wikipedia/en/a/ae/J.C._Bose_University_of_Science_and_Technology%2C_YMCA_logo.png" alt="Logo" style="height: 100px; width: auto; float: right;">
+            </div>
+        </div>
+
+
+
+
+        <div class="certificate-body">
+
+            <h2><strong>Career & Counselling Cell, JC Bose UST (YMCA)</strong></h2>
+            <h1>Certificate</h1>
+            <p class="student-name">{{user.first_name|capfirst}} {{ user.last_name|capfirst }}</p>
+            <div class="certificate-content">
+                <div class="about-certificate">
+                    <p>
+                        has attended <strong>{{ event.event_name }}</strong> on <strong>{{ event.date }}</strong> which was organized in <strong>{{ event.venue }}</strong>.
+                </p>
+                </div>
+                <div class="text-center">
+                    <p class="topic-description-text-muted">{{ event.certi_description }}</p>
+                </div>
+            </div>
+
+
+            <br>
+            <div class="certificate-footer text-muted">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>Dean of Management:</p>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row">
+
+                            <div class="col-md-6">
+                                <p id = "endorsed"> Endorsed by: </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -27,7 +27,7 @@ SECRET_KEY = '_!zs^u*$g_8owguy%y^5brfe@*vlwa2te+spf@kyhtf=+cg3t*'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['cncymca.herokuapp.com', 'www.cncymca.herokuapp.com']
+ALLOWED_HOSTS = ['cncymca.herokuapp.com', 'www.cncymca.herokuapp.com', '127.0.0.1', 'cncjcbust.tech']
 
 # Application definition
 
@@ -163,9 +163,9 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 STATICFILES_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+MEDIA_URL = '/media/'
 
 if DEBUG:
-    MEDIA_URL = '/media/'
     MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # emailid  =  careerandcounsellingcell.ymca@gmail.com

@@ -110,13 +110,13 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,10,151,1) 0%, rgb
                     </div>
 
                     <div class="col-12 col-sm-6 d-flex flex-row justify-content-center align-items-center intro-card-2 p-5">
-                        <img class="howto-img imground" src="{{ event.pic2.url }}" alt="" href="{% url 'events:events_detail' event.id %}" width="200" height="200">
+                        <img class="howto-img imground" src="{{ event.pic2.url }}" alt="{{ event.event_name|capfirst|truncatechars:50 }}" href="{% url 'events:events_detail' event.id %}" width="200" height="200">
                     </div>
                 </div>
         {% elif not forloop.counter0|divisibleby:"2"%}
             <div class="row wow slideInRight align-items-center">
                     <div class="col-12 col-sm-6 d-flex flex-row justify-content-center align-items-center intro-card-3 p-5">
-                        <img class="howto-img imground" src="{{ event.pic2.url }}" href="{% url 'events:events_detail' event.id %}" alt="" width="200" height="200">
+                        <img class="howto-img imground" src="{{ event.pic2.url }}" href="{% url 'events:events_detail' event.id %}" alt="{{ event.event_name|capfirst|truncatechars:50 }}" width="200" height="200">
                     </div>
                     <div class="card border-white border rounded shadow-lg col-12 col-sm-6 d-flex flex-column justify-content-center p-5 psd-left2">
                         <center><h3 class="text-sm-center">{{ event.event_name|capfirst|truncatechars:50 }}</h3>

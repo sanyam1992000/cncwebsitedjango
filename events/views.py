@@ -2,7 +2,8 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Event, Registration
-from .certificates import render_to_pdf
+from accounts.models import UserProfile
+from .certificates import render_to_pdf, render_pdf_view
 from django.contrib.auth.models import User
 import datetime
 from django.contrib import messages
@@ -73,13 +74,16 @@ def EventDetail(request, eventid):
 def Getpdf(request, username, eventid, *args, **kwargs):
     user = get_object_or_404(User, username=username)
     event = get_object_or_404(Event, id=eventid)
+    userprofile = get_object_or_404(UserProfile, user=user)
     if username == user.username:
         data = {
             'user': user,
             'event': event,
+            'userprofile': userprofile,
         }
-        pdf = render_to_pdf('events/certi1.html', data)
-        return HttpResponse(pdf, content_type='application/pdf')
+        return render(request, 'events/certi.html', data)
+        # pdf = render_pdf_view(request, 'events/certi.html', data)
+        # return HttpResponse(pdf, content_type='application/pdf')
     else:
         return HttpResponse('404')
 
