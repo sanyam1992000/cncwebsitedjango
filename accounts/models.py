@@ -43,7 +43,6 @@ class UserProfile(models.Model):
     branch = models.CharField(choices=branch, max_length=50)
     icard = models.ImageField(upload_to='icard', blank=True, null=True)
     phoneno = models.BigIntegerField(default=None)
-    password2 = models.CharField(default=None, max_length=100, blank=True, null=True)
 
     def __str__(self):
         return str(self.user) + ' ' + str(self.roll_no)

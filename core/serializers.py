@@ -19,7 +19,7 @@ class UserProfileSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = UserProfile
-        fields = ['user_url', 'user', 'pic', 'roll_no', 'course', 'branch', 'icard', 'phoneno', 'password2']
+        fields = ['user_url', 'user', 'pic', 'roll_no', 'course', 'branch', 'icard', 'phoneno']
 
 
 class CommentSerializer(serializers.HyperlinkedModelSerializer):
