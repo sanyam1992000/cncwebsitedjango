@@ -12,6 +12,7 @@ courses = (
     ('BSC', 'Bsc'),
     ('MSC', 'Msc'),
     ('MBA', 'MBA'),
+    ('BBA', 'BBA'),
 )
 
 branch = (
@@ -26,6 +27,8 @@ branch = (
     ('Mathematics', 'Mathematics'),
     ('Chemistry','Chemistry'),
     ('Physics','Physics'),
+    ('Animation','Animation'),
+    ('Others','Others'),
 
 )
 
