@@ -1,7 +1,7 @@
 from django.core.mail import send_mail, EmailMessage
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
-from rest_framework import viewsets
+from rest_framework import viewsets, authentication
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from .serializers import UserSerializer, UserProfileSerializer, BlogSerializer, EventSerializer
 from accounts.models import UserProfile, FacultyProfile
@@ -68,6 +68,8 @@ def contact_us(request):
 class UserViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializer
     queryset = User.objects.all()
+    authentication_classes = (authentication.TokenAuthentication,)
+
 
     def get_permissions(self):
         permission_classes = [IsAdminUser, ]
@@ -77,6 +79,7 @@ class UserViewSet(viewsets.ModelViewSet):
 class UserProfileViewSet(viewsets.ModelViewSet):
     serializer_class = UserProfileSerializer
     queryset = UserProfile.objects.all()
+    authentication_classes = (authentication.TokenAuthentication,)
 
     def get_permissions(self):
         permission_classes = [IsAdminUser, ]
@@ -86,6 +89,7 @@ class UserProfileViewSet(viewsets.ModelViewSet):
 class BlogViewSet(viewsets.ModelViewSet):
     serializer_class = BlogSerializer
     queryset = Post.objects.all()
+    authentication_classes = (authentication.TokenAuthentication,)
 
     def get_permissions(self):
         permission_classes = [IsAdminUser, ]
@@ -95,6 +99,7 @@ class BlogViewSet(viewsets.ModelViewSet):
 class EventViewSet(viewsets.ModelViewSet):
     serializer_class = EventSerializer
     queryset = Event.objects.all()
+    authentication_classes = (authentication.TokenAuthentication,)
 
     def get_permissions(self):
         permission_classes = [IsAdminUser, ]

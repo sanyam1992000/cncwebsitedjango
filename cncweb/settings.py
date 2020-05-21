@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'import_export',
     'corsheaders',
     'robots',
+    'rest_framework.authtoken',
 
     'core',
     'blog',
@@ -213,6 +214,18 @@ CKEDITOR_RESTRICT_BY_DATE = True
 # AWS_QUERYSTRING_AUTH = False
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+}
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 ROBOTS_USE_HOST = False
 ROBOTS_USE_SCHEME_IN_HOST = True
