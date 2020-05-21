@@ -26,6 +26,7 @@ from events.models import Event
 from events.models import Event
 from accounts.models import UserProfile, FacultyProfile
 import blog.views
+from rest_framework.authtoken import views
 from blog.sitemaps import StaticViewSitemap
 from core import views as coreviews
 
