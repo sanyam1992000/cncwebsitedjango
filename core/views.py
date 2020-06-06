@@ -25,6 +25,41 @@ def home(request):
     return render(request, 'home.html', context=context)
 
 
+def analyst(request):
+    return render(request, 'quiz/analyst.html')
+
+def avtar(request):
+    return render(request, 'quiz/avtar.html')
+
+def currentaffairs(request):
+    return render(request, 'quiz/currentaffair.html')
+
+def dribble(request):
+    return render(request, 'quiz/dribble.html')
+
+def musketeer(request):
+    return render(request, 'quiz/musketeer.html')
+
+def rabindernath(request):
+    return render(request, 'quiz/rabindernath.html')
+
+
+def silentpast(request):
+    return render(request, 'quiz/silentpast.html')
+
+
+def snapes_in_plane(request):
+    return render(request, 'quiz/snapes-in-plane.html')
+
+
+def therohanchaudharyshow(request):
+    return render(request, 'quiz/therohanchaudharyshow.html')
+
+
+def treasurer(request):
+    return render(request, 'quiz/treasurer.html')
+
+
 def about(request):
     members = Member.objects.all()
     faculties = FacultyProfile.objects.all()
