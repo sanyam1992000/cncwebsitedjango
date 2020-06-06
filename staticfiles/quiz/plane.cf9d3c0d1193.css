@@ -1,0 +1,22 @@
+body {
+  background-image: url("movie.d2543c43070f.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+}
+h1{
+  text-align: center;
+  padding-top: 20px;
+  font-family: 'Special Elite', cursive;
+  font-size: 5rem;
+  color: white;
+}
+.info{
+  text-align: center;
+  font-family: 'Special Elite', cursive;
+  font-size: 2rem;
+  padding: 0px 10px 20px 500px;
+  line-height: 50px;
+  font-weight: bold;
+  color: white;
+}

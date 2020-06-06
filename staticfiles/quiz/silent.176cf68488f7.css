@@ -1,0 +1,22 @@
+body {
+  background-image: url("silent.4d2111f457a8.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+}
+h1{
+  text-align: center;
+  padding-top: 70px;
+  font-family: 'Special Elite', cursive;
+  font-size: 4rem;
+
+}
+.info{
+  text-align: center;
+  font-family: 'Special Elite', cursive;
+  font-size: 2rem;
+  padding: 20px 100px 20px 100px;
+  line-height: 50px;
+  font-weight: bold;
+
+}

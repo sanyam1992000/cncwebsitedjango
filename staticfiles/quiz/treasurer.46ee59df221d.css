@@ -1,0 +1,22 @@
+body {
+  background-image: url("economy.cbbc02aea50b.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+}
+h1{
+  text-align: center;
+  padding-top: 70px;
+  font-family: 'Special Elite', cursive;
+  font-size: 6rem;
+  color: white;
+}
+.info{
+  text-align: center;
+  font-family: 'Special Elite', cursive;
+  font-size: 2rem;
+  padding: 20px 150px 0px 150px;
+  line-height: 50px;
+  font-weight: bold;
+  color: white;
+}
