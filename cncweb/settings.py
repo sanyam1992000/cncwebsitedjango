@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 import django_heroku
 import os
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 from django.conf import settings
 from django.conf.urls.static import static
@@ -22,10 +21,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '_!zs^u*$g_8owguy%y^5brfe@*vlwa2te+spf@kyhtf=+cg3t*'
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = os.environ.get("DEBUG", True)
 
 ALLOWED_HOSTS = ['cncymca.herokuapp.com', 'www.cncymca.herokuapp.com', '127.0.0.1', 'cncjcbust.tech']
 
@@ -170,8 +169,6 @@ MEDIA_URL = '/media/'
 if DEBUG:
     MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-# emailid  =  careerandcounsellingcell.ymca@gmail.com
-# password = Career&Counselling
 
 ADMINS = (
     ('Admin', 'careerandcounsellingcell.ymca@gmail.com'),
@@ -184,17 +181,16 @@ MANAGERS = ADMINS
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'careerandcounsellingcell.ymca@gmail.com'
-# EMAIL_HOST_USER = 'sanyam19092000@gmail.com'
-EMAIL_HOST_PASSWORD = 'opotfpjlylyenpgx'
+EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_PASSWORD")
 
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 
-AWS_ACCESS_KEY_ID = ' AKIAWF6VJARJED5XY63X'
-AWS_SECRET_ACCESS_KEY = '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'
-AWS_STORAGE_BUCKET_NAME = 'cncymca'
+AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
+AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
+AWS_STORAGE_BUCKET_NAME = os.environ.get("AWS_STORAGE_BUCKET_NAME")
 AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL = None
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
@@ -288,37 +284,5 @@ CKEDITOR_CONFIGS = {
         ]),
     }
 }
-
-# CKEDITOR_CONFIGS = {
-#     'default': {
-#         'toolbar': 'full',
-#         'toolbar_full': [
-#                 ['Source', '-', 'Save', 'NewPage', 'Preview', 'Print', '-', 'Templates','Link', 'Unlink', 'Anchor',
-#                     'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo',
-#                     'Find', 'Replace', '-', 'SelectAll',
-#                     'Form', 'Checkbox', 'Radio', 'TextField', 'Textarea', 'Select', 'Button', 'ImageButton', 'HiddenField',
-#
-#                     'CodeSnippet',
-#                  ],
-#         ],
-#         'extraPlugins': 'codesnippet',
-#         # 'extraPlugins': ','.join([
-#         #     'uploadimage', # the upload image feature
-#         #     # your extra plugins here
-#         #     'div',
-#         #     'autolink',
-#         #     'autoembed',
-#         #     'embedsemantic',
-#         #     'autogrow',
-#         #     # 'devtools',
-#         #     'widget',
-#         #     'lineutils',
-#         #     'clipboard',
-#         #     'dialog',
-#         #     'dialogui',
-#         #     'elementspath'
-#         # ]),
-#     },
-# }
 
 django_heroku.settings(locals())
