@@ -4,7 +4,7 @@
 ![open issues](https://img.shields.io/github/contributors/sanyam1992000/cncwebsitedjango)
 [![Visits Badge](https://badges.pufler.dev/visits/sanyam1992000/cncwebsitedjango)](https://badges.pufler.dev)
 
-# Xunbao 2020 - Treasure Hunt
+# Career and Counselling Cell Website
 [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/made-with-python.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/uses-html.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/uses-css.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/uses-js.svg)](https://forthebadge.com)
 
 
