@@ -43,7 +43,14 @@ class SlideShowPicAdmin(admin.ModelAdmin):
     )
 
 
+class AuditionsAdmin(ImportExportModelAdmin, ImportExportActionModelAdmin):
+    list_display = ('name', 'roll_no', 'email', 'phone', 'course', 'branch')
+    list_display_links = ('name', 'email', 'phone', 'course', 'branch')
+    search_fields = ('name', 'email', 'phone', 'course', 'branch')
+    list_max_show_all = 100
+
+
 admin.site.register(Member, MembersAdmin)
 admin.site.register(SlideShowPic, SlideShowPicAdmin)
 admin.site.register(ContactUs, ContactUsAdmin)
-admin.site.register(Auditions)
+admin.site.register(Auditions, AuditionsAdmin)
