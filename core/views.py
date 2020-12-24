@@ -44,7 +44,7 @@ def auditions(request):
             to_email = [email, 'goyalchirag2001@gmail.com']
             send_mail(subject=subject, message=message, from_email=from_email, recipient_list=to_email, fail_silently=True)
 
-            messages.success(request, 'Please Join Whatsapp Group')
+            messages.success(request, 'Please Join Whatsapp Group - https://chat.whatsapp.com/KO0Ri1ZDyIg7PRvN0WMi66')
             return redirect('core:home')
         except Exception as err:
             messages.success(request, 'Something went wrong please register again')
