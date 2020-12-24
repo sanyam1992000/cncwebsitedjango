@@ -56,3 +56,21 @@ class ContactUs(models.Model):
     email = models.EmailField(default=None)
     phoneno = models.BigIntegerField(default=None)
     query = models.TextField(max_length=5000)
+
+    def __str__(self):
+        return str(self.name)
+
+
+class Auditions(models.Model):
+    name = models.CharField(max_length=1000)
+    email = models.EmailField()
+    phone = models.BigIntegerField()
+    roll_no = models.BigIntegerField()
+    hobbies = models.TextField()
+    skills = models.CharField(max_length=1000)
+    course = models.CharField(max_length=1000)
+    branch = models.CharField(max_length=1000)
+    reason = models.TextField()
+
+    def __str__(self):
+        return str(self.name) + str(self.roll_no)

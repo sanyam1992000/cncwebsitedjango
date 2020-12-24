@@ -7,7 +7,7 @@ from .serializers import UserSerializer, UserProfileSerializer, BlogSerializer, 
 from accounts.models import UserProfile, FacultyProfile
 from blog.models import Post
 from events.models import Event
-from .models import SlideShowPic, ContactUs, Member
+from .models import SlideShowPic, ContactUs, Member, Auditions
 from .forms import ContactUsForm
 from django.contrib import messages
 from django.conf import settings
@@ -24,6 +24,33 @@ def home(request):
     }
     return render(request, 'home.html', context=context)
 
+def auditions(request):
+    if request.method == 'POST':
+        name = request.POST['name']
+        email = request.POST['email']
+        rollno = request.POST['rollno']
+        phoneno = request.POST['phoneno']
+        hobbies = request.POST['hobbies']
+        skills = request.POST['skills']
+        course = request.POST['course']
+        branch = request.POST['branch']
+        reason = request.POST['reason']
+
+        try:
+            audition = Auditions.objects.create(name=name, email=email, phone=phoneno, roll_no=rollno, hobbies=hobbies, skills=skills, course=course, branch=branch, reason=reason)
+            subject = 'Thanks for Registering, {}'.format(name)
+            message = 'Dear {}, \nThanks for registering for Auditions 2020. Please Join Whatsapp group for more info https://chat.whatsapp.com/KO0Ri1ZDyIg7PRvN0WMi66 \n\nRegards, \nCareer and Counselling Cell'.format(name)
+            from_email = settings.DEFAULT_FROM_EMAIL
+            to_email = [email, 'goyalchirag2001@gmail.com']
+            send_mail(subject=subject, message=message, from_email=from_email, recipient_list=to_email, fail_silently=True)
+
+            messages.success(request, 'Please Join Whatsapp Group')
+            return redirect('core:home')
+        except Exception as err:
+            messages.success(request, 'Something went wrong please register again')
+            return render(request, 'auditions/auditions2020.html')
+    else:
+        return render(request, 'auditions/auditions2020.html')
 
 def analyst(request):
     return render(request, 'quiz/analyst.html')

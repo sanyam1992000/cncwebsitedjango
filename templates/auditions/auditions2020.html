@@ -1,0 +1,173 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block static %}
+    <!-- Primary Meta Tags -->
+    <title>Career and Counseling Cell | JC Bose University Faridabad</title>
+    <meta name="title" content="Career and Counseling Cell, JC Bose University Faridabad">
+    <meta name="description" content="Career and Counseling helps student to achieve excellence in their respective fields and oraganizes seminars in JC BOSE University, YMCA, Faridabad">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.cncjcbust.tech/">
+    <meta property="og:title" content="Career and Counseling Cell, JC Bose University Faridabad">
+    <meta property="og:description" content="Career and Counseling helps student to achieve excellence in their respective fields and oraganizes seminars in JC BOSE University, YMCA, Faridabad">
+    <meta property="og:image" content="https://www.cncjcbust.tech/static/img/logo.227277181681.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.cncjcbust.tech/">
+    <meta property="twitter:title" content="Career and Counseling Cell, JC Bose University Faridabad">
+    <meta property="twitter:description" content="Career and Counseling helps student to achieve excellence in their respective fields and oraganizes seminars in JC BOSE University, YMCA, Faridabad">
+    <meta property="twitter:image" content="https://www.cncjcbust.tech/static/img/logo.227277181681.png">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/themes/red/pace-theme-flash.min.css">
+
+
+{% endblock %}
+
+
+
+
+{% block content %}
+<br>
+<br>
+<br>
+<br>
+<div style="background: rgb(2,0,36);
+background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,10,151,1) 0%, rgba(255,0,0,1) 100%); padding: 20px; padding-top: 40px">
+    <div class="container card wow slideInUp" style=" border-radius: 1%">
+        <!-- Start: Contact Form v2 (Modal & Full) with Google Map -->
+        <div style="margin-bottom: 110px">
+            <!-- Start: Full Page Form -->
+            <div class="container-fluid">
+                <h1 class="text-center" style="margin-top: 40px;margin-bottom: 40px;">Auditions 2020</h1>
+                <hr>
+                <form id="registationForm" method="POST">
+
+                    {% csrf_token %}
+                    {{ form.errors }}
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            <div id="successfail"></div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-12 col-md-6" id="message">
+                            <h2 class="h4"> Registration Form<small><small class="required-input">&nbsp;&nbsp;&nbsp;(*required)</small></small>
+                            </h2>
+                            <br>
+                            <div class="form-group"><label for="id_name">Name</label><span class="required-input">*</span>
+                                <div class="input-group">
+                                    <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-user-o"></i></span></div><input class="form-control" type="text" id="id_name" name="name" required="" placeholder="Full Name" maxlength="50"></div>
+                            </div>
+                            <div class="form-group"><label for="id_email">Email</label><span class="required-input">*</span>
+                                <div class="input-group">
+                                    <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-envelope-o"></i></span></div><input class="form-control" type="email" id="id_email" name="email" required="" placeholder="Email Address" maxlength="254"></div>
+                            </div>
+                            <div class="form-group"><label for="id_phoneno">Roll Number</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-id-card"></i></span></div><input class="form-control" type="number" id="id_rollno" name="rollno" required="" placeholder="Roll Number" min="19000000000" max="21000000000"></div>
+                            </div>
+                            <div class="form-group"><label for="id_phoneno">Whatsapp Number</label><span class="required-input">*</span>
+                                <div class="input-group">
+                                    <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-phone"></i></span></div><input class="form-control" type="number" id="id_phoneno" name="phoneno" required="" placeholder="Primary Phone" min="6000000000" max="9999999999"></div>
+                            </div>
+                            <div class="form-group"><label for="id_hobby">Hobbies</label><span class="required-input">*</span>
+                                <div class="input-group">
+                                    <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-trophy"></i></span></div><input class="form-control" type="text" id="id_hobby" name="hobbies" required="" placeholder="Your Hobbies" maxlength="200"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="id_course">Skills:</label><span class="required-input">*</span>
+                                <div class="input-group">
+                                    <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-trophy"></i></span>
+                                        <select class="form-control" name="skills" id="id_skills">
+                                            <option value="Anchoring">Anchoring</option>
+                                            <option value="Content">Content Writer</option>
+                                            <option value="Marketing">Marketing</option>
+                                            <option value="Designing">Designing</option>
+                                            <option value="Video">Video Editing</option>
+                                            <option value="Others">Others</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                               <div class="form-group">
+                                    <label for="id_course">Course:</label><span class="required-input">*</span>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-university"></i></span>
+                                            <select class="form-control" name="course" id="id_course">
+                                                <option value="BTECH">B.Tech</option>
+                                                <option value="BCA">BCA</option>
+                                                <option value="BSC">B.Sc</option>
+                                                <option value="BBA">BBA</option>
+						                        <option value="MBA">MBA/MA</option>
+						                        <option value="Others">Others</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                <div class="form-group">
+                                     <label for="id_course">Branch:</label><span class="required-input">*</span>
+                                     <div class="input-group">
+                                         <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fa fa-university"></i></span>
+                                            <select class="form-control" name="branch" id="id_branch">
+                                                <option value="CEDS">CE (Data Science)</option>
+						                        <option value="CE">CE</option>
+                                                <option value="IT">IT</option>
+                                                <option value="ECE">ECE</option>
+                                                <option value="ECS">ECS</option>
+                                                <option value="EE">EE (IOT)</option>
+                                                <option value="EL">EL</option>
+                                                <option value="MECH">MECH</option>
+                                                <option value="CIVIL">CIVIL</option>
+                                                <option value="Mathematics">Mathematics</option>
+                                                <option value="Chemistry">Chemistry</option>
+                                                <option value="Physics">Physics</option>
+                                                <option value="Animation">Animation</option>
+						                        <option value="BCA">Computer Applications</option>
+						                        <option value="BAJMC">BAJMC</option>
+						                        <option value="MBA">MBA/MA</option>
+                                                <option value="Others">Others</option>
+                                            </select>
+                                         </div>
+                                     </div>
+                                     
+                                 </div>
+ 
+                            <div class="form-group"><label for="id_query">Why you want to join Career and Counselling Cell</label><span class="required-input">*</span><textarea class="form-control" id="id_question" name="reason" placeholder="Answer" rows="5" maxlength="5000"></textarea></div>
+                            <div class="form-group">
+                                <div class="form-row">
+                                    <div class="col"><button class="btn btn-dark border-0 btn-block zoom" style="background: rgb(2,0,36);
+background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,10,151,1) 0%, rgba(255,0,0,1) 100%); margin: 5px;" type="reset"><i class="fa fa-undo"></i> Reset</button></div>
+                                    <div class="col"><button class="btn btn-dark border-0 btn-block zoom" style="background: rgb(2,0,36);
+background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,10,151,1) 0%, rgba(255,0,0,1) 100%); margin: 5px;" type="submit" value="submit">Submit <i class="fa fa-chevron-circle-right"></i></button></div>
+                                </div>
+                            </div>
+                            <hr class="d-flex d-md-none">
+                        </div>
+                       </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+  
+{% endblock %}
+{% block scripts %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js">
+
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+
+
+{% endblock %}

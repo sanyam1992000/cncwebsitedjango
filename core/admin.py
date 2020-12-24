@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import SlideShowPic, ContactUs, Member
+from .models import SlideShowPic, ContactUs, Member, Auditions
 from import_export.admin import ImportExportModelAdmin, ImportExportActionModelAdmin
 
 admin.site.site_header = 'Career And Counseling Cell'
@@ -46,3 +46,4 @@ class SlideShowPicAdmin(admin.ModelAdmin):
 admin.site.register(Member, MembersAdmin)
 admin.site.register(SlideShowPic, SlideShowPicAdmin)
 admin.site.register(ContactUs, ContactUsAdmin)
+admin.site.register(Auditions)

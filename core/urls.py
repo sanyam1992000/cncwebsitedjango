@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path, include
-from .views import home, about, contact_us, UserViewSet, UserProfileViewSet, BlogViewSet, EventViewSet
+from .views import home, about, contact_us, UserViewSet, UserProfileViewSet, BlogViewSet, EventViewSet, auditions
 from . import views as coreviews
 from rest_framework.routers import DefaultRouter
 app_name = 'core'
@@ -15,6 +15,7 @@ router.register('events', EventViewSet, basename='event')
 
 urlpatterns = [
     path('', home, name='home'),
+    path('auditions/', auditions, name='auditions'),
 
     path('analyst/', coreviews.analyst),
     path('avtar/', coreviews.avtar),
