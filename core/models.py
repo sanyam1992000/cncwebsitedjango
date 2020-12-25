@@ -65,7 +65,7 @@ class Auditions(models.Model):
     name = models.CharField(max_length=1000)
     email = models.EmailField()
     phone = models.BigIntegerField()
-    roll_no = models.BigIntegerField()
+    roll_no = models.BigIntegerField(blank=True, null=True)
     hobbies = models.TextField()
     skills = models.CharField(max_length=1000)
     course = models.CharField(max_length=1000)

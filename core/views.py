@@ -37,11 +37,14 @@ def auditions(request):
         reason = request.POST['reason']
 
         try:
-            audition = Auditions.objects.create(name=name, email=email, phone=phoneno, roll_no=rollno, hobbies=hobbies, skills=skills, course=course, branch=branch, reason=reason)
+            audition = Auditions.objects.create(name=name, email=email, phone=phoneno, hobbies=hobbies, skills=skills, course=course, branch=branch, reason=reason)
+            if rollno:
+                audition.roll_no = rollno
+                audition.save()
             subject = 'Thanks for Registering, {}'.format(name)
             message = 'Dear {}, \nThanks for registering for Auditions 2020. Please Join Whatsapp group for more info https://chat.whatsapp.com/KO0Ri1ZDyIg7PRvN0WMi66 \n\nRegards, \nCareer and Counselling Cell'.format(name)
             from_email = settings.DEFAULT_FROM_EMAIL
-            to_email = [email, 'goyalchirag2001@gmail.com']
+            to_email = [email,]
             send_mail(subject=subject, message=message, from_email=from_email, recipient_list=to_email, fail_silently=True)
 
             messages.success(request, 'Please Join Whatsapp Group - https://chat.whatsapp.com/KO0Ri1ZDyIg7PRvN0WMi66')
