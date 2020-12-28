@@ -71,6 +71,8 @@ class Auditions(models.Model):
     course = models.CharField(max_length=1000)
     branch = models.CharField(max_length=1000)
     reason = models.TextField()
+    ip = models.CharField(max_length=1000, default="NA", blank=True, null=True)
+    browser = models.CharField(max_length=1000, default="NA", blank=True, null=True)
 
     def __str__(self):
         return str(self.name) + str(self.roll_no)

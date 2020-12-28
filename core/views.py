@@ -24,6 +24,16 @@ def home(request):
     }
     return render(request, 'home.html', context=context)
 
+
+def visitor_ip_address(request):
+    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+    if x_forwarded_for:
+        ip = x_forwarded_for.split(',')[0]
+    else:
+        ip = request.META.get('REMOTE_ADDR')
+    return ip
+
+
 def auditions(request):
     if request.method == 'POST':
         name = request.POST['name']
@@ -35,9 +45,10 @@ def auditions(request):
         course = request.POST['course']
         branch = request.POST['branch']
         reason = request.POST['reason']
-
+        browser = request.META['HTTP_USER_AGENT']
+        ip = visitor_ip_address(request)
         try:
-            audition = Auditions.objects.create(name=name, email=email, phone=phoneno, hobbies=hobbies, skills=skills, course=course, branch=branch, reason=reason)
+            audition = Auditions.objects.create(name=name, email=email, phone=phoneno, hobbies=hobbies, skills=skills, course=course, branch=branch, reason=reason, browser=browser, ip=ip)
             if rollno:
                 audition.roll_no = rollno
                 audition.save()

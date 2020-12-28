@@ -47,13 +47,14 @@ INSTALLED_APPS = [
     'corsheaders',
     'robots',
     'rest_framework.authtoken',
+    'user_visit',
 
     'core',
     'blog',
     'accounts',
     'events',
     'storages',
-    
+
 ]
 
 MIDDLEWARE = [
@@ -66,6 +67,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'user_visit.middleware.UserVisitMiddleware',  # user-visit
 ]
 
 ROOT_URLCONF = 'cncweb.urls'
@@ -169,14 +171,12 @@ MEDIA_URL = '/media/'
 if DEBUG:
     MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-
 ADMINS = (
     ('Admin', 'careerandcounsellingcell.ymca@gmail.com'),
     ('Sanyam', 'sanyam1992000@gmail.com'),
     ('Sanyam', 'sanyam30dav@gmail.com'),
 )
 MANAGERS = ADMINS
-
 
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
@@ -186,7 +186,6 @@ EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_PASSWORD")
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-
 
 AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
 AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
@@ -226,7 +225,7 @@ CORS_ORIGIN_ALLOW_ALL = True
 
 ROBOTS_USE_HOST = False
 ROBOTS_USE_SCHEME_IN_HOST = True
-ROBOTS_CACHE_TIMEOUT = 60*60*24
+ROBOTS_CACHE_TIMEOUT = 60 * 60 * 24
 
 CKEDITOR_CONFIGS = {
     'default': {
@@ -259,7 +258,7 @@ CKEDITOR_CONFIGS = {
                 'Maximize',
                 'CodeSnippet'
             ]},
-               '/',
+            '/',
             {'name': 'extra', 'items': [
                 'CodeSnippet'
             ]},
