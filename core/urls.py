@@ -15,7 +15,7 @@ router.register('events', EventViewSet, basename='event')
 
 urlpatterns = [
     path('', home, name='home'),
-    path('auditions/', auditions, name='auditions'),
+    # path('auditions/', auditions, name='auditions'),
 
     path('analyst/', coreviews.analyst),
     path('avtar/', coreviews.avtar),
