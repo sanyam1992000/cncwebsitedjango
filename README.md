@@ -21,6 +21,7 @@
     * [Django](#django)
     * [JWT Token](#jwt-token)
 * [Screenshots](#screenshots)
+* [DSA Practice Questions](#dsa-practice-questions)
 * [Authors](#authors)
 * [Contributing](#contributing)
 * [License](#license)
