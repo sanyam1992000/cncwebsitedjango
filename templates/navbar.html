@@ -10,7 +10,8 @@
                     <li class="nav-item" role="presentation"><a class="nav-link active bord" href="{% url 'events:events_list' %}">Events</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link active bord" href="{% url 'blog:blog' %}">Blog</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link active bord" href="{% url 'core:contact' %}">Contact</a></li>
-
+                    <li class="nav-item" role="presentation"><a class="nav-link active bord" href="{% url 'core:reports' %}" target="_blank">Reports</a></li>  
+                    
                     {% if not request.user.is_authenticated %}
                     <li class="nav-item" role="presentation"><a class="nav-link active bord" href="{% url 'accounts:login' %}">Login</a></li>
                     <li class="nav-item border-info hov  text-center border border-danger" role="presentation"><a class="nav-link active" href="{% url 'accounts:register' %}">SignUp</a></li>
