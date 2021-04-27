@@ -111,6 +111,8 @@ def about(request):
     }
     return render(request, 'core/about.html', context)
 
+def reports(request):
+    return render(request, 'core/reports.html')
 
 def contact_us(request):
     if request.method == 'POST':
