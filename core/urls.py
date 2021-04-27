@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path, include
-from .views import home, about, contact_us, UserViewSet, UserProfileViewSet, BlogViewSet, EventViewSet, auditions
+from .views import home, about, contact_us, UserViewSet, UserProfileViewSet, BlogViewSet, EventViewSet, auditions, reports
 from . import views as coreviews
 from rest_framework.routers import DefaultRouter
 app_name = 'core'
@@ -31,7 +31,8 @@ urlpatterns = [
 
     path('about/', about, name='about'),
     path('contact/', contact_us, name='contact'),
-
+    path('reports/', reports, name='reports'),
+    
     path('api/', include(router.urls)),
 
 ]
